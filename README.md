@@ -1,9 +1,6 @@
-# Countr
+[![CRANStatusBadge](http://www.r-pkg.org/badges/version/Countr)](https://cran.r-project.org/package=Countr)
 
-Flexible Univariate Count Models Based on Renewal Processes
-
-
-## Installing Countr
+# Installing Countr
 
 The [latest stable version](https://cran.r-project.org/package=Countr) is on
 CRAN.
@@ -17,13 +14,14 @@ You can install the [development version](https://github.com/GeoBosh/Countr) of
     install_github("GeoBosh/Countr")
 
 
-## Overview
+# Overview
 
 Flexible univariate count models based on renewal processes. The models may
 include covariates and can be specified with familiar formula syntax as in `glm()`
 and package 'flexsurv'.  The methodology is described in a forthcoming paper in
 the Journal of Statistical Software. The paper is included as vignette
 `vignette("Countr_guide")` along wth several additional vignettes containing
-worked examples and additional details.
+worked examples and additional details, see
+[Countr CRAN page](https://cran.r-project.org/package=Countr).
 
 The package is developed by Tarak Kharrat and Georgi N.Boshnakov.

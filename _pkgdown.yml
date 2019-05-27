@@ -1,8 +1,8 @@
 
 reference:
-  - title: "Count overview"
+  - title: "Countr overview"
     contents:
-      - Countr
+      - Countr-package
   - title: "Main function"
     desc: >
       Fit renewal regression models for count data.
