@@ -1,0 +1,353 @@
+% Created 2017-11-15 Wed 07:16
+% Intended LaTeX compiler: pdflatex
+\documentclass[a4paper,twoside,11pt]{article}
+                              \usepackage[T1]{fontenc}
+\usepackage{libertine}
+\renewcommand*\oldstylenums[1]{{\fontfamily{fxlj}\selectfont #1}}
+\usepackage{lmodern}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{rotating}
+\usepackage{setspace,amsmath,amsfonts,amssymb,bm}
+\usepackage{graphicx}
+\usepackage[usenames,dvipsnames]{xcolor}
+\definecolor{Red}{rgb}{0.5,0,0}
+\definecolor{NavyBlue}{rgb}{0.1,0.1,0.45}
+\definecolor{MidnightBlue}{rgb}{0.1,0.1,0.65}
+\usepackage[pdftex,hyperfootnotes=true,plainpages=false,pdfpagelabels,hypertexnames=true,naturalnames,pdfproducer={Latex},pdfcreator={pdflatex},bookmarks,bookmarksnumbered,colorlinks,linkcolor=MidnightBlue,citecolor=NavyBlue,filecolor=black,urlcolor=Red,breaklinks=true]{hyperref}
+\usepackage{authblk}
+\usepackage{xspace,helvet}
+\usepackage{moreverb}
+\usepackage{url, booktabs}
+\usepackage{cleveref}
+\usepackage[pdftex]{lscape}
+\usepackage{fullpage}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{rotating}
+\usepackage{pifont}
+\usepackage{setspace}
+\usepackage{threeparttable}
+\usepackage{tabulary}
+\usepackage[toc,page]{appendix}
+\usepackage{pbox}
+\usepackage[font=small]{caption}
+\newcommand{\rom}[1]{\uppercase\expandafter{\romannumeral #1\relax}}
+\newcommand{\E}{\mathsf{E}}
+\newcommand{\VAR}{\mathsf{VAR}}
+\newcommand{\COV}{\mathsf{COV}}
+\newcommand{\Prob}{\mathsf{P}}
+\newcommand{\RNum}[1]{\uppercase\expandafter{\romannumeral #1\relax}}
+\newcommand{\dee}{\,\mbox{d}}
+\newcommand{\naive}{na\"{\i}ve }
+\newcommand{\eg}{e.g.\xspace}
+\newcommand{\ie}{i.e.\xspace}
+\newcommand{\pdf}{pdf.\xspace}
+\newcommand{\etc}{etc.\@\xspace}
+\newcommand{\PhD}{Ph.D.\xspace}
+\newcommand{\MSc}{M.Sc.\xspace}
+\newcommand{\BA}{B.A.\xspace}
+\newcommand{\R}{\texttt{R}\xspace}
+\usepackage{paralist}
+\let\itemize\compactitem
+\let\description\compactdesc
+\let\enumerate\compactenum
+\let\enumerate\inparaenum
+\renewenvironment{enumerate}{\begin{inparaenum}[(i)]}{\end{inparaenum}}
+\renewenvironment{enumerate}{\begin{inparaenum}[(a)]}{\end{inparaenum}}
+\usepackage[round]{natbib}
+\author[1]{Tarak Kharrat}
+\author[2]{Georgi N. Boshnakov}
+\affil[1]{Salford Business School, University of Salford, UK.}
+\affil[2]{School of Mathematics, University of Manchester, UK.}
+\newcommand{\code}{\texttt}
+\newcommand{\CountrDist}[1]{\texttt{"#1"}}
+\date{\today}
+\title{Model selection and comparison\\\medskip
+\large an example with package \texttt{Countr}}
+\hypersetup{
+ pdfauthor={},
+ pdftitle={Model selection and comparison},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 25.2.1 (Org mode 9.1.2)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\begin{abstract}
+This document describes a strategy to choose between various possible
+count models. The computation described in this document is done in \texttt{R}
+\citep{Rcore} using the contributed package \texttt{Countr} \citep{RpackageCountr} and
+the \texttt{quine} data shipped with the \texttt{MASS} package \citep{Venables20102MASS}. The
+ideas used here are inspired by the demand for medical care example detailed in
+\citet[Section 6.3]{cameron2013regression}. 
+\end{abstract}
+
+
+\section{Prerequisites}
+\label{sec:orga5a3f6d}
+
+We will do the analysis of the data with package \texttt{Countr}, so we load it:
+\begin{verbatim}
+library(Countr)
+library("MASS") # for glm.nb()
+\end{verbatim}
+
+Packages \texttt{dplyr} \citep{dplyr2016} and \texttt{xtable} \citep{xtable2016} provide
+usefull facilities for data manipulation and presentation:
+\begin{verbatim}
+library(dplyr) 
+library(xtable)
+\end{verbatim}
+
+\section{Data}
+\label{sec:org9e0589a}
+
+The dataset used in this example is the \texttt{quine} data shipped with 
+package \texttt{MASS} \citep{Venables20102MASS} and first analysed in
+\citet{aitkin1978analysis}. The data can be loaded in the usual way:
+\begin{verbatim}
+data(quine, package = "MASS")
+\end{verbatim}
+
+The dataset gives the number of days absent from school (\texttt{Days}) of
+146
+children in a particular school year. A number of
+explanatory variables are available describing the children's ethnic background
+(\texttt{Eth}), sex (\texttt{Sex}), age (\texttt{Age}) and learner status
+(\texttt{Lrn}).  The count variable \texttt{Days} is characterised by large
+\emph{overdispersion} --- the variance is more than
+16 times larger the mean, 
+264.2
+versus 
+16.46.
+Table \ref{tab:quine:days} gives an idea about its
+distribution. The entries in the table were calculated as follows:
+
+
+\begin{verbatim}
+breaks_ <- c(0, 1, 3, 5:7, 9, 12, 15, 17, 23, 27, 32)
+freqtable <- 
+    count_table(count = quine$Days, breaks = breaks_, formatChar = TRUE)
+\end{verbatim}
+
+
+
+\begin{table}
+\centering
+\begin{tabular}{lrrrrrrrrr}
+
+% latex table generated in R 3.4.2 by xtable 1.8-2 package
+% Tue Nov 14 16:37:27 2017
+ & 0 & 1-2 & 3-4 & 5 & 6 & 7-8 & 9-11 \\ 
+  \hline
+Frequency & 9 & 10 & 7 & 19 & 8 & 10 & 13 \\ 
+  Relative frequency & 0.062 & 0.068 & 0.048 & 0.13 & 0.055 & 0.068 & 0.089 \\ 
+   \hline
+
+\\[5pt]
+% latex table generated in R 3.4.2 by xtable 1.8-2 package
+% Tue Nov 14 16:37:27 2017
+ & 12-14 & 15-16 & 17-22 & 23-26 & 27-31 & $>$= 32 \\ 
+  \hline
+Frequency & 13 & 6 & 14 & 6 & 6 & 25 \\ 
+  Relative frequency & 0.089 & 0.041 & 0.096 & 0.041 & 0.041 & 0.17 \\ 
+   \hline
+
+\end{tabular}
+\caption{quine data: Frequency distribution of column \texttt{Days}.}
+\label{tab:quine:days}
+\end{table}
+
+
+
+\section{Models for \texttt{quine} data}
+\label{sec:orgd1e9d6d}
+
+Given the extreme over-dispersion observed in the \texttt{quine} data, we do not expect
+the Poisson data to perform well. Nevertheless, we can still use this model as a
+starting point and treat it as a benchmark (any model worse than Poisson should
+be strongly rejected). Besides, the negative binomial (as implemented in
+\texttt{MASS:glm.nb()}) and 3 renewal-count models based on weibull, gamma and
+generalised-gamma inter-arrival times are also considered giving in total 5
+models to choose from. The code used to fit the 5 models is provided below:
+\begin{verbatim}
+quine_form <- as.formula(Days ~ Eth + Sex + Age + Lrn)
+pois <- glm(quine_form, family = poisson(), data = quine)
+nb <- glm.nb(quine_form, data = quine)
+
+## various renewal models
+wei <- renewalCount(formula = quine_form, data = quine, dist = "weibull",
+                          computeHessian = FALSE, weiMethod = "conv_dePril",
+                          control = renewal.control(trace = 0,
+                              method = c("nlminb", 
+                                  "Nelder-Mead","BFGS")),
+                          convPars = list(convMethod = "dePril")
+                          )
+
+gam <- renewalCount(formula = quine_form, data = quine, dist = "gamma",
+                    computeHessian = FALSE, weiMethod = "conv_dePril",
+                    control = renewal.control(trace = 0,
+                                              method = "nlminb"),
+                        convPars = list(convMethod = "dePril")
+                    )
+
+gengam <- renewalCount(formula = quine_form, data = quine, dist = "gengamma",
+                       computeHessian = FALSE, weiMethod = "conv_dePril",
+                       control = renewal.control(trace = 0,
+                                                 method = "nlminb"),
+                           convPars = list(convMethod = "dePril")
+                       )
+\end{verbatim}
+
+Note that it is possible to try several optimisation algorithms in a single call to
+\texttt{renewalCount()}, as in the computation of \texttt{wei} above  for the weibull-count model. 
+The function will choose the best performing one in terms of
+value of the objective function (largest log-likelihood). It also reports the
+computation time  of each method, which may be useful for future computations
+(for example, bootstrap).
+
+
+\section{Model Selection and Comparison}
+\label{sec:org084a744}
+
+The different models considered here are fully parametric. Therefore, a
+straightforward method to use to discriminate between models is a likelihood
+ratio test (LR). This is possible when models are nested and in this case the LR
+statistic has the usual \(\chi^2(p)\) distribution, where \(p\) is the difference in
+the number of parameters in the model. In this current study, we can compare all
+the renewal-count models against Poisson, negative-binomial against Poisson,
+weibull-count against generalised-gamma and gamma against the generalised-gamma.
+
+For non-nested models, the standard approach is to use information criteria such
+as the Akaike information criterion (AIC) and the Bayesian information criterion
+(BIC). This method can be applied to discriminate between weibull and gamma
+renewal count models and between these two models and the negative binomial.
+
+Therefore, a possible strategy can be summarised as follows:
+\begin{itemize}
+\item Use the LR test to compare Poisson with negative binomial.
+\item Use the LR test to compare Poisson with weibull-count.
+\item Use the LR test to compare Poisson with gamma-count.
+\item Use the LR test to compare Poisson with generalised-gamma-count.
+\item Use the LR test to compare weibull-count with generalised-gamma-count.
+\item Use the LR test to compare gamma-count with generalised-gamma-count.
+\item Use information criteria to compare gamma-count with weibull-count.
+\item Use information criteria to compare weibull-count to negative binomial.
+\end{itemize}
+
+% latex table generated in R 3.4.1 by xtable 1.8-2 package
+% Wed Nov 15 07:06:47 2017
+\begin{table}[ht]
+\centering
+\begin{tabular}{rlrrr}
+  \hline
+ & Alternative.model & Chisq & Df & Critical\_value \\ 
+  \hline
+1 & negative-binomial & 1192.03 & 1.00 & 3.84 \\ 
+  2 & weibull & 1193.21 & 1.00 & 3.84 \\ 
+  3 & gamma & 1193.36 & 1.00 & 3.84 \\ 
+  4 & generalised-gamma & 1194.46 & 2.00 & 5.99 \\ 
+   \hline
+\end{tabular}
+\caption{LR results against Poisson model. Each row compares an alternative model vs the Poisson model. All alternatives are preferable to Poisson.} 
+\label{tab:lr_pois}
+\end{table}
+
+As observed in Table \ref{tab:lr_pois}, the LR test rejects the null
+hypothesis and all the alternative models are preferred to Poisson. This due to
+the large over-dispersion discussed in the previous section. Next, we use the LR
+test to discriminate between the renewal count models:
+% latex table generated in R 3.4.1 by xtable 1.8-2 package
+% Wed Nov 15 07:06:48 2017
+\begin{table}[ht]
+\centering
+\begin{tabular}{rlrrr}
+  \hline
+ & Model & Chisq & Df & Critical\_value \\ 
+  \hline
+1 & weibull & 1.25 & 1.00 & 3.84 \\ 
+  2 & gamma & 1.10 & 1.00 & 3.84 \\ 
+   \hline
+\end{tabular}
+\caption{LR results against generalised-gamma model} 
+\label{tab:lr_gengam}
+\end{table}
+
+The results of Table \ref{tab:lr_gengam} suggest that the weibull and gamma models
+should be preferred to the generalised gamma model.
+
+Finally, we use information criteria to choose the best model among the weibull
+and gamma renewal models and the negative binomial:
+\begin{verbatim}
+ic <- data.frame(Model = c("weibull", "gamma", "negative-binomial"),
+                 AIC = c(AIC(wei), AIC(gam), AIC(nb)),
+                 BIC = c(BIC(wei), BIC(gam), BIC(nb)),
+                 stringsAsFactors = FALSE                    
+                 )                  
+                         
+print(xtable(ic, caption = "Information criteria results", 
+             label = "tab:ic_models"))                        
+\end{verbatim}
+
+% latex table generated in R 3.4.2 by xtable 1.8-2 package
+% Tue Nov 14 16:51:36 2017
+\begin{table}[ht]
+\centering
+\begin{tabular}{rlrr}
+  \hline
+ & Model & AIC & BIC \\ 
+  \hline
+1 & weibull & 1107.98 & 1131.84 \\ 
+  2 & gamma & 1107.83 & 1131.70 \\ 
+  3 & negative-binomial & 1109.15 & 1133.02 \\ 
+   \hline
+\end{tabular}
+\caption{Information criteria results} 
+\label{tab:ic_models}
+\end{table}
+
+It is worth noting here that all models have the same degree of freedom and
+hence comparing information criteria is equivalent to comparing the likelihood
+value. According to Table \ref{tab:ic_models}, the gamma renewal model is slightly
+preferred to the weibull model.   
+
+\section{Goodness-of-fit}
+\label{sec:org2626954}
+We conclude this analysis by running a formal chi-square goodness of fit test 
+\citep[Section 5.3.4]{cameron2013regression} to the results of the previously
+selected model.
+\begin{verbatim}
+  gof <- chiSq_gof(gam, breaks = breaks_)
+  print(gof)
+\end{verbatim}
+
+\begin{verbatim}
+chi-square goodness-of-fit test
+
+Cells considered 0 1-2 3-4 5 6 7-8 9-11 12-14 15-16 17-22 23-26 27-31 >= 32
+  DF  Chisq Pr(>Chisq)
+1 12 17.502     0.1317
+\end{verbatim}
+
+The null hypothesis cannot be rejected at standard confidence levels and
+conclude that the selected model presents a good fit to the data. User can check
+that the same test yields similar results for the weibull and negative binomial
+models but comfortably rejects the null hypothesis for the Poisson and
+generalised gamma models. These results confirm what we observed in the previous
+section.
+
+\label{sec:orga3dd32d}
+We conclude this document by saving the work space to avoid re-running the
+computation in future exportation of the document:
+\begin{verbatim}
+save.image()
+\end{verbatim}
+
+
+
+
+\label{sec:orgdf2f41b}
+\bibliographystyle{apalike}
+\bibliography{REFERENCES}
+\end{document}

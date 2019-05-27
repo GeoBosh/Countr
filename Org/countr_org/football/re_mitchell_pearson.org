@@ -1,0 +1,24 @@
+* Home
+
+#+BEGIN_SRC R
+home_poiss <- glm(formula = homeTeamGoals ~ 1, family = poisson, data = football)
+home_wei <- renewalCount(formula = homeTeamGoals ~ 1, data = football,
+                         dist = "weibull", weiMethod = "conv_dePril",
+                         computeHessian = FALSE, 
+                         control = renewal.control(trace = 0,
+                                                   method = "nlminb")
+                         )
+#+END_SRC
+
+#+BEGIN_SRC R
+breaks_ <- 0:5
+pears_home <- compareToGLM(poisson_model = home_poiss,
+                      breaks = breaks_, weibull = home_wei)
+
+frequency_plot(pears_home$Counts, pears_home$Actual,
+               dplyr::select(pears_home, contains("_predicted")),
+               colours = c("grey", "blue", "green", "black")
+               )
+
+#+END_SRC
+

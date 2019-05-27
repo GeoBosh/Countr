@@ -1,0 +1,206 @@
+% Created 2017-10-24 Tue 12:06
+% Intended LaTeX compiler: pdflatex
+\documentclass[a4paper,twoside,11pt]{article}
+                              \usepackage[T1]{fontenc}
+\usepackage{libertine}
+\renewcommand*\oldstylenums[1]{{\fontfamily{fxlj}\selectfont #1}}
+\usepackage{lmodern}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{rotating}
+\usepackage{setspace,amsmath,amsfonts,amssymb,bm}
+\usepackage{graphicx}
+\usepackage[usenames,dvipsnames]{xcolor}
+\definecolor{Red}{rgb}{0.5,0,0}
+\definecolor{NavyBlue}{rgb}{0.1,0.1,0.45}
+\definecolor{MidnightBlue}{rgb}{0.1,0.1,0.65}
+\usepackage[pdftex,hyperfootnotes=true,plainpages=false,pdfpagelabels,hypertexnames=true,naturalnames,pdfproducer={Latex},pdfcreator={pdflatex},bookmarks,bookmarksnumbered,colorlinks,linkcolor=MidnightBlue,citecolor=NavyBlue,filecolor=black,urlcolor=Red,breaklinks=true]{hyperref}
+\usepackage{authblk}
+\usepackage{xspace,helvet}
+\usepackage{moreverb}
+\usepackage{url, booktabs}
+\usepackage{cleveref}
+\usepackage[pdftex]{lscape}
+\usepackage{fullpage}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{rotating}
+\usepackage{pifont}
+\usepackage{setspace}
+\usepackage{threeparttable}
+\usepackage{tabulary}
+\usepackage[toc,page]{appendix}
+\usepackage{pbox}
+\usepackage[font=small]{caption}
+\newcommand{\rom}[1]{\uppercase\expandafter{\romannumeral #1\relax}}
+\newcommand{\E}{\mathsf{E}}
+\newcommand{\VAR}{\mathsf{VAR}}
+\newcommand{\COV}{\mathsf{COV}}
+\newcommand{\Prob}{\mathsf{P}}
+\newcommand{\RNum}[1]{\uppercase\expandafter{\romannumeral #1\relax}}
+\newcommand{\dee}{\,\mbox{d}}
+\newcommand{\naive}{na\"{\i}ve }
+\newcommand{\eg}{e.g.\xspace}
+\newcommand{\ie}{i.e.\xspace}
+\newcommand{\pdf}{pdf.\xspace}
+\newcommand{\etc}{etc.\@\xspace}
+\newcommand{\PhD}{Ph.D.\xspace}
+\newcommand{\MSc}{M.Sc.\xspace}
+\newcommand{\BA}{B.A.\xspace}
+\newcommand{\R}{\texttt{R}\xspace}
+\usepackage{paralist}
+\let\itemize\compactitem
+\let\description\compactdesc
+\let\enumerate\compactenum
+\let\enumerate\inparaenum
+\renewenvironment{enumerate}{\begin{inparaenum}[(i)]}{\end{inparaenum}}
+\renewenvironment{enumerate}{\begin{inparaenum}[(a)]}{\end{inparaenum}}
+\usepackage[round]{natbib}
+\author[1]{Tarak Kharrat}
+\author[2]{Georgi N. Boshnakov}
+\affil[1]{Salford Business School, University of Salford, UK.}
+\affil[2]{School of Mathematics, University of Manchester, UK.}
+\newcommand{\code}{\texttt}
+\newcommand{\CountrDist}[1]{\texttt{"#1"}}
+\date{}
+\title{Comparing the performance of computation methods\\\medskip
+\large an example with package \texttt{Countr} and the \texttt{fertility} data}
+\hypersetup{
+ pdfauthor={tarak},
+ pdftitle={Comparing the performance of computation methods},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 25.2.2 (Org mode 9.0.7)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\begin{abstract}
+This short document compares the performance of the different algorithms
+implemented in \texttt{Countr} to fit renewal-count models. The computation described
+here is based on the \texttt{fertility} data shipped with the package and the
+weibull-count model which allows using series based methods on top of the other
+convolution methods. More details about the different computation methods can be
+found in \citet{baker2017event}.
+\end{abstract}
+
+
+\section{Prerequisites}
+\label{sec:org6deafec}
+
+We will do the analysis of the data with package \texttt{Countr}, so we load it:
+\begin{verbatim}
+library(Countr)
+\end{verbatim}
+
+Package \texttt{rebenchmark} \citep{rbench2012} will also be used here to facilitate
+performance computation
+\begin{verbatim}
+library(rbenchmark) 
+\end{verbatim}
+
+\section{Comparing performance of different methods}
+\label{sec:org7674dd3}
+The data used here is the \texttt{fertility} data shipped with the package and
+described in length in \citet{winkelmann1995duration}. 
+
+The execution time depends obviously on the machine used but the relative order
+should remain the same regardless of the characteristic of your machine. The
+\texttt{benchmark()} routine from the \texttt{rbenchmark} package \citet{rbench2012} will be
+used to compare the different computation methods discussed in
+\citet{baker2017event}. We selected the parameters for every method such as we
+achieve an error or at least \(10^{-8}\). The code below reproduces the results
+reported in \citet[Table 2]{baker2017event}. As a benchmark, we use an
+adaptation of the original code gently provided by Blake McShane 
+\citep{mcshane2008count}. The McShane's code is implemented in a separate file
+and is not shown here. We repeat the iterations 1000 times.
+\begin{verbatim}
+source("mcShaneCode.R")
+data(fertility)
+
+## config: choose parameters (selection process not shown here)
+children <- fertility$children
+shape <- 1.116
+scale <- rep(2.635, length(children))
+rep <- 1000
+nstepsConv <- c(132, 24, 132, 24, 132, 36)
+ntermsSeries <- c(20, 17)
+conv_series_acc <- 1e-7
+
+## performance model
+perf <- benchmark(direct0 =
+                      dWeibullCount_loglik(children, shape, scale, "conv_direct",
+                                           1, TRUE, nstepsConv[1],
+                                           conv_extrap = FALSE),
+                  direct1 =
+                      dWeibullCount_loglik(children, shape, scale, "conv_direct",
+                                           1, TRUE, nstepsConv[2],
+                                           conv_extrap = TRUE),
+                  naive0 =
+                      dWeibullCount_loglik(children, shape, scale, "conv_naive",
+                                           1, TRUE, nstepsConv[3],
+                                           conv_extrap = FALSE),
+                  naive1 = dWeibullCount_loglik(children, shape, scale,
+                                                "conv_naive",
+                                                1, TRUE, nstepsConv[4],
+                                                conv_extrap = TRUE),
+                  dePril0 = dWeibullCount_loglik(children, shape, scale,
+                                                 "conv_dePril",
+                                                 1, TRUE, nstepsConv[5],
+                                                 conv_extrap = FALSE),
+                  dePril1 = dWeibullCount_loglik(children, shape, scale,
+                                                 "conv_dePril",
+                                                 1, TRUE, nstepsConv[6],
+                                                 conv_extrap = TRUE),
+                  series_mat =
+                      dWeibullCount_loglik(children, shape, scale,
+                                           "series_mat", 1, TRUE,
+                                           series_terms = ntermsSeries[1]),
+                  series_acc =
+                      dWeibullCount_loglik(children, shape, scale,
+                                           "series_acc", 1, TRUE,
+                                           series_terms = ntermsSeries[2],
+                                           series_acc_eps = conv_series_acc),
+                  mcShane = dWeibullCount_McShane(scale, shape,
+                                                  children, jmax = 150),
+                  replications = rep, order = "relative",
+                  columns = c("test", "replications", "relative", "elapsed")
+                  )
+
+print(perf)
+\end{verbatim}
+
+\begin{center}
+\begin{tabular}{lrrr}
+series\(_{\text{acc}}\) & 1000 & 1 & 5.45999999999998\\
+series\(_{\text{mat}}\) & 1000 & 1.31 & 7.15099999999995\\
+direct1 & 1000 & 2.97 & 16.215\\
+naive1 & 1000 & 2.98 & 16.273\\
+dePril1 & 1000 & 3.158 & 17.241\\
+dePril0 & 1000 & 11.139 & 60.82\\
+naive0 & 1000 & 14.675 & 80.126\\
+direct0 & 1000 & 16.381 & 89.441\\
+mcShane & 1000 & 18.594 & 101.523\\
+\end{tabular}
+\end{center}
+
+As can been seen, all the methods outperform the McShane's original code with
+the series methods almost 20 times faster and the extrapolated convolution
+methods roughly 6 times faster. As noted in the package documentation, the
+series methods are less robust to large values of count and may fail for some
+application. We therefore encourage the users to use the extrapolated
+convolution method (the default in \texttt{Countr}) as much as possible.  
+
+\label{sec:org0c77e0b}
+We conclude this document by saving the work space to avoid re-running the
+computation in future exportation of the document:
+\begin{verbatim}
+save.image()
+\end{verbatim}
+
+
+
+
+\label{sec:org3af36d9}
+\bibliographystyle{apalike}
+\bibliography{REFERENCES}
+\end{document}

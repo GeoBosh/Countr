@@ -1,0 +1,214 @@
+% Created 2017-10-20 Fri 19:36
+% Intended LaTeX compiler: pdflatex
+\documentclass[a4paper,twoside,11pt]{article}
+                              \usepackage[T1]{fontenc}
+\usepackage{libertine}
+\renewcommand*\oldstylenums[1]{{\fontfamily{fxlj}\selectfont #1}}
+\usepackage{lmodern}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{rotating}
+\usepackage{setspace,amsmath,amsfonts,amssymb,bm}
+\usepackage{graphicx}
+\usepackage[usenames,dvipsnames]{xcolor}
+\definecolor{Red}{rgb}{0.5,0,0}
+\definecolor{NavyBlue}{rgb}{0.1,0.1,0.45}
+\definecolor{MidnightBlue}{rgb}{0.1,0.1,0.65}
+\usepackage[pdftex,hyperfootnotes=true,plainpages=false,pdfpagelabels,hypertexnames=true,naturalnames,pdfproducer={Latex},pdfcreator={pdflatex},bookmarks,bookmarksnumbered,colorlinks,linkcolor=MidnightBlue,citecolor=NavyBlue,filecolor=black,urlcolor=Red,breaklinks=true]{hyperref}
+\usepackage{authblk}
+\usepackage{xspace,helvet}
+\usepackage{moreverb}
+\usepackage{url, booktabs}
+\usepackage{cleveref}
+\usepackage[pdftex]{lscape}
+\usepackage{fullpage}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{rotating}
+\usepackage{pifont}
+\usepackage{setspace}
+\usepackage{threeparttable}
+\usepackage{tabulary}
+\usepackage[toc,page]{appendix}
+\usepackage{pbox}
+\usepackage[font=small]{caption}
+\newcommand{\rom}[1]{\uppercase\expandafter{\romannumeral #1\relax}}
+\newcommand{\E}{\mathsf{E}}
+\newcommand{\VAR}{\mathsf{VAR}}
+\newcommand{\COV}{\mathsf{COV}}
+\newcommand{\Prob}{\mathsf{P}}
+\newcommand{\RNum}[1]{\uppercase\expandafter{\romannumeral #1\relax}}
+\newcommand{\dee}{\,\mbox{d}}
+\newcommand{\naive}{na\"{\i}ve }
+\newcommand{\eg}{e.g.\xspace}
+\newcommand{\ie}{i.e.\xspace}
+\newcommand{\pdf}{pdf.\xspace}
+\newcommand{\etc}{etc.\@\xspace}
+\newcommand{\PhD}{Ph.D.\xspace}
+\newcommand{\MSc}{M.Sc.\xspace}
+\newcommand{\BA}{B.A.\xspace}
+\newcommand{\R}{\texttt{R}\xspace}
+\usepackage{paralist}
+\let\itemize\compactitem
+\let\description\compactdesc
+\let\enumerate\compactenum
+\let\enumerate\inparaenum
+\renewenvironment{enumerate}{\begin{inparaenum}[(i)]}{\end{inparaenum}}
+\renewenvironment{enumerate}{\begin{inparaenum}[(a)]}{\end{inparaenum}}
+\usepackage[round]{natbib}
+\author[1]{Tarak Kharrat}
+\author[2]{Georgi N. Boshnakov}
+\affil[1]{Salford Business School, University of Salford, UK.}
+\affil[2]{School of Mathematics, University of Manchester, UK.}
+\newcommand{\code}{\texttt}
+\date{}
+\title{Notes about Org\\\medskip
+\large with examples}
+\hypersetup{
+ pdfauthor={},
+ pdftitle={Notes about Org},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 25.2.1 (Org mode 9.1.2)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+These notes are when working with Org version 9.1.2.
+
+\section{General notes}
+\label{sec:org27e96d4}
+
+\begin{itemize}
+\item If the code of the chunks is evaluated when exporting the file, e.g. \texttt{C-c C-e
+  l p} , the results in the org file are not updated (the updated
+stuff appears in the exported document). Maybe this depends on options but we
+better be aware of this.
+
+Note that the results of calculation of inline code are inserted in the
+buffer.
+
+\item 
+
+
+\item TODO: use the facility from main.pdf to provide visual distinction between
+code and results.
+
+\item Exporting nothing (\texttt{:exports none})
+\end{itemize}
+
+Here is a chunk that loads \texttt{xtable} but has \texttt{:exports none} and should not
+appear. 
+This is currently unpredictable. Even during a single session it may reappear!
+
+\begin{itemize}
+\item I changed the inline blocks to return raw values (for the moment), since it
+seems better that the numbers are passed to \TeX{} wthout being wrapped in
+texttt. 
+
+However 'raw' has the unfortunate effect that it doesn't wrap the result of
+the inline block in \ldots{}, so repeated evaluation will produce
+repeated values. 
+
+\textbf{TODO} - there may be some option to avoid this, otherwise 'raw' may have to
+be removed. (but see below for a workflow that woeks until the whole file is
+recalculated.
+
+\item I adopted the following workflow while editing:
+
+i. Most of the time, I simply export the (\texttt{C-c C-e l p}). This recomputed the
+inline blocks but doesn't put the results in the org buffer, only in the
+exported \TeX{} file. 
+
+ii. When I change a chunk, I recalculate only that chunk (\texttt{C-c C-c}).
+ Then export as in i.
+
+\textbf{TODO}: This will fail for objects with the same names are at different
+places in the doc. Change them.
+
+The trouble is that if the whole file is recomputed (\texttt{C-c C-v C-b}) 
+the inline chunks with the 'raw' option are computed and the results put in
+the file (as noted above). Then during export all such results are
+duplicated.
+\end{itemize}
+
+
+\section{Formatting tables}
+\label{sec:org0789c0f}
+
+Org provides some formatting and produces tables from matrices and data frames
+but seems to ignore the column names and may be all attributes. 
+
+We will use \texttt{xtable} for some printing.
+\begin{verbatim}
+library(xtable)
+\end{verbatim}
+
+
+
+Here we print (a subset of) a data frame, as \texttt{R} would print it on the console.
+We add a character column to be sure that this works with mixed type columns.
+\begin{verbatim}
+fewCars <- head(cars)
+fewCars$char <- letters[1:nrow(fewCars)]
+fewCars$num <- 1:nrow(fewCars) * pi
+fewCars
+\end{verbatim}
+
+\begin{verbatim}
+  speed dist char       num
+1     4    2    a  3.141593
+2     4   10    b  6.283185
+3     7    4    c  9.424778
+4     7   22    d 12.566371
+5     8   16    e 15.707963
+6     9   10    f 18.849556
+\end{verbatim}
+
+A proper table can be obtained using \texttt{xtable}. 
+\begin{verbatim}
+xfew <- xtable(fewCars, digits = 5)
+print(xfew, floating = FALSE)
+\end{verbatim}
+
+% latex table generated in R 3.4.1 by xtable 1.8-2 package
+% Fri Oct 20 17:47:42 2017
+\begin{tabular}{rrrlr}
+  \hline
+ & speed & dist & char & num \\ 
+  \hline
+1 & 4.00000 & 2.00000 & a & 3.14159 \\ 
+  2 & 4.00000 & 10.00000 & b & 6.28319 \\ 
+  3 & 7.00000 & 4.00000 & c & 9.42478 \\ 
+  4 & 7.00000 & 22.00000 & d & 12.56637 \\ 
+  5 & 8.00000 & 16.00000 & e & 15.70796 \\ 
+  6 & 9.00000 & 10.00000 & f & 18.84956 \\ 
+   \hline
+\end{tabular}
+
+It is worth storing the result of calling \texttt{xtable} in a variable and printing it
+separately, since the function \texttt{xtable()} has one set of options, while the
+print method for objects of type \texttt{xtable} has other options.  For example:
+\begin{verbatim}
+xfew <- xtable(fewCars, caption = "Information about some cars.")
+print(xfew)
+\end{verbatim}
+
+% latex table generated in R 3.4.1 by xtable 1.8-2 package
+% Fri Oct 20 17:47:42 2017
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrrlr}
+  \hline
+ & speed & dist & char & num \\ 
+  \hline
+1 & 4.00 & 2.00 & a & 3.14 \\ 
+  2 & 4.00 & 10.00 & b & 6.28 \\ 
+  3 & 7.00 & 4.00 & c & 9.42 \\ 
+  4 & 7.00 & 22.00 & d & 12.57 \\ 
+  5 & 8.00 & 16.00 & e & 15.71 \\ 
+  6 & 9.00 & 10.00 & f & 18.85 \\ 
+   \hline
+\end{tabular}
+\caption{Information about some cars.} 
+\end{table}
+\end{document}

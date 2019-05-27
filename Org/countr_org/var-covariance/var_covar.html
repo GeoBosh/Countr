@@ -1,0 +1,665 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2017-10-24 Tue 17:46 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Computation of the variance-covariance matrix</title>
+<meta name="generator" content="Org mode" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2017 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Computation of the variance-covariance matrix
+<br>
+<span class="subtitle">An example with the <code>Countr</code> package.</span>
+</h1>
+<div class="abstract">
+<p>
+Computing standard errors and confidence intervals for estimated parameters is a
+common task in regression analysis. These quantities allow the analyst to
+quantify the certainty (<i>confidence</i>) associated with the obtained estimates. In
+<code>Countr</code> two different approaches have been implemented to do this job. First, using
+asymptotic MLE (Maximum Likelihood Estimator) theory, numeric computation of the
+inverse Hessian matrix can be used as a consistent estimator of the
+variance-covariance matrix, which in turn can be used to derive standard errors
+and confidence intervals. The second option available in <code>Countr</code> is to use
+bootsrap \citep{efron1979bootstrap}. In this document, we give the user an
+overview of how to do to the computation in <code>Countr</code>.
+</p>
+
+</div>
+
+<p>
+Before starting our analysis, we need to load the useful packages. On top of
+<code>Countr</code>, the <code>dplyr</code> package \citep{dplyr2016} will be used:
+</p>
+<div class="org-src-container">
+<pre class="src src-R" id="org148cd1f"><span style="color: #008b8b;">library</span>(Countr)
+<span style="color: #008b8b;">library</span>(dplyr)
+</pre>
+</div>
+
+
+<div id="outline-container-org4887291" class="outline-2">
+<h2 id="org4887291"><span class="section-number-2">1</span> Maximum Likelihood estimator (MLE)</h2>
+<div class="outline-text-2" id="text-1">
+</div><div id="outline-container-orgfb718ed" class="outline-3">
+<h3 id="orgfb718ed"><span class="section-number-3">1.1</span> Theory</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+Let \(f(y, \mathbf{x}, \bm{\theta})\) be the probability density function of the
+renewal-count model, where \(y\) is the count variable, \(\mathbf{x}\) the vector of
+covariate values and \(\bm{\theta}\) the vector of associated coefficients to be
+estimated (\(q \times 1\) vector). Define the log-likelihood \(\mathcal{L} =
+\sum_{i=1}^{n} ln f(y_i|\mathbf{x}_i, \bm{\theta}_i)\). Under regularity
+conditions (see for example \citet[Section 2.3]{cameron2013regression}), the MLE
+\(\bm{\hat{\theta}}\) is the solution of the first-order conditions,
+</p>
+\begin{equation}      
+     \frac{\partial \mathcal{L}}{\partial \bm{\theta}} = \sum_{i=1}^{n} \frac{\partial lm f_i}{\partial \bm{\theta}} = 0 
+     ,
+\end{equation}        
+<p>
+where \(f_i = f(y_i|\mathbf{x}_i, \bm{\theta}_i)\) and \(\frac{\partial
+\mathcal{L}}{\partial \bm{\theta}}\) is a \(q \times 1\) vector.
+</p>
+
+<p>
+Let \(\bm{\theta}_0\) be the <i>true</i> value of \(\bm{\theta}\). Using MLE theory and
+assuming regularity conditions, we obtain \(\bm{\hat{\theta}} \xrightarrow{p}
+\bm{\theta}_0\) and
+</p>
+\begin{equation}      
+     \sqrt{n}(\bm{\hat{\theta}}_{ML} - \bm{\theta}_0) \xrightarrow{d} \mathcal{N}[\mathbf{0}, \mathbf{V}^{-1}] 
+     ,
+\end{equation}
+<p>
+where the \(q \times q\) matrix \(\mathbf{V}\) matrix is defined as
+</p>
+\begin{equation}      
+     \mathbf{V} = - \lim_{n \rightarrow \infty} \frac{1}{n} \mathop{\mathbb{E}} 
+     \bigg[ \sum_{i=1}^n \frac{\partial^2 \ln f_i }{\partial \bm{\theta} \partial \bm{\theta}'}|_{\bm{\theta}_0} 
+     \bigg]
+     .
+\end{equation}
+
+<p>
+To use this result, we need a consistent estimator of the variance matrix
+\(\mathbf{V}\). Many options are available: the one implemented in <code>Countr</code> is
+known as the <i>Hessian estimator</i> and simply evaluates Equation <a href="#orgb9e0cfa">1</a> at
+\(\bm{\hat{\theta}}\) without taking expectation.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org555c191" class="outline-3">
+<h3 id="org555c191"><span class="section-number-3">1.2</span> Implementation in <code>Countr</code></h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+The easiest way to compute the variance-covariance matrix when fitting a
+renewal-count model with <code>Countr</code> is to set the argument <code>computeHessian</code> to
+<code>TRUE</code> when calling the fitting routine <code>renewalCount()</code>. Note that this is the
+default behaviour and it will save the matrix in the returned object (slot
+<code>vcov</code>). Following standard practice in <code>R</code>, the matrix can be extracted or
+recomputed using the <code>vcov()</code> method. We show here an example with the
+fertility data.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R" id="org4f7b7a6">data(fertility)
+form <span style="color: #008b8b;">&lt;-</span> children ~ german + years_school + voc_train + university + Religion +
+year_birth + rural + age_marriage
+gam <span style="color: #008b8b;">&lt;-</span> renewalCount(formula = form, data = fertility, dist = <span style="color: #8b2252;">"gamma"</span>,
+                    computeHessian = <span style="color: #228b22;">TRUE</span>, 
+                    control = renewal.control(trace = 0, method = <span style="color: #8b2252;">"nlminb"</span>)
+                    )
+v1 <span style="color: #008b8b;">&lt;-</span> gam$vcov
+v2 <span style="color: #008b8b;">&lt;-</span> vcov(gam)
+
+all(v1 == v2)
+</pre>
+</div>
+
+<pre class="example">
+[1] TRUE
+
+</pre>
+
+<p>
+The above <code>vcov()</code> method simply extracts the variance-covariance matrix if it
+has been computed at fitted. Otherwise, the function will re-compute it. The
+user can choose the computation method by specifying the <code>method</code> argument:
+<code>asymptotic</code> for numerical hessian computation or <code>boot</code> for the bootstrap
+method. In the latter case, user can customise the bootstrap computation as will
+be discussed in Section <a href="#org8a708cc">2</a> by using the <code>...</code> argument.
+</p>
+
+<p>
+Parameters' standard errors and confidence intervals can be computed by calls to
+the generic functions <code>se.coef()</code> and <code>confint()</code>. The hessian method can be
+specified by setting the argument <code>type = "asymptotic"</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R" id="org429d0af">se <span style="color: #008b8b;">&lt;-</span> se.coef(gam, type = <span style="color: #8b2252;">"asymptotic"</span>)
+se
+</pre>
+</div>
+
+<pre class="example">
+              rate_          rate_germanyes       rate_years_school 
+          0.2523375               0.0590399               0.0265014 
+  rate_voc_trainyes      rate_universityyes   rate_ReligionCatholic 
+          0.0358390               0.1296149               0.0578032 
+rate_ReligionMuslim rate_ReligionProtestant         rate_year_birth 
+          0.0698429               0.0622954               0.0019471 
+      rate_ruralyes       rate_age_marriage                  shape_ 
+          0.0311876               0.0053274               0.0710611
+
+</pre>
+
+<div class="org-src-container">
+<pre class="src src-R" id="org81c53ac">ci <span style="color: #008b8b;">&lt;-</span> confint(gam, type = <span style="color: #8b2252;">"asymptotic"</span>)
+ci
+</pre>
+</div>
+
+<pre class="example">
+                             2.5 %     97.5 %
+rate_                    1.0621317  2.0512766
+rate_germanyes          -0.3054815 -0.0740495
+rate_years_school       -0.0202566  0.0836270
+rate_voc_trainyes       -0.2141792 -0.0736929
+rate_universityyes      -0.4000943  0.1079867
+rate_ReligionCatholic    0.0924771  0.3190616
+rate_ReligionMuslim      0.3857453  0.6595243
+rate_ReligionProtestant -0.0149604  0.2292330
+rate_year_birth         -0.0014721  0.0061603
+rate_ruralyes           -0.0056353  0.1166177
+rate_age_marriage       -0.0392385 -0.0183553
+shape_                   1.3000440  1.5785983
+</pre>
+
+<p>
+One can validate the result obtained here by comparing them to what is reported
+in \citet[Table 1]{winkelmann1995duration}.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8a708cc" class="outline-2">
+<h2 id="org8a708cc"><span class="section-number-2">2</span> Bootstrap</h2>
+<div class="outline-text-2" id="text-2">
+</div><div id="outline-container-orgd5d3f6c" class="outline-3">
+<h3 id="orgd5d3f6c"><span class="section-number-3">2.1</span> Theory</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+The type of bootstrap used in <code>Countr</code> is known as <i>nonparametric</i> or bootstrap
+pairs. It is valid under the assumption that \((y_i, \mathbf{x}_i)\) is iid. The
+algorithm works as follows:
+</p>
+<ol class="org-ol">
+<li>Generate a pseudo-sample of size \(n\), \((y^*_l, \mathbf{x}^*_l), \ l=1, \dots,
+   n\), by sampling <i>with replacement</i> from the original pairs \((y_i,
+   \mathbf{x}_i), \ i =1, \dots, n\).</li>
+<li>Compute the estimator \(\hat{\bm{\theta}}_1\) from the pseudo-sample generated
+in 1.</li>
+<li>Repeat steps 1 and 2 \(B\) times giving \(B\) estimates \(\hat{\bm{\theta}}_1,
+   \dots, \hat{\bm{\theta}}_B\).</li>
+<li>The bootstrap estimate of the variance-covariance matrix is given by</li>
+</ol>
+<p>
+\(\hat{\mathbf{V}}_{Boot}[\bm{\hat{\theta}}] = \frac{1}{B -1}
+\sum_{b=1}^B(\hat{\bm{\theta}}_b - \bar{\bm{\theta}})(\hat{\bm{\theta}}_b -
+\bar{\bm{\theta}})'\) where \(\bar{\bm{\theta}} = [\bar{\theta}_1, \dots,
+\bar{\theta}_q]\) and \(\bar{\theta}_j\) is the sample mean \(\bar{\theta}_j = (1/B)
+\sum_{b=1}^B \hat{\bm{\theta}}_{j,b}\).
+</p>
+
+<p>
+Asymptotically (\(B \rightarrow \infty\)), the bootstrap variance-covariance
+matrix and standard errors are equivalent to their robust counterpart obtained
+by sandwich estimators. In practice, using \(B=400\) is usually recommended
+\citep[Section 2.6.4]{cameron2013regression}}
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org153cff9" class="outline-3">
+<h3 id="org153cff9"><span class="section-number-3">2.2</span> Implementation in <code>Countr</code></h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+The bootstrap computations in <code>Countr</code> are based on the <code>boot()</code> function
+from the package with the same name \citep{boot2017}.
+</p>
+
+<p>
+The variance-covariance matrix is again computed with the renewal method for
+<code>vcov()</code> by specifying the argument <code>method = "boot"</code>.  The computation can be
+further customised by passing other options accepted by <code>boot()</code> other than
+<code>data</code> and <code>statistic</code> which are provided by the <code>Countr</code> code.  Note that the
+matrix is only computed if it is not found in the passed <code>renewal</code> object.  The
+bootstrap sample is actually computed by a separate function
+<code>addBootSampleObject()</code>, which computes the bootstrap sample and adds it as
+component <code>boot</code> to the renewal object. Functions like <code>vcov()</code> and <code>confint()</code>
+check if a bootstrap sample is already available and use it is.  It is a good
+idea to call <code>addBootSampleObject()</code> before attempting computations based on
+bootstrapping. We show below how to update the previously fitted gamma model
+with 400 bootstrap iterations using the parallel option and 14 CPUs.  if \(B\) is
+large and depending on how fast the model can be fitted, this computation may be
+time consuming.
+</p>
+<div class="org-src-container">
+<pre class="src src-R" id="orgc5209ea">gam <span style="color: #008b8b;">&lt;-</span> addBootSampleObject(gam, R = 400, parallel = <span style="color: #8b2252;">"multicore"</span>, ncpus = 14)
+</pre>
+</div>
+
+<p>
+Once the object is updated, the variance-covariance matrix is computed by <code>vcov</code>
+in a straightforward way:
+</p>
+<div class="org-src-container">
+<pre class="src src-R" id="org5c84f8d">gam$vcov <span style="color: #008b8b;">&lt;-</span> matrix()
+varCovar <span style="color: #008b8b;">&lt;-</span> vcov(gam, method = <span style="color: #8b2252;">"boot"</span>)
+varCovar
+</pre>
+</div>
+
+<pre class="example">
+                              rate_ rate_germanyes rate_years_school
+rate_                    0.07318764     5.0060e-03       -5.6704e-03
+rate_germanyes           0.00500601     3.7300e-03       -6.9972e-04
+rate_years_school       -0.00567041    -6.9972e-04        7.1876e-04
+rate_voc_trainyes        0.00087763    -4.3825e-04       -1.6477e-04
+rate_universityyes       0.01675906     1.8472e-03       -2.2823e-03
+rate_ReligionCatholic   -0.00072461    -9.5183e-04       -5.0782e-05
+rate_ReligionMuslim     -0.00350408     1.1549e-03        1.3725e-04
+rate_ReligionProtestant -0.00062891    -1.3197e-03       -4.8670e-05
+rate_year_birth         -0.00018173    -3.8643e-05        5.6028e-06
+rate_ruralyes           -0.00197542    -2.2663e-04        1.1529e-04
+rate_age_marriage       -0.00036158     6.7750e-05       -1.8638e-05
+shape_                   0.00860625     1.1773e-05        6.3172e-05
+                        rate_voc_trainyes rate_universityyes
+rate_                          8.7763e-04         1.6759e-02
+rate_germanyes                -4.3825e-04         1.8472e-03
+rate_years_school             -1.6477e-04        -2.2823e-03
+rate_voc_trainyes              1.4116e-03         1.6609e-03
+rate_universityyes             1.6609e-03         1.5801e-02
+rate_ReligionCatholic          5.5154e-05         5.2001e-04
+rate_ReligionMuslim            2.0904e-04         4.9984e-04
+rate_ReligionProtestant        9.5869e-06         5.3275e-04
+rate_year_birth                9.8568e-06         3.1314e-06
+rate_ruralyes                  3.5200e-04         3.9912e-04
+rate_age_marriage             -3.0112e-06         3.0646e-05
+shape_                         4.7749e-04         4.1102e-04
+                        rate_ReligionCatholic rate_ReligionMuslim
+rate_                             -7.2461e-04         -3.5041e-03
+rate_germanyes                    -9.5183e-04          1.1549e-03
+rate_years_school                 -5.0782e-05          1.3725e-04
+rate_voc_trainyes                  5.5154e-05          2.0904e-04
+rate_universityyes                 5.2001e-04          4.9984e-04
+rate_ReligionCatholic              3.1847e-03          1.6360e-03
+rate_ReligionMuslim                1.6360e-03          4.6887e-03
+rate_ReligionProtestant            2.7871e-03          1.4184e-03
+rate_year_birth                   -2.4024e-06         -1.7800e-05
+rate_ruralyes                      2.1452e-04          3.7533e-04
+rate_age_marriage                 -3.0908e-05          1.7879e-05
+shape_                            -6.7137e-05          8.1247e-05
+                        rate_ReligionProtestant rate_year_birth rate_ruralyes
+rate_                               -6.2891e-04     -1.8173e-04   -1.9754e-03
+rate_germanyes                      -1.3197e-03     -3.8643e-05   -2.2663e-04
+rate_years_school                   -4.8670e-05      5.6028e-06    1.1529e-04
+rate_voc_trainyes                    9.5869e-06      9.8568e-06    3.5200e-04
+rate_universityyes                   5.3275e-04      3.1314e-06    3.9912e-04
+rate_ReligionCatholic                2.7871e-03     -2.4024e-06    2.1452e-04
+rate_ReligionMuslim                  1.4184e-03     -1.7800e-05    3.7533e-04
+rate_ReligionProtestant              3.7010e-03      1.6907e-06    1.8705e-04
+rate_year_birth                      1.6907e-06      3.7486e-06   -2.0782e-07
+rate_ruralyes                        1.8705e-04     -2.0782e-07    1.0425e-03
+rate_age_marriage                   -4.3948e-05     -2.2939e-06    1.2680e-05
+shape_                              -2.3479e-04     -2.4092e-05    1.3058e-04
+                        rate_age_marriage      shape_
+rate_                         -3.6158e-04  8.6063e-03
+rate_germanyes                 6.7750e-05  1.1773e-05
+rate_years_school             -1.8638e-05  6.3172e-05
+rate_voc_trainyes             -3.0112e-06  4.7749e-04
+rate_universityyes             3.0646e-05  4.1102e-04
+rate_ReligionCatholic         -3.0908e-05 -6.7137e-05
+rate_ReligionMuslim            1.7879e-05  8.1247e-05
+rate_ReligionProtestant       -4.3948e-05 -2.3479e-04
+rate_year_birth               -2.2939e-06 -2.4092e-05
+rate_ruralyes                  1.2680e-05  1.3058e-04
+rate_age_marriage              3.0042e-05  8.9316e-05
+shape_                         8.9316e-05  1.2840e-02
+</pre>
+
+<p>
+Bootstrap standard errors are also very easy to compute by calling <code>se.coef()</code>
+with argument <code>type</code>"boot"=. As discussed before, if the <code>boot</code> object is not
+found in the <code>renewal</code> object, users can customise the <code>boot()</code> call by
+passing the appropriate arguments in <code>...</code>.
+</p>
+<div class="org-src-container">
+<pre class="src src-R" id="orgf346a95">se_boot  <span style="color: #008b8b;">&lt;-</span> se.coef(gam, type = <span style="color: #8b2252;">"boot"</span>)
+se_boot
+</pre>
+</div>
+
+<pre class="example">
+              rate_          rate_germanyes       rate_years_school 
+          0.2705321               0.0610739               0.0268098 
+  rate_voc_trainyes      rate_universityyes   rate_ReligionCatholic 
+          0.0375714               0.1257020               0.0564330 
+rate_ReligionMuslim rate_ReligionProtestant         rate_year_birth 
+          0.0684739               0.0608356               0.0019361 
+      rate_ruralyes       rate_age_marriage                  shape_ 
+          0.0322879               0.0054811               0.1133149
+
+</pre>
+
+<p>
+Finally bootstrap confidence intervals can also be computed by <code>confint()</code>
+using the same logic described for <code>se.coef()</code>. Different types of
+confidence intervals are available (default is normal) and can be selected by
+choosing the appropriate type in <code>bootType</code>. We refer the user to the <code>boot</code>
+package \citep{boot2017} for more information.
+</p>
+<div class="org-src-container">
+<pre class="src src-R" id="orgaf1ec20">ci_boot  <span style="color: #008b8b;">&lt;-</span> confint(gam, level = 0.95, type = <span style="color: #8b2252;">"boot"</span>, bootType = <span style="color: #8b2252;">"norm"</span>)
+ci_boot
+</pre>
+</div>
+
+<pre class="example">
+Bootstrap quantiles, type =  normal 
+
+                             2.5 %     97.5 %
+rate_                    1.0105534  2.0710199
+rate_germanyes          -0.3116866 -0.0722812
+rate_years_school       -0.0176548  0.0874376
+rate_voc_trainyes       -0.2211511 -0.0738740
+rate_universityyes      -0.4072628  0.0854802
+rate_ReligionCatholic    0.0985243  0.3197377
+rate_ReligionMuslim      0.3871631  0.6555759
+rate_ReligionProtestant -0.0133962  0.2250750
+rate_year_birth         -0.0016933  0.0058961
+rate_ruralyes           -0.0098069  0.1167594
+rate_age_marriage       -0.0401915 -0.0187062
+shape_                   1.1860640  1.6302501
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd600911" class="outline-2">
+<h2 id="orgd600911"><span class="section-number-2">3</span> Save Image&#xa0;&#xa0;&#xa0;<span class="tag"><span class="ignoreheading">ignoreheading</span></span></h2>
+<div class="outline-text-2" id="text-3">
+<p>
+We conclude this analysis by saving the work space to avoid re-running the
+computation in future exportation of the document:
+</p>
+<div class="org-src-container">
+<pre class="src src-R" id="org7b9819e">save.image()
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4d7247a" class="outline-2">
+<h2 id="org4d7247a"><span class="section-number-2">4</span> Bibliography&#xa0;&#xa0;&#xa0;<span class="tag"><span class="ignoreheading">ignoreheading</span></span></h2>
+<div class="outline-text-2" id="text-4">
+<p>
+\bibliographystyle{apalike}
+\bibliography{REFERENCES}
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Created: 2017-10-24 Tue 17:46</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

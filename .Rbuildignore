@@ -1,0 +1,12 @@
+README_devel.md
+^README.org
+^Org/
+^docs/
+^_pkgdown\.yml$
+^vignettes/.RData
+^TODO
+[.]emacs[.]desktop.*
+^TAGS$
+^auto$
+[^/]*[.]Rout$
+^sav[0-9]*[.]Rhistory

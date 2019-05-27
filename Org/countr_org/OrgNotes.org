@@ -1,0 +1,164 @@
+#+LaTeX_CLASS_OPTIONS: [a4paper,twoside,11pt]
+#+TITLE: Notes about Org
+#+SUBTITLE: with examples
+#+PROPERTY: header-args:R   :cache yes :session OrgNotes-r :results value :exports both
+#+LaTeX_CLASS: article_tarak
+#+OPTIONS: author:nil date:nil
+#+OPTIONS: toc:nil
+#+INCLUDE:"./custom_packages.org"
+#+LATEX_HEADER: \author[1]{Tarak Kharrat}
+#+LATEX_HEADER: \author[2]{Georgi N. Boshnakov}
+#+LATEX_HEADER: \affil[1]{Salford Business School, University of Salford, UK.}
+#+LATEX_HEADER: \affil[2]{School of Mathematics, University of Manchester, UK.}
+#+LATEX_HEADER: \newcommand{\code}{\texttt}
+
+
+# This chunk is a reminder for the options regarding evaluation during export:
+# #+BEGIN_SRC emacs :exports none :eval never-export
+# ;; setq org-export-babel-evaluate t
+# ;; setq org-export-babel-evaluate inline-only
+# (setq org-export-babel-evaluate nil)
+# #+END_SRC
+
+
+These notes are when working with Org version 9.1.2.
+
+* General notes 
+
++ If the code of the chunks is evaluated when exporting the file, e.g. =C-c C-e
+  l p= , the results in the org file are not updated (the updated
+  stuff appears in the exported document). Maybe this depends on options but we
+  better be aware of this.
+
+  Note that the results of calculation of inline code are inserted in the
+  buffer. 
+
++ 
+
++ TODO: use the facility from main.pdf to provide visual distinction between
+  code and results. 
+
++ Exporting nothing (=:exports none=)
+
+Here is a chunk that loads =xtable= but has =:exports none= and should not
+appear. 
+#+NAME: load-pkg
+#+BEGIN_SRC R  :exports none :cache no :results value silent
+library(xtable)
+#+END_SRC
+This is currently unpredictable. Even during a single session it may reappear!
+  
++ I changed the inline blocks to return raw values (for the moment), since it
+  seems better that the numbers are passed to TeX wthout being wrapped in
+  texttt. 
+
+  However 'raw' has the unfortunate effect that it doesn't wrap the result of
+  the inline block in {{{results(...)}}}, so repeated evaluation will produce
+  repeated values. 
+
+  *TODO* - there may be some option to avoid this, otherwise 'raw' may have to
+  be removed. (but see below for a workflow that woeks until the whole file is
+  recalculated.
+
++ I adopted the following workflow while editing:
+
+  i. Most of the time, I simply export the (=C-c C-e l p=). This recomputed the
+  inline blocks but doesn't put the results in the org buffer, only in the
+  exported TeX file. 
+
+  ii. When I change a chunk, I recalculate only that chunk (=C-c C-c=).
+   Then export as in i.
+
+   *TODO*: This will fail for objects with the same names are at different
+   places in the doc. Change them.
+
+  The trouble is that if the whole file is recomputed (=C-c C-v C-b=) 
+  the inline chunks with the 'raw' option are computed and the results put in
+  the file (as noted above). Then during export all such results are
+  duplicated. 
+
+
+* Formatting tables
+
+Org provides some formatting and produces tables from matrices and data frames
+but seems to ignore the column names and may be all attributes. 
+
+We will use =xtable= for some printing.
+#+BEGIN_SRC R :results value silent :exports code
+library(xtable)
+#+END_SRC
+
+
+
+Here we print (a subset of) a data frame, as =R= would print it on the console.
+We add a character column to be sure that this works with mixed type columns.
+#+BEGIN_SRC R :results output
+fewCars <- head(cars)
+fewCars$char <- letters[1:nrow(fewCars)]
+fewCars$num <- 1:nrow(fewCars) * pi
+fewCars
+#+END_SRC
+
+#+RESULTS[acf1de2c813436176b55582aedbec524c116b351]:
+:   speed dist char       num
+: 1     4    2    a  3.141593
+: 2     4   10    b  6.283185
+: 3     7    4    c  9.424778
+: 4     7   22    d 12.566371
+: 5     8   16    e 15.707963
+: 6     9   10    f 18.849556
+
+A proper table can be obtained using =xtable=. 
+#+BEGIN_SRC R :results output latex
+xfew <- xtable(fewCars, digits = 5)
+print(xfew, floating = FALSE)
+#+END_SRC
+
+#+RESULTS[0687e9e5a3338b6f41f36e27396d382370a4d4a6]:
+#+BEGIN_EXPORT latex
+% latex table generated in R 3.4.1 by xtable 1.8-2 package
+% Fri Oct 20 17:47:42 2017
+\begin{tabular}{rrrlr}
+  \hline
+ & speed & dist & char & num \\ 
+  \hline
+1 & 4.00000 & 2.00000 & a & 3.14159 \\ 
+  2 & 4.00000 & 10.00000 & b & 6.28319 \\ 
+  3 & 7.00000 & 4.00000 & c & 9.42478 \\ 
+  4 & 7.00000 & 22.00000 & d & 12.56637 \\ 
+  5 & 8.00000 & 16.00000 & e & 15.70796 \\ 
+  6 & 9.00000 & 10.00000 & f & 18.84956 \\ 
+   \hline
+\end{tabular}
+#+END_EXPORT
+
+It is worth storing the result of calling =xtable= in a variable and printing it
+separately, since the function =xtable()= has one set of options, while the
+print method for objects of type =xtable= has other options.  For example:
+#+BEGIN_SRC R :results output latex
+xfew <- xtable(fewCars, caption = "Information about some cars.")
+print(xfew)
+#+END_SRC
+
+#+RESULTS[deed34bc0a3cb7777fdbfa09e1a5d59f8f69f7cb]:
+#+BEGIN_EXPORT latex
+% latex table generated in R 3.4.1 by xtable 1.8-2 package
+% Fri Oct 20 17:47:42 2017
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrrlr}
+  \hline
+ & speed & dist & char & num \\ 
+  \hline
+1 & 4.00 & 2.00 & a & 3.14 \\ 
+  2 & 4.00 & 10.00 & b & 6.28 \\ 
+  3 & 7.00 & 4.00 & c & 9.42 \\ 
+  4 & 7.00 & 22.00 & d & 12.57 \\ 
+  5 & 8.00 & 16.00 & e & 15.71 \\ 
+  6 & 9.00 & 10.00 & f & 18.85 \\ 
+   \hline
+\end{tabular}
+\caption{Information about some cars.} 
+\end{table}
+#+END_EXPORT
+

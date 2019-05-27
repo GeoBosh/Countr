@@ -1,0 +1,185 @@
+
+R version 3.5.0 Patched (2018-06-06 r74855) -- "Joy in Playing"
+Copyright (C) 2018 The R Foundation for Statistical Computing
+Platform: x86_64-w64-mingw32/x64 (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+[Previously saved workspace restored]
+
+> > if (identical(getOption('pager'), file.path(R.home('bin'), 'pager'))) options(pager='console') # rather take the ESS one 
+> options(STERM='iESS', str.dendrogram.last="'", editor='c:/ProgramF/Emacs/bin/emacsclient.exe', show.error.locations=TRUE)
+> getwd()
+[1] "c:/Users/mcbssgb2/Az/Rdevel/bitbucket/countr_project/countr_org/football"
+> ls()
+[1] "away_poiss" "away_wei"   "breaks_"    "football"   "gof_pois"  
+[6] "gof_wei"    "lr"         "pears"      "q"         
+> summary(football)
+    seasonId       gameDate                     homeTeam        
+ Min.   :2009   Min.   :2009-08-15 12:45:00   Length:3040       
+ 1st Qu.:2011   1st Qu.:2011-07-23 21:15:00   Class :character  
+ Median :2012   Median :2013-07-03 14:22:30   Mode  :character  
+ Mean   :2012   Mean   :2013-07-05 10:48:10                     
+ 3rd Qu.:2014   3rd Qu.:2015-06-12 14:26:15                     
+ Max.   :2016   Max.   :2017-05-21 15:00:00                     
+   awayTeam         homeTeamGoals   awayTeamGoals  
+ Length:3040        Min.   :0.000   Min.   :0.000  
+ Class :character   1st Qu.:1.000   1st Qu.:0.000  
+ Mode  :character   Median :1.000   Median :1.000  
+                    Mean   :1.576   Mean   :1.175  
+                    3rd Qu.:2.000   3rd Qu.:2.000  
+                    Max.   :9.000   Max.   :7.000  
+> home_poiss <- glm(formula = homeTeamGoals ~ 1, family = poisson, data = football)
+> home_wei <- renewalCount(formula = homeTeamGoals ~ 1, data = football,
+                         dist = "weibull", weiMethod = "conv_dePril",
+                         computeHessian = FALSE, 
+                         control = renewal.control(trace = 0,
+                                                   method = "nlminb")
+                         )
+home_wei <- renewalCount(formula = homeTeamGoals ~ 1, data = football,
++                          dist = "weibull", weiMethod = "conv_dePril",
++                          computeHessian = FALSE, 
++                          control = renewal.control(trace = 0,
++                                                    method = "nlminb")
++                          )
+Error in renewalCount(formula = homeTeamGoals ~ 1, data = football, dist = "weibull",  : 
+  could not find function "renewalCount"
+> library(Countr)
+> home_wei <- renewalCount(formula = homeTeamGoals ~ 1, data = football,
+                         dist = "weibull", weiMethod = "conv_dePril",
+                         computeHessian = FALSE, 
+                         control = renewal.control(trace = 0,
+                                                   method = "nlminb")
+                         )
+home_wei <- renewalCount(formula = homeTeamGoals ~ 1, data = football,
++                          dist = "weibull", weiMethod = "conv_dePril",
++                          computeHessian = FALSE, 
++                          control = renewal.control(trace = 0,
++                                                    method = "nlminb")
++                          )
+> names(home_wei
++ )
+ [1] "coefficients"      "residuals"         "fitted.values"    
+ [4] "wi"                "optim"             "method"           
+ [7] "control"           "start"             "vecDistParsList"  
+[10] "weights"           "n"                 "iterations"       
+[13] "execTime"          "loglik"            "df.residual"      
+[16] "vcov"              "score_fct"         "dist"             
+[19] "link"              "converged"         "data"             
+[22] "formula"           "call"              "anc"              
+[25] "convPars"          "customPars"        "time"             
+[28] "seriesPars"        "weiMethod"         "standardise"      
+[31] "standardise_scale" "probResiduals"     "model"            
+[34] "y"                
+> home_wei$coefficients
+     scale_      shape_ 
+ 0.40097608 -0.08984804 
+> 1/home_wei$coefficients
+    scale_     shape_ 
+  2.493914 -11.129903 
+> exp(home_wei$coefficients)
+   scale_    shape_ 
+1.4932816 0.9140701 
+> 1/exp(home_wei$coefficients)
+   scale_    shape_ 
+0.6696661 1.0940080 
+> coef(home_wei)
+     scale_      shape_ 
+ 0.40097608 -0.08984804 
+> coef(away_wei)
+     scale_      shape_ 
+ 0.08351716 -0.17076269 
+> exp(coef(away_wei))
+   scale_    shape_ 
+1.0871039 0.8430216 
+> exp(coef(home_wei))
+   scale_    shape_ 
+1.4932816 0.9140701 
+> breaks_ <- 0:5
+> pears_home <- compareToGLM(poisson_model = home_poiss,
+                      breaks = breaks_, weibull = home_wei)
+pears_home <- compareToGLM(poisson_model = home_poiss,
++                       breaks = breaks_, weibull = home_wei)
+> frequency_plot(pears_home$Counts, pears_home$Actual,
+               dplyr::select(pears_home, contains("_predicted")),
+               colours = c("grey", "blue", "green", "black")
+               )
+
+frequency_plot(pears_home$Counts, pears_home$Actual,
++                dplyr::select(pears_home, contains("_predicted")),
++                colours = c("grey", "blue", "green", "black")
++                )
+Error in contains("_predicted") : could not find function "contains"
+> library(dplyr)
+
+Attaching package: 'dplyr'
+
+The following objects are masked from 'package:stats':
+
+    filter, lag
+
+The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union
+
+> frequency_plot(pears_home$Counts, pears_home$Actual,
+               dplyr::select(pears_home, contains("_predicted")),
+               colours = c("grey", "blue", "green", "black")
+               )
+
+frequency_plot(pears_home$Counts, pears_home$Actual,
++                dplyr::select(pears_home, contains("_predicted")),
++                colours = c("grey", "blue", "green", "black")
++                )
+> log(coef(home_wei))
+    scale_     shape_ 
+-0.9138535        NaN 
+Warning message:
+In log(coef(home_wei)) : NaNs produced
+> (coef(home_wei))
+     scale_      shape_ 
+ 0.40097608 -0.08984804 
+> exp(coef(home_wei))
+   scale_    shape_ 
+1.4932816 0.9140701 
+> 1/exp(coef(home_wei))
+   scale_    shape_ 
+0.6696661 1.0940080 
+> summary(home_wei)
+
+Call:
+renewalCount(formula = homeTeamGoals ~ 1, data = football, dist = "weibull", 
+    control = renewal.control(trace = 0, method = "nlminb"), 
+    weiMethod = "conv_dePril", computeHessian = FALSE)
+
+Pearson residuals:
+     Min       1Q   Median       3Q      Max 
+-1.79125 -0.90978 -0.90978 -0.02832  6.14193 
+Inter-arrival dist.: weibull 
+              Links: scale: link log, shape: link log 
+
+Count model coefficients
+       Estimate Std. Error z value Pr(>|z|)    
+scale_  0.40098    0.02117  18.943  < 2e-16 ***
+shape_ -0.08985    0.02683  -3.348 0.000813 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1 
+
+Number of iterations in nlminb optimization: 11 
+
+Execution time    6 
+Log-likelihood: -4851.6066 on 2 Df
+> exp(coef(home_wei))
+   scale_    shape_ 
+1.4932816 0.9140701 
+> 

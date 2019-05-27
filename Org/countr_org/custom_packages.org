@@ -1,0 +1,62 @@
+# ========================= font used ==========================================
+#+LaTeX_HEADER: \usepackage[T1]{fontenc} 
+#+LaTeX_HEADER: \usepackage{libertine}
+#+LaTeX_HEADER: \renewcommand*\oldstylenums[1]{{\fontfamily{fxlj}\selectfont #1}}
+#+LaTeX_HEADER: \usepackage{lmodern}
+# ========================= LaTex packages needed ============================== 
+#+LATEX_HEADER: \usepackage[margin=1.0in]{geometry}
+#+LATEX_HEADER: \usepackage{rotating}
+#+LATEX_HEADER: \usepackage{setspace,amsmath,amsfonts,amssymb,bm}
+#+LATEX_HEADER: \usepackage{graphicx}
+#+LATEX_HEADER: \usepackage[usenames,dvipsnames]{xcolor}
+#+LATEX_HEADER: \definecolor{Red}{rgb}{0.5,0,0}
+#+LATEX_HEADER: \definecolor{NavyBlue}{rgb}{0.1,0.1,0.45}
+#+LATEX_HEADER: \definecolor{MidnightBlue}{rgb}{0.1,0.1,0.65}
+#+LATEX_HEADER: \usepackage[pdftex,hyperfootnotes=true,plainpages=false,pdfpagelabels,hypertexnames=true,naturalnames,pdfproducer={Latex},pdfcreator={pdflatex},bookmarks,bookmarksnumbered,colorlinks,linkcolor=MidnightBlue,citecolor=NavyBlue,filecolor=black,urlcolor=Red,breaklinks=true]{hyperref}
+#+LATEX_HEADER: \usepackage{authblk}
+#+LATEX_HEADER: \usepackage{xspace,helvet}
+#+LATEX_HEADER: \usepackage{moreverb}        
+#+LATEX_HEADER: \usepackage{url, booktabs}
+#+LATEX_HEADER: \usepackage{cleveref}
+#+LATEX_HEADER: \usepackage[pdftex]{lscape}
+#+LATEX_HEADER: \usepackage{fullpage}
+#+LATEX_HEADER: \usepackage{booktabs}
+#+LATEX_HEADER: \usepackage{multirow}
+#+LATEX_HEADER: \usepackage{rotating}
+#+LATEX_HEADER: \usepackage{pifont}
+#+LATEX_HEADER: \usepackage{setspace}
+#+LATEX_HEADER: \usepackage{threeparttable}
+#+LATEX_HEADER: \usepackage{tabulary}
+#+LATEX_HEADER: \usepackage[toc,page]{appendix}
+#+LATEX_HEADER: \usepackage{pbox}
+#+LATEX_HEADER: \usepackage[font=small]{caption}
+
+# ============================= useful maths command ===========================
+#+LATEX_HEADER: \newcommand{\rom}[1]{\uppercase\expandafter{\romannumeral #1\relax}}
+#+LATEX_HEADER: \newcommand{\E}{\mathsf{E}}
+#+LATEX_HEADER: \newcommand{\VAR}{\mathsf{VAR}}
+#+LATEX_HEADER: \newcommand{\COV}{\mathsf{COV}}
+#+LATEX_HEADER: \newcommand{\Prob}{\mathsf{P}}
+#+LATEX_HEADER: \newcommand{\RNum}[1]{\uppercase\expandafter{\romannumeral #1\relax}}
+#+LATEX_HEADER: \newcommand{\dee}{\,\mbox{d}}
+#+LATEX_HEADER: \newcommand{\naive}{na\"{\i}ve }
+#+LATEX_HEADER: \newcommand{\eg}{e.g.\xspace}
+#+LATEX_HEADER: \newcommand{\ie}{i.e.\xspace}
+#+LATEX_HEADER: \newcommand{\pdf}{pdf.\xspace}
+#+LATEX_HEADER: \newcommand{\etc}{etc.\@\xspace}
+#+LATEX_HEADER: \newcommand{\PhD}{Ph.D.\xspace}
+#+LATEX_HEADER: \newcommand{\MSc}{M.Sc.\xspace}
+#+LATEX_HEADER: \newcommand{\BA}{B.A.\xspace}
+#+LATEX_HEADER: \newcommand{\R}{\texttt{R}\xspace}
+
+# ============================== list formating =============================
+#+LaTeX_HEADER: \usepackage{paralist}
+#+LaTeX_HEADER: \let\itemize\compactitem
+#+LaTeX_HEADER: \let\description\compactdesc
+#+LaTeX_HEADER: \let\enumerate\compactenum 
+#+LaTeX_HEADER: \let\enumerate\inparaenum
+#+LaTeX_HEADER: \renewenvironment{enumerate}{\begin{inparaenum}[(i)]}{\end{inparaenum}}
+#+LaTeX_HEADER: \renewenvironment{enumerate}{\begin{inparaenum}[(a)]}{\end{inparaenum}}
+
+# ============================== Bibliography ======================
+#+LaTeX_HEADER: \usepackage[round]{natbib}
