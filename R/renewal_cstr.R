@@ -336,7 +336,7 @@ renewalCount <- function(formula, data, subset, na.action, weights, offset,
     Y <- as.integer(round(Y + 0.001))
     if (any(Y < 0))
         stop("invalid dependent variable, negative counts")
-
+browser()
     ## extract weights and reshape them
     weights <- model.weights(mf)
     if (is.null(weights))

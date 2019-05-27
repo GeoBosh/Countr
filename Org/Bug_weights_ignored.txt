@@ -1,0 +1,196 @@
+From:	Bryce Burdge <bryce.burdge@gmail.com>
+Sent:	23 May 2019 09:54
+To:	Georgi Boshnakov
+Subject:	Re: Running into Error using Countr package in R
+Attachments:	WeightsExample.R
+
+Hi Georgi,
+
+I will attach an rscript file with an example of something that I am trying to do. Hopefully this 
+helps.
+
+Thanks,
+Bryce
+
+On Wed, May 22, 2019 at 11:58 PM Georgi Boshnakov <georgi.boshnakov@manchester.ac.uk> 
+wrote:
+Hi Bryce,
+ 
+I will look into this. It may take a couple of days since I can’t see the reason outright. You descried the 
+issue well but it will be helpful if you send me an example of the issue. 
+ 
+ 
+Thanks,
+Georgi
+ 
+ 
+From: Bryce Burdge [mailto:bryce.burdge@gmail.com]  
+Sent: 23 May 2019 05:17 
+To: Georgi Boshnakov 
+Subject: Re: Running into Error using Countr package in R
+ 
+Hi Georgi,
+ 
+Thanks for your help a couple weeks ago. Setting xtimes to 1 was able to solve my issue and 
+was able to build some helpful models with the package. I just have one final question. I was 
+trying to use the weights= option in the renewalcount  function with a weibull distribution, but 
+when it seems to not be using the weights I pass through. I made sure to make the weights the 
+same length as the data set being passed in, but when I look at the output from the model it says 
+the weights are all equal to 1. There are no errors being returned, it just seems to be ignoring the 
+weights I am trying to give it. The coefficients for any covariates I also add do not change 
+whether there are weights or not added to the renewalcount function. I feel like there might be 
+something I am missing but I can't figure it out. Any suggestions to try would be awesome. Also 
+thanks again for your help a couple weeks ago. 
+ 
+Thanks,
+Bryce
+ 
+On Wed, May 8, 2019 at 1:29 PM Georgi Boshnakov <georgi.boshnakov@manchester.ac.uk> 
+wrote:
+Hi Bryce,
+ 
+I will investigate the problem with installation of Countr from bitbucket, I get it as well but can’t see 
+immediately where the problem is since the error message doesn’t give the file name. 
+ 
+Please note that the error:
+ 
+"Error in order(-value, xtimes) : object 'xtimes' not found"
+ 
+is caused by recent versions of package ‘optimx’, see
+https://stackoverflow.com/questions/52927399/renewalcount-function-in-countr
+ 
+That can be resolved by installing a version of optimx before 2018-7.10. Alternatively do
+ 
+xtimes <- 1
+ 
+before calling our functions. I don’t know why optimx uses stuff that works only on linux. We could 
+patch it on our side but this is a dangerous thing to do (although if optimx doesn’t resolve it, we will 
+do it). 
+ 
+Thanks for using Countr,
+Georgi
+ 
+From: Kharrat, Tarak [mailto:Tarak.Kharrat@liverpool.ac.uk]  
+Sent: 08 May 2019 15:50 
+To: Bryce Burdge 
+Cc: Georgi Boshnakov 
+Subject: Re: Running into Error using Countr package in R
+ 
+Hi Bryce,
+ 
+It seems that the issue you have is related to Windows and nothing to do with the package 
+itself.  
+ 
+I am cc Georgi to this email. He knows more about Windows than myself. Maybe he will be 
+able to help.
+ 
+Best,
+Tarak
+ 
+From: Bryce Burdge <bryce.burdge@gmail.com> 
+Sent: 07 May 2019 22:32:33 
+To: Kharrat, Tarak 
+Subject: Re: Running into Error using Countr package in R 
+ 
+Hi Tarak, 
+ 
+I have tried to download the latest development of Countr that you had linked above, but am 
+running into an issue when installing.
+ 
+Here is the code that i have used to try and install:
+ 
+library(devtools)
+install_bitbucket("tkharrat/countr_project")
+ 
+This is what happens when I try to install it:
+ 
+Downloading bitbucket repo tkharrat/countr_project@master
+?  checking for file 
+'C:\Users\Owner\AppData\Local\Temp\RtmpE5uBOY\remotes642411c96d\tkharrat-
+countr_project-31ca44b78db1/DESCRIPTION' (423ms)
+   Warning in file.copy(pkgname, Tdir, recursive = TRUE, copy.date = TRUE) :
+     over-long path length
+    ERROR
+   copying to build directory failed
+Error in (function (command = NULL, args = character(), error_on_status = TRUE,  : 
+  System command error
+ 
+From what I understand this is happening because of a file path being too long. If there is 
+another way of downloading the package or fixing this issue, as I don't have too much 
+experience with using the devtools, that would be great.
+ 
+I will also include my session info below:
+ 
+R version 3.6.0 (2019-04-26)
+Platform: x86_64-w64-mingw32/x64 (64-bit)
+Running under: Windows 10 x64 (build 17134)
+ 
+Matrix products: default
+ 
+Random number generation:
+ RNG:     Mersenne-Twister 
+ Normal:  Inversion 
+ Sample:  Rounding 
+ 
+locale:
+[1] LC_COLLATE=English_United States.1252  LC_CTYPE=English_United States.1252   
+[3] LC_MONETARY=English_United States.1252 LC_NUMERIC=C                          
+[5] LC_TIME=English_United States.1252    
+ 
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
+ 
+other attached packages:
+[1] usethis_1.5.0  devtools_2.0.2
+ 
+loaded via a namespace (and not attached):
+ [1] Rcpp_1.0.1        ps_1.3.0          prettyunits_1.0.2 rprojroot_1.3-2  
+ [5] withr_2.1.2       digest_0.6.18     crayon_1.3.4      assertthat_0.2.1 
+ [9] R6_2.4.0          backports_1.1.4   magrittr_1.5      rlang_0.3.4      
+[13] cli_1.1.0         fs_1.3.0          remotes_2.0.4     rstudioapi_0.10  
+[17] testthat_2.1.1    callr_3.2.0       desc_1.2.0        tools_3.6.0      
+[21] glue_1.3.1        pkgload_1.0.2     compiler_3.6.0    processx_3.3.0   
+[25] pkgbuild_1.0.3    sessioninfo_1.1.1 memoise_1.1.0   
+ 
+Thanks,
+Bryce 
+ 
+On Tue, May 7, 2019 at 1:36 AM Kharrat, Tarak <Tarak.Kharrat@liverpool.ac.uk> wrote:
+Hi Bryce,
+ 
+Thanks for your interest in our work.
+ 
+I would strongly to install the latest development version of Countr available here:
+https://bitbucket.org/tkharrat/countr_project
+ 
+You can use devtools for that. If you still see the issue, please send over some info about 
+your session (sessionInfo()) and hopefully me or Gerogi would be able to help.
+ 
+Best wishes,
+Tarak
+ 
+From: Bryce Burdge <bryce.burdge@gmail.com> 
+Sent: 07 May 2019 04:19:38 
+To: Kharrat, Tarak 
+Subject: Running into Error using Countr package in R 
+ 
+Hi Dr. Tarak Kharrat, 
+ 
+I have been trying to test and mess around with football modeling in the premiere league and 
+have come across some of your work, especially surrounding the use of the bivariate weibull 
+count model. I have also come across the package in R, that I believe you have created, called 
+the Countr package. I have come across the paper you wrote along with Georgi N. Boshnakov 
+titled "Football data analysis an example with the Countr package" an have tried to follow the 
+example that was written. 
+ 
+I have run into an error when trying run this example in R for the weibull-count-model. I have 
+run all the code in the paper noted above, but when i try to run the code to create the 
+away_wei variable I keep getting an error message. The message I keep getting is: 
+"Error in order(-value, xtimes) : object 'xtimes' not found"
+I was wondering if you have seen this issue before and can recommend how to solve this 
+error. I have messed around with the renewalCount function some and even tried my own data 
+set, but keep getting the same error message. Any help in solving this issue would be greatly 
+appreciated. 
+ 
+Thanks,
+Bryce Burdge
