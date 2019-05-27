@@ -5,8 +5,8 @@
 \title{Predict method for renewal objects}
 \usage{
 \method{predict}{renewal}(object, newdata = NULL, type = c("response",
-  "prob"), se.fit = FALSE, terms = NULL, na.action = na.pass, time = 1,
-  ...)
+  "prob"), se.fit = FALSE, terms = NULL, na.action = na.pass,
+  time = 1, ...)
 }
 \arguments{
 \item{object}{Object of class inheriting from \code{"lm"}}

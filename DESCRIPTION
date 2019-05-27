@@ -1,8 +1,8 @@
 Package: Countr
 Type: Package
 Title: Flexible Univariate Count Models Based on Renewal Processes
-Version: 3.5.2
-Date: 2018-10-04
+Version: 3.5.3
+Date: 2019-05-27
 Authors@R: c( person(given = "Tarak", family = "Kharrat",
                      role = c("aut", "cre"), 
                      email = "Tarak.Kharrat@liverpool.ac.uk"),
@@ -44,7 +44,7 @@ Suggests:
 RdMacros: Rdpack
 VignetteBuilder: knitr
 LazyData: true
-RoxygenNote: 6.1.0
+RoxygenNote: 6.1.1
 NeedsCompilation: yes
 Collate: 
     'Countr-package.R'

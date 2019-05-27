@@ -10,9 +10,10 @@
 dWeibullgammaCount_acc(x, shape, r, alpha, time = 1, logFlag = FALSE,
   jmax = 100L, nmax = 300L, eps = 1e-10, printa = FALSE)
 
-dWeibullgammaCount(x, shape, shapeGam, scaleGam, Xcovar = NULL, beta = NULL,
-  method = c("series_acc", "series_mat"), time = 1, log = FALSE,
-  series_terms = 50, series_acc_niter = 300, series_acc_eps = 1e-10)
+dWeibullgammaCount(x, shape, shapeGam, scaleGam, Xcovar = NULL,
+  beta = NULL, method = c("series_acc", "series_mat"), time = 1,
+  log = FALSE, series_terms = 50, series_acc_niter = 300,
+  series_acc_eps = 1e-10)
 
 dWeibullgammaCount_loglik(x, shape, shapeGam, scaleGam, Xcovar = NULL,
   beta = NULL, method = c("series_acc", "series_mat"), time = 1,
@@ -93,8 +94,6 @@ for \code{evWeibullgammaCount}, a list with components
     \code{"ExpectedValue"} and \code{"Variance"}.
 }
 \description{
-Fast Univariate Weibull Count Probability with gamma heterogeneity
-
 Probability computations for the univariate Weibull-gamma count processes. Several
 methods are provided.
 \code{dWeibullgammaCount} computes probabilities.

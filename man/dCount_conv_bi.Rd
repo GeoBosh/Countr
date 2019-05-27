@@ -5,9 +5,9 @@
 \alias{dCount_conv_user}
 \title{Compute count probabilities using convolution}
 \usage{
-dCount_conv_bi(x, distPars, dist = c("weibull", "gamma", "gengamma", "burr"),
-  method = c("dePril", "direct", "naive"), nsteps = 100, time = 1,
-  extrap = TRUE, log = FALSE)
+dCount_conv_bi(x, distPars, dist = c("weibull", "gamma", "gengamma",
+  "burr"), method = c("dePril", "direct", "naive"), nsteps = 100,
+  time = 1, extrap = TRUE, log = FALSE)
 
 dCount_conv_user(x, distPars, extrapolPars, survR, method = c("dePril",
   "direct", "naive"), nsteps = 100, time = 1, extrap = TRUE,

@@ -7,9 +7,10 @@
 renewalCount(formula, data, subset, na.action, weights, offset,
   dist = c("weibull", "weibullgam", "custom", "gamma", "gengamma"),
   anc = NULL, convPars = NULL, link = NULL, time = 1,
-  control = renewal.control(...), customPars = NULL, seriesPars = NULL,
-  weiMethod = NULL, computeHessian = TRUE, standardise = FALSE,
-  standardise_scale = 1, model = TRUE, y = TRUE, x = FALSE, ...)
+  control = renewal.control(...), customPars = NULL,
+  seriesPars = NULL, weiMethod = NULL, computeHessian = TRUE,
+  standardise = FALSE, standardise_scale = 1, model = TRUE,
+  y = TRUE, x = FALSE, ...)
 }
 \arguments{
 \item{formula}{a formula object. If it is a standard formula object, the left

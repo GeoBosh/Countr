@@ -5,10 +5,11 @@
 \alias{dWeibullCount_acc}
 \title{Univariate Weibull Count Probability}
 \usage{
-dWeibullCount_mat(x, shape, scale, time = 1, logFlag = FALSE, jmax = 50L)
+dWeibullCount_mat(x, shape, scale, time = 1, logFlag = FALSE,
+  jmax = 50L)
 
-dWeibullCount_acc(x, shape, scale, time = 1, logFlag = FALSE, jmax = 50L,
-  nmax = 300L, eps = 1e-10, printa = FALSE)
+dWeibullCount_acc(x, shape, scale, time = 1, logFlag = FALSE,
+  jmax = 50L, nmax = 300L, eps = 1e-10, printa = FALSE)
 }
 \arguments{
 \item{x}{integer (vector), the desired count values.}
@@ -37,8 +38,6 @@ a vector of probabilities for each component of the count vector
 }
 \description{
 Univariate Weibull count probability computed using matrix techniques.
-
-Fast Univariate Weibull Count Probability
 }
 \details{
 \code{dWeibullCount_mat} implements formulae (11) of \emph{McShane(2008)} to

@@ -4,7 +4,6 @@
 \name{Countr}
 \alias{Countr}
 \alias{Countr-package}
-\alias{Countr-package}
 \title{Flexible Univariate Count Models Based on Renewal Processes}
 \description{
 The methodology is described in the forthcoming paper Kharrat et al. (2018)

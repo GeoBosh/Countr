@@ -1,3 +1,8 @@
+# Countr 3.5.3
+
+- consolidation after the refactoring of the reposotory.
+
+
 # Countr 3.5.2 (CRAN)
 
 - small adjustments before submission.

@@ -5,13 +5,14 @@
 \alias{dCount_conv_loglik_user}
 \title{Log-likelihood of a count probability computed by convolution (bi)}
 \usage{
-dCount_conv_loglik_bi(x, distPars, dist = c("weibull", "gamma", "gengamma",
-  "burr"), method = c("dePril", "direct", "naive"), nsteps = 100,
-  time = 1, extrap = TRUE, na.rm = TRUE, weights = NULL)
+dCount_conv_loglik_bi(x, distPars, dist = c("weibull", "gamma",
+  "gengamma", "burr"), method = c("dePril", "direct", "naive"),
+  nsteps = 100, time = 1, extrap = TRUE, na.rm = TRUE,
+  weights = NULL)
 
-dCount_conv_loglik_user(x, distPars, extrapolPars, survR, method = c("dePril",
-  "direct", "naive"), nsteps = 100, time = 1, extrap = TRUE,
-  na.rm = TRUE, weights = NULL)
+dCount_conv_loglik_user(x, distPars, extrapolPars, survR,
+  method = c("dePril", "direct", "naive"), nsteps = 100, time = 1,
+  extrap = TRUE, na.rm = TRUE, weights = NULL)
 }
 \arguments{
 \item{x}{integer (vector), the desired count values.}

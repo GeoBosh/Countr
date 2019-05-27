@@ -9,8 +9,9 @@ evCount_conv_bi(xmax, distPars, dist = c("weibull", "gamma", "gengamma",
   "burr"), method = c("dePril", "direct", "naive"), nsteps = 100,
   time = 1, extrap = TRUE)
 
-evCount_conv_user(xmax, distPars, extrapolPars, survR, method = c("dePril",
-  "direct", "naive"), nsteps = 100, time = 1, extrap = TRUE)
+evCount_conv_user(xmax, distPars, extrapolPars, survR,
+  method = c("dePril", "direct", "naive"), nsteps = 100, time = 1,
+  extrap = TRUE)
 }
 \arguments{
 \item{xmax}{unsigned integer maximum count to be used.}
