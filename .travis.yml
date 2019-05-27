@@ -1,0 +1,80 @@
+# R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
+
+# with valgrind; check only with R-devel in case it takes long.
+#    Using '60' in travis_wait is porbably beyond the allowed limit
+#    (the job is cancelled after about 60 minutes)
+#
+language: r
+cache: packages
+
+# r_github_packages: GeoBosh/lagged
+r_check_args: '--as-cran --use-valgrind'
+
+addons:
+  apt:
+    packages:
+      - valgrind
+
+env:
+  - VALGRIND_OPTS='--leak-check=full
+#  - VALGRIND_OPTS='--leak-check=full --track-origins=yes'
+
+matrix:
+  include:
+    - os: linux
+      r: devel
+
+after_failure:
+  find *Rcheck -name '*.fail' -print -exec cat '{}' \;
+
+script: 
+  - R CMD build --no-build-vignettes .
+  - travis_wait 60 R CMD check --no-build-manual --no-examples --no-build-vignettes --as-cran --use-valgrind Countr*.tar.gz
+
+
+# Alternative variants below, commented out
+
+# # All tests with all OS-es
+# #
+# language: r
+# cache: packages
+# latex: true
+# 
+# r_github_packages:
+#   - r-lib/covr
+# 
+# after_success:
+#   - Rscript -e 'covr::coveralls()'
+# 
+# matrix:
+#   include:
+#     - os: linux
+#       r: release
+#     - os: linux
+#       r: devel
+#     - os: linux
+#       dist: trusty
+#       env: R_CODECOV=true
+#     - os: osx
+#       osx_image: xcode8.3
+
+
+# # Alternatively, run several 'R CMD check' with different arguments.
+# #    In this way, the tests are complete but maybe each check will
+# #    be within the time limit.
+# script: 
+#   - R CMD build .
+#   - R CMD check --no-manual --no-tests --as-cran --use-valgrind sarima*.tar.gz
+#   - travis_wait 60 R CMD check --no-manual --no-examples --no-build-vignettes --as-cran --use-valgrind sarima*.tar.gz
+    
+
+
+
+
+
+
+
+
+
+
+
