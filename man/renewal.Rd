@@ -15,3 +15,4 @@ Deprecated old name of \code{renewalCount()}
 \details{
 This function is now renamed to \code{renewalCount()}.
 }
+\keyword{internal}

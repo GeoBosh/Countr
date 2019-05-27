@@ -9,6 +9,7 @@ NULL
 #'
 #' @param ... same arguments as \code{renewalCount()}.
 #'
+#' @keywords internal
 #' @export
 renewal <- function(...) {
     .Deprecated(msg = "Please use 'renewalCount' (the new name of 'renewal')")

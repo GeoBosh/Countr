@@ -1,0 +1,46 @@
+
+reference:
+  - title: "Count overview"
+    contents:
+      - Countr
+  - title: "Main function"
+    desc: >
+      Fit renewal regression models for count data.
+    contents: 
+      - renewalCount
+  - title: "Supporting functions for renewalCount()"
+    desc: >
+      Supporting functions for objects fitted with renewalCount().
+    contents: 
+      - getParNames
+      - renewalCoef
+      - renewalCoefList
+      - renewalNames
+      - surv
+  - title: "Methods for fitted renewal models"
+    contents: 
+      - coef.renewal
+      - se.coef.renewal
+      - predict.renewal
+  - title: "Datasets"
+    contents: 
+      - fertility
+      - football
+  - title: "Probability distributions"
+    contents: 
+      - dCount_conv_bi
+      - dCount_conv_loglik_bi
+      - dmodifiedCount_bi
+      - dWeibullCount
+      - dWeibullgammaCount_mat_Covariates
+      - evCount_conv_bi
+  - title: "Other"
+    contents: 
+      - addBootSampleObject
+      - chiSq_gof
+      - chiSq_pearson
+      - compareToGLM
+      - CountrFormula
+      - count_table
+      - frequency_plot
+      - residuals_plot

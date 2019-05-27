@@ -82,7 +82,12 @@
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/GeoBosh/Countr">
+    <span class="fab fa fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -109,53 +114,123 @@
     <tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
+          <h2 id="section-count-overview" class="hasAnchor"><a href="#section-count-overview" class="anchor"></a>Count overview</h2>
           <p class="section-desc"></p>
         </th>
       </tr>
       <tr>
         
         <td>
-          <p><code><a href="addBootSampleObject.html">addBootSampleObject()</a></code> </p>
-        </td>
-        <td><p>Create a bootsrap sample for coefficient estimates</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="chiSq_gof.html">chiSq_gof()</a></code> </p>
-        </td>
-        <td><p>Formal Chi-square goodness-of-fit test</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="chiSq_pearson.html">chiSq_pearson()</a></code> </p>
-        </td>
-        <td><p>Pearson Chi-Square test</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="compareToGLM.html">compareToGLM()</a></code> </p>
-        </td>
-        <td><p>Compare renewals fit to glm models fit</p></td>
-      </tr><tr>
-        
-        <td>
           <p><code><a href="Countr.html">Countr</a></code> </p>
         </td>
         <td><p>Flexible Univariate Count Models Based on Renewal Processes</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-main-function" class="hasAnchor"><a href="#section-main-function" class="anchor"></a>Main function</h2>
+          <p class="section-desc"><p>Fit renewal regression models for count data.</p></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="renewalCount.html">renewalCount()</a></code> </p>
+        </td>
+        <td><p>Fit renewal count processes regression models</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-supporting-functions-for-renewalcount-" class="hasAnchor"><a href="#section-supporting-functions-for-renewalcount-" class="anchor"></a>Supporting functions for renewalCount()</h2>
+          <p class="section-desc"><p>Supporting functions for objects fitted with renewalCount().</p></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="getParNames.html">getParNames()</a></code> </p>
+        </td>
+        <td><p>Return the names of distribution parameters</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="CountrFormula.html">CountrFormula()</a></code> </p>
+          <p><code><a href="renewalCoef.html">renewalCoef()</a></code> </p>
         </td>
-        <td><p>Create a formula for renewalCount</p></td>
+        <td><p>Get named vector of coefficients for renewal objects</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="count_table.html">count_table()</a></code> </p>
+          <p><code><a href="renewalCoefList.html">renewalCoefList()</a></code> </p>
         </td>
-        <td><p>Summary of a count variable</p></td>
+        <td><p>Split a vector using the prefixes of the names for grouping</p></td>
       </tr><tr>
+        
+        <td>
+          <p><code><a href="renewalNames.html">renewalNames()</a></code> </p>
+        </td>
+        <td><p>Get names of parameters of renewal regression models</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="surv.html">surv()</a></code> </p>
+        </td>
+        <td><p>Wrapper to built in survival functions</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-methods-for-fitted-renewal-models" class="hasAnchor"><a href="#section-methods-for-fitted-renewal-models" class="anchor"></a>Methods for fitted renewal models</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="renewal_methods.html">coef(<i>&lt;renewal&gt;</i>)</a></code> <code><a href="renewal_methods.html">vcov(<i>&lt;renewal&gt;</i>)</a></code> <code><a href="renewal_methods.html">residuals(<i>&lt;renewal&gt;</i>)</a></code> <code><a href="renewal_methods.html">residuals_plot(<i>&lt;renewal&gt;</i>)</a></code> <code><a href="renewal_methods.html">fitted(<i>&lt;renewal&gt;</i>)</a></code> <code><a href="renewal_methods.html">confint(<i>&lt;renewal&gt;</i>)</a></code> <code><a href="renewal_methods.html">summary(<i>&lt;renewal&gt;</i>)</a></code> <code><a href="renewal_methods.html">print(<i>&lt;renewal&gt;</i>)</a></code> <code><a href="renewal_methods.html">print(<i>&lt;summary.renewal&gt;</i>)</a></code> <code><a href="renewal_methods.html">model.matrix(<i>&lt;renewal&gt;</i>)</a></code> <code><a href="renewal_methods.html">logLik(<i>&lt;renewal&gt;</i>)</a></code> <code><a href="renewal_methods.html">nobs(<i>&lt;renewal&gt;</i>)</a></code> <code><a href="renewal_methods.html">extractAIC(<i>&lt;renewal&gt;</i>)</a></code> <code><a href="renewal_methods.html">addBootSampleObject(<i>&lt;renewal&gt;</i>)</a></code> <code><a href="renewal_methods.html">df.residual(<i>&lt;renewal&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Methods for renewal objects</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="se.coef.html">se.coef()</a></code> </p>
+        </td>
+        <td><p>Extract Standard Errors of Model Coefficients</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="predict.renewal.html">predict(<i>&lt;renewal&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Predict method for renewal objects</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-datasets" class="hasAnchor"><a href="#section-datasets" class="anchor"></a>Datasets</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="fertility.html">fertility</a></code> </p>
+        </td>
+        <td><p>Fertility data</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="football.html">football</a></code> </p>
+        </td>
+        <td><p>Football data</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-probability-distributions" class="hasAnchor"><a href="#section-probability-distributions" class="anchor"></a>Probability distributions</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      <tr>
         
         <td>
           <p><code><a href="dCount_conv_bi.html">dCount_conv_bi()</a></code> <code><a href="dCount_conv_bi.html">dCount_conv_user()</a></code> </p>
@@ -192,18 +267,50 @@ covariate heterogeneity</p></td>
           <p><code><a href="evCount_conv_bi.html">evCount_conv_bi()</a></code> <code><a href="evCount_conv_bi.html">evCount_conv_user()</a></code> </p>
         </td>
         <td><p>Expected value and variance of renewal count process</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-other" class="hasAnchor"><a href="#section-other" class="anchor"></a>Other</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="addBootSampleObject.html">addBootSampleObject()</a></code> </p>
+        </td>
+        <td><p>Create a bootsrap sample for coefficient estimates</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="fertility.html">fertility</a></code> </p>
+          <p><code><a href="chiSq_gof.html">chiSq_gof()</a></code> </p>
         </td>
-        <td><p>Fertility data</p></td>
+        <td><p>Formal Chi-square goodness-of-fit test</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="football.html">football</a></code> </p>
+          <p><code><a href="chiSq_pearson.html">chiSq_pearson()</a></code> </p>
         </td>
-        <td><p>Football data</p></td>
+        <td><p>Pearson Chi-Square test</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="compareToGLM.html">compareToGLM()</a></code> </p>
+        </td>
+        <td><p>Compare renewals fit to glm models fit</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="CountrFormula.html">CountrFormula()</a></code> </p>
+        </td>
+        <td><p>Create a formula for renewalCount</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="count_table.html">count_table()</a></code> </p>
+        </td>
+        <td><p>Summary of a count variable</p></td>
       </tr><tr>
         
         <td>
@@ -213,69 +320,9 @@ covariate heterogeneity</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="getParNames.html">getParNames()</a></code> </p>
-        </td>
-        <td><p>Return the names of distribution parameters</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="predict.renewal.html">predict(<i>&lt;renewal&gt;</i>)</a></code> </p>
-        </td>
-        <td><p>Predict method for renewal objects</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="renewal.html">renewal()</a></code> </p>
-        </td>
-        <td><p>Deprecated old name of <code>renewalCount()</code></p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="renewalCoef.html">renewalCoef()</a></code> </p>
-        </td>
-        <td><p>Get named vector of coefficients for renewal objects</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="renewalCoefList.html">renewalCoefList()</a></code> </p>
-        </td>
-        <td><p>Split a vector using the prefixes of the names for grouping</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="renewalCount.html">renewalCount()</a></code> </p>
-        </td>
-        <td><p>Fit renewal count processes regression models</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="renewalNames.html">renewalNames()</a></code> </p>
-        </td>
-        <td><p>Get names of parameters of renewal regression models</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="renewal_methods.html">coef(<i>&lt;renewal&gt;</i>)</a></code> <code><a href="renewal_methods.html">vcov(<i>&lt;renewal&gt;</i>)</a></code> <code><a href="renewal_methods.html">residuals(<i>&lt;renewal&gt;</i>)</a></code> <code><a href="renewal_methods.html">residuals_plot(<i>&lt;renewal&gt;</i>)</a></code> <code><a href="renewal_methods.html">fitted(<i>&lt;renewal&gt;</i>)</a></code> <code><a href="renewal_methods.html">confint(<i>&lt;renewal&gt;</i>)</a></code> <code><a href="renewal_methods.html">summary(<i>&lt;renewal&gt;</i>)</a></code> <code><a href="renewal_methods.html">print(<i>&lt;renewal&gt;</i>)</a></code> <code><a href="renewal_methods.html">print(<i>&lt;summary.renewal&gt;</i>)</a></code> <code><a href="renewal_methods.html">model.matrix(<i>&lt;renewal&gt;</i>)</a></code> <code><a href="renewal_methods.html">logLik(<i>&lt;renewal&gt;</i>)</a></code> <code><a href="renewal_methods.html">nobs(<i>&lt;renewal&gt;</i>)</a></code> <code><a href="renewal_methods.html">extractAIC(<i>&lt;renewal&gt;</i>)</a></code> <code><a href="renewal_methods.html">addBootSampleObject(<i>&lt;renewal&gt;</i>)</a></code> <code><a href="renewal_methods.html">df.residual(<i>&lt;renewal&gt;</i>)</a></code> </p>
-        </td>
-        <td><p>Methods for renewal objects</p></td>
-      </tr><tr>
-        
-        <td>
           <p><code><a href="residuals_plot.html">residuals_plot()</a></code> </p>
         </td>
         <td><p>Method to visualise the residuals</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="se.coef.html">se.coef()</a></code> </p>
-        </td>
-        <td><p>Extract Standard Errors of Model Coefficients</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="surv.html">surv()</a></code> </p>
-        </td>
-        <td><p>Wrapper to built in survival functions</p></td>
       </tr>
     </tbody>
     </table>
@@ -284,7 +331,13 @@ covariate heterogeneity</p></td>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-all-functions">All functions</a></li>
+      <li><a href="#section-count-overview">Count overview</a></li>
+      <li><a href="#section-main-function">Main function</a></li>
+      <li><a href="#section-supporting-functions-for-renewalcount-">Supporting functions for renewalCount()</a></li>
+      <li><a href="#section-methods-for-fitted-renewal-models">Methods for fitted renewal models</a></li>
+      <li><a href="#section-datasets">Datasets</a></li>
+      <li><a href="#section-probability-distributions">Probability distributions</a></li>
+      <li><a href="#section-other">Other</a></li>
     </ul>
   </div>
 </div>

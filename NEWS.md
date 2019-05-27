@@ -2,6 +2,8 @@
 
 - consolidation after the refactoring of the reposotory.
 
+- created pkgdown website.
+
 
 # Countr 3.5.2 (CRAN)
 
