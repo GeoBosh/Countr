@@ -31,7 +31,7 @@ after_failure:
   find *Rcheck -name '*.fail' -print -exec cat '{}' \;
 
 script: 
-  - R CMD build --no-build-vignettes .
+  - R CMD build  .
   - travis_wait 60 R CMD check --as-cran --use-valgrind Countr*.tar.gz
 
 after_success:
