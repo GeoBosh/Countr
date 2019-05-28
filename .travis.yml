@@ -29,7 +29,7 @@ after_failure:
 
 script: 
   - R CMD build --no-build-vignettes .
-  - travis_wait 60 R CMD check --no-build-manual --no-examples --no-build-vignettes --as-cran --use-valgrind Countr*.tar.gz
+  - travis_wait 60 R CMD check --as-cran --use-valgrind Countr*.tar.gz
 
 
 # Alternative variants below, commented out
