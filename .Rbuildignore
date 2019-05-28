@@ -3,6 +3,7 @@ README_devel.md
 ^Org/
 ^docs/
 ^_pkgdown\.yml$
+.travis.yml
 ^vignettes/.RData
 ^TODO
 [.]emacs[.]desktop.*
