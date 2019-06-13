@@ -1,0 +1,243 @@
+
+R version 3.5.1 Patched (2018-10-27 r75506) -- "Feather Spray"
+Copyright (C) 2018 The R Foundation for Statistical Computing
+Platform: x86_64-w64-mingw32/x64 (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+[Previously saved workspace restored]
+
+> > if (identical(getOption('pager'), file.path(R.home('bin'), 'pager'))) options(pager='console') # rather take the ESS one 
+> options(STERM='iESS', str.dendrogram.last="'", editor='c:/ProgramF/Emacs/bin/emacsclient.exe', show.error.locations=TRUE)
+> library(Countr)
+> away_wei <- renewalCount(formula = awayTeamGoals ~ 1, data = football, dist = "weibull", weiMethod = "conv_dePril", computeHessian = FALSE, control = renewal.control(trace = 0, method = "nlminb") ) 
+Error in order(-value, xtimes) : object 'xtimes' not found
+> options(error=recover)
+> options(error=recover)
+> away_wei <- renewalCount(formula = awayTeamGoals ~ 1, data = football, dist = "weibull", weiMethod = "conv_dePril", computeHessian = FALSE, control = renewal.control(trace = 0, method = "nlminb") ) 
+Error in order(-value, xtimes) : object 'xtimes' not found
+
+Enter a frame number, or 0 to exit   
+
+ 1: renewalCount(formula = awayTeamGoals ~ 1, data = football, dist = "weibull"
+ 2: fitCount_[with(fitCount_, order(-value, xtimes)), ]
+ 3: `[.optimx`(fitCount_, with(fitCount_, order(-value, xtimes)), )
+ 4: NextMethod()
+ 5: `[.data.frame`(fitCount_, with(fitCount_, order(-value, xtimes)), )
+ 6: with(fitCount_, order(-value, xtimes))
+ 7: with.default(fitCount_, order(-value, xtimes))
+ 8: eval(substitute(expr), data, enclos = parent.frame())
+ 9: eval(substitute(expr), data, enclos = parent.frame())
+10: order(-value, xtimes)
+
+Selection: 2
+Called from: eval(substitute(expr), data, enclos = parent.frame())
+Browse[1]> ls()
+character(0)
+Browse[1]> 
+
+Enter a frame number, or 0 to exit   
+
+ 1: renewalCount(formula = awayTeamGoals ~ 1, data = football, dist = "weibull"
+ 2: fitCount_[with(fitCount_, order(-value, xtimes)), ]
+ 3: `[.optimx`(fitCount_, with(fitCount_, order(-value, xtimes)), )
+ 4: NextMethod()
+ 5: `[.data.frame`(fitCount_, with(fitCount_, order(-value, xtimes)), )
+ 6: with(fitCount_, order(-value, xtimes))
+ 7: with.default(fitCount_, order(-value, xtimes))
+ 8: eval(substitute(expr), data, enclos = parent.frame())
+ 9: eval(substitute(expr), data, enclos = parent.frame())
+10: order(-value, xtimes)
+
+Selection: 0
+> ?optimx
+> packageDescription("optimx")
+Package: optimx
+Version: 2018-7.10
+Date: 2018-07-10
+Title: Expanded Replacement and Extension of the 'optim' Function
+Authors@R: c( person(given = c("John", "C"), family = "Nash", role =
+        c("aut", "cre"), email = "nashjc@uottawa.ca"), person(given =
+        "Ravi", family = "Varadhan", role = "aut", email =
+        "RVaradhan@jhmi.edu"), person(given = "Gabor", family =
+        "Grothendieck", role = "ctb", email =
+        "ggrothendieck@gmail.com") )
+Author: John C Nash [aut, cre], Ravi Varadhan [aut], Gabor Grothendieck
+        [ctb]
+Maintainer: John C Nash <nashjc@uottawa.ca>
+Description: Provides a replacement and extension of the optim()
+        function to call to several function minimization codes in R in
+        a single statement. These methods handle smooth, possibly box
+        constrained functions of several or many parameters. Note that
+        function 'optimr()' was prepared to simplify the incorporation
+        of minimization codes going forward. Also implements some
+        utility codes and some extra solvers, including safeguarded
+        Newton methods.  Many methods previously separate are now
+        included here.
+License: GPL-2
+LazyLoad: Yes
+Imports: numDeriv
+NeedsCompilation: no
+Suggests: knitr, rmarkdown, setRNG, BB, ucminf, minqa, dfoptim,
+        lbfgsb3, lbfgs, subplex
+VignetteBuilder: knitr
+Packaged: 2018-07-10 16:08:14 UTC; john
+Repository: CRAN
+Date/Publication: 2018-09-30 14:50:05 UTC
+Built: R 3.5.1; ; 2018-10-01 17:51:42 UTC; windows
+
+-- File: C:/Users/mcbssgb2/R/win-library/3.5/optimx/Meta/package.rds 
+> 
+
+No suitable frames for recover()
+> Save workspace image? [y/n/c]: n
+
+Process R finished at Thu Nov  8 08:55:12 2018
+
+
+R version 3.5.1 Patched (2018-10-27 r75506) -- "Feather Spray"
+Copyright (C) 2018 The R Foundation for Statistical Computing
+Platform: x86_64-w64-mingw32/x64 (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+[Previously saved workspace restored]
+
+> > if (identical(getOption('pager'), file.path(R.home('bin'), 'pager'))) options(pager='console') # rather take the ESS one 
+> options(STERM='iESS', str.dendrogram.last="'", editor='c:/ProgramF/Emacs/bin/emacsclient.exe', show.error.locations=TRUE)
+> packageDescription("optimx")
+Package: optimx
+Version: 2013.8.7
+Date: 2013-08-07
+Title: A Replacement and Extension of the optim() Function
+Authors@R: c( person(given = c("John", "C"), family = "Nash", role =
+        c("aut", "cre"), email = "nashjc@uottawa.ca"), person(given =
+        "Ravi", family = "Varadhan", role = "aut", email =
+        "RVaradhan@jhmi.edu"), person(given = "Gabor", family =
+        "Grothendieck", role = "ctb", email =
+        "ggrothendieck@gmail.com") )
+Author: John C Nash [aut, cre], Ravi Varadhan [aut], Gabor Grothendieck
+        [ctb]
+Maintainer: John C Nash <nashjc@uottawa.ca>
+Description: Provides a replacement and extension of the optim()
+        function to unify and streamline optimization capabilities in R
+        for smooth, possibly box constrained functions of several or
+        many parameters. This is the CRAN version of the package.
+License: GPL-2
+LazyLoad: Yes
+Imports: numDeriv, ucminf, BB, Rcgmin, Rvmmin, minqa, setRNG, dfoptim,
+        svUnit
+NeedsCompilation: no
+Repository: CRAN
+Date/Publication: 2014-11-13 08:42:46
+Packaged: 2014-11-12 16:21:57 UTC; john
+Built: R 3.5.1; ; 2018-11-08 10:00:08 UTC; windows
+
+-- File: C:/Users/mcbssgb2/R/win-library/3.5/optimx/Meta/package.rds 
+> library(Countr)
+> away_wei <- renewalCount(formula = awayTeamGoals ~ 1, data = football, dist = "weibull", weiMethod = "conv_dePril", computeHessian = FALSE, control = renewal.control(trace = 0, method = "nlminb") ) 
+> away_wei
+
+Call:
+renewalCount(formula = awayTeamGoals ~ 1, data = football, dist = "weibull", 
+    control = renewal.control(trace = 0, method = "nlminb"), 
+    weiMethod = "conv_dePril", computeHessian = FALSE)
+
+Count model coefficients (inter-arrival weibull with scale: link log, shape: link log):
+  scale_    shape_  
+ 0.08352  -0.17076  
+
+Log-likelihood: -4350.0879 on 2 Df
+> packageDescription("optimx")
+Package: optimx
+Version: 2013.8.7
+Date: 2013-08-07
+Title: A Replacement and Extension of the optim() Function
+Authors@R: c( person(given = c("John", "C"), family = "Nash", role =
+        c("aut", "cre"), email = "nashjc@uottawa.ca"), person(given =
+        "Ravi", family = "Varadhan", role = "aut", email =
+        "RVaradhan@jhmi.edu"), person(given = "Gabor", family =
+        "Grothendieck", role = "ctb", email =
+        "ggrothendieck@gmail.com") )
+Author: John C Nash [aut, cre], Ravi Varadhan [aut], Gabor Grothendieck
+        [ctb]
+Maintainer: John C Nash <nashjc@uottawa.ca>
+Description: Provides a replacement and extension of the optim()
+        function to unify and streamline optimization capabilities in R
+        for smooth, possibly box constrained functions of several or
+        many parameters. This is the CRAN version of the package.
+License: GPL-2
+LazyLoad: Yes
+Imports: numDeriv, ucminf, BB, Rcgmin, Rvmmin, minqa, setRNG, dfoptim,
+        svUnit
+NeedsCompilation: no
+Repository: CRAN
+Date/Publication: 2014-11-13 08:42:46
+Packaged: 2014-11-12 16:21:57 UTC; john
+Built: R 3.5.1; ; 2018-11-08 10:00:08 UTC; windows
+
+-- File: C:/Users/mcbssgb2/R/win-library/3.5/optimx/Meta/package.rds 
+> library("Countr")
+library("dplyr")
+library("xtable")
+D=matrix(c(1:9))
+Numb=matrix(c(15, 4, 5, 3, 1, 2, 1, 1, 1))
+Number=data.frame(Numb)
+a_weib <- renewalCount(formula = D ~ 1, data = Number, dist = "weibull", computeHessian = FALSE, control = renewal.control(trace = 0)
+library("Countr")
+> library("dplyr")
+
+Attaching package: 'dplyr'
+
+The following objects are masked from 'package:stats':
+
+    filter, lag
+
+The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union
+
+> library("xtable")
+> D=matrix(c(1:9))
+> Numb=matrix(c(15, 4, 5, 3, 1, 2, 1, 1, 1))
+> Number=data.frame(Numb)
+> a_weib <- renewalCount(formula = D ~ 1, data = Number, dist = "weibull", computeHessian = FALSE, control = renewal.control(trace = 0)
++ )
+> a_weib
+
+Call:
+renewalCount(formula = D ~ 1, data = Number, dist = "weibull", 
+    control = renewal.control(trace = 0), computeHessian = FALSE)
+
+Count model coefficients (inter-arrival weibull with scale: link log, shape: link log):
+ scale_   shape_  
+ 1.3438  -0.2194  
+
+Log-likelihood: -21.2192 on 2 Df
+> packageDescription("optimx")$Version
+[1] "2013.8.7"
+> 
+
+> Save workspace image? [y/n/c]: y
+
+Process R finished at Thu Nov  8 10:50:00 2018

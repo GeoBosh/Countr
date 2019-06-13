@@ -1,15 +1,14 @@
-.RData
-Countr_3.5.2.tar.gz 
-Countr_3.5.1.tar.gz 
-Countr_3.5.0.tar.gz 
-Countr_3.4.3.tar.gz 
-build/
-inst/jss_paper/
+*.tar.gz
+vignettes/*.tex
+jss.bst
+jss.cls
 
 ## Emacs
 .emacs.desktop
 .emacs.desktop.lock
 *~
+## AucTeX
+auto/
 
 ## README
 *0ReadMe*
@@ -20,10 +19,11 @@ inst/jss_paper/
 *.dll
 .Rproj.user
 .Rhistory
+.RData
 .project
 .settings/
-inst/doc/
-REFRENCES.bib
+build/
+#inst/doc/
 
 ## Core latex/pdflatex auxiliary files:
 *.aux
