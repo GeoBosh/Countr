@@ -395,7 +395,24 @@ renewalCount <- function(formula, data, subset, na.action, weights, offset,
     }
 
     ## arrange results by best (largest) value and then fastest
-    fitCount_ <- fitCount_[with(fitCount_, order(-value, xtimes)), ]
+    ## 2019-06-13 patch for issue#1; was:
+    ##     fitCount_ <- fitCount_[with(fitCount_, order(-value, xtimes)), ]
+    ##
+    ##     now sort on 'xtimes' only if it is present.
+    ##
+    ## TODO: Note that column 'xtimes' is not missing on Windows, it is just called 'xtime'.
+    ##       (Need to talk to the maintainer of optimx.)
+    ##
+    ## TODO: it would be better to get rid of the `with()` here...
+    wrk2 <- if("xtimes" %in% names(fitCount_))
+                with(fitCount_, order(-value, xtimes))
+            else if("xtime" %in% names(fitCount_))
+                with(fitCount_, order(-value, xtime))
+            else
+                with(fitCount_, order(-value))
+
+    fitCount_ <- fitCount_[wrk2, ]
+
     fitCount <- fitCount_[1, , drop = FALSE]
     class(fitCount) <- class(fitCount_)
     ## coefficients

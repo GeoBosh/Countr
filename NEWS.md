@@ -4,6 +4,9 @@
 
 - created pkgdown website.
 
+- dealt with 'xtimes' problem on Windows (issue#1: the data frame returned by
+  `optimx_2018-7.10` on Windows has a column `xtime` not `xtimes`).
+  
 
 # Countr 3.5.2 (CRAN)
 
