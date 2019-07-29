@@ -5,7 +5,7 @@
 The [latest stable version](https://cran.r-project.org/package=Countr) is on
 CRAN.
 
-    install_packages("Countr")
+    install.packages("Countr")
 
 You can install the [development version](https://github.com/GeoBosh/Countr) of
 `Countr` from Github:
