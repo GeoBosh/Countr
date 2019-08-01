@@ -1154,24 +1154,28 @@ predict.modelMat <- function(object, newdata, ...) {
     as.numeric(xList[[ind]])
 
 .checkHess <- function(hess, nPars) {
-    ans <- TRUE
-
-    if (is.null(hess))
-        return(FALSE)
-
-    if (any(is.na(hess)))
-        return(FALSE)
-
-    if (!is.matrix(hess))
-        return(FALSE)
-
-    if (ncol(hess) != nPars)
-        return(FALSE)
-
-    if (nrow(hess) != nPars)
-        return(FALSE)
-
-    return(ans)
+    ## 2019-08-01 was:
+    ##     ans <- TRUE
+    ##     
+    ##     if (is.null(hess))
+    ##         return(FALSE)
+    ##     
+    ##     if (any(is.na(hess)))
+    ##         return(FALSE)
+    ##     
+    ##     if (!is.matrix(hess))
+    ##         return(FALSE)
+    ##     
+    ##     if (ncol(hess) != nPars)
+    ##         return(FALSE)
+    ##     
+    ##     if (nrow(hess) != nPars)
+    ##         return(FALSE)
+    ##     
+    ##     return(ans)
+    
+    is.matrix(hess)  &&  ncol(hess) == nPars  && nrow(hess) == nPars  &&
+        all(!is.na(hess))
 }
 
 ## replace NA/NAN that appears in log-likelihood by logMin due to very small
