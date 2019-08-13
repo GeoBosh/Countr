@@ -32,7 +32,8 @@
 #'
 #' @details
 #'
-#' The methodology is described in the forthcoming paper Kharrat et al. (2018)
+#' The methodology is described in the forthcoming paper
+#' \insertCiteOnly{CountrJssArticle}{Countr}
 #' in the Journal of Statistical Software (included in the package as vignette
 #' \code{vignette('Countr_guide_paper', package = "Countr")}).
 #'
@@ -44,6 +45,9 @@
 #' \code{\link{chiSq_pearson}}.
 #'
 #' @references
+#'
+#' \insertRef{CountrJssArticle}{Countr}
+#' 
 #' \insertRef{baker2017event}{Countr}
 #'
 #' \insertRef{boshnakov2017bivariate}{Countr}

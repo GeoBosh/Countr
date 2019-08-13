@@ -44,6 +44,9 @@ default method.
 If object is from class \code{\link{renewalCoefList}}, its elements are
 simply concatenated in one long vector.
 }
+\references{
+\insertRef{CountrJssArticle}{Countr}
+}
 \seealso{
 renewalNames
 }

@@ -231,5 +231,7 @@ that the former is superior. For example (see below), gamModel < poisModel in
 3:1
 }
 \references{
+\insertRef{CountrJssArticle}{Countr}
+
 \insertRef{cameron2013regression}{Countr}
 }

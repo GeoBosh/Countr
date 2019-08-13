@@ -258,6 +258,9 @@ renewal <- function(...) {
 #' @importFrom MASS ginv
 #' @import optimx
 #' @references
+#'
+#' \insertRef{CountrJssArticle}{Countr}
+#' 
 #' \insertRef{cameron2013regression}{Countr}
 #'
 #' @export

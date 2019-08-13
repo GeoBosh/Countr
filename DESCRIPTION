@@ -2,7 +2,7 @@ Package: Countr
 Type: Package
 Title: Flexible Univariate Count Models Based on Renewal Processes
 Version: 3.5.3
-Date: 2019-08-01
+Date: 2019-08-13
 Authors@R: c( person(given = "Tarak", family = "Kharrat",
                      role = c("aut", "cre"), 
                      email = "Tarak.Kharrat@liverpool.ac.uk"),
@@ -13,7 +13,8 @@ Description: Flexible univariate count models based on renewal
     processes. The models may include covariates and can be specified
     with familiar formula syntax as in glm() and package 'flexsurv'.
     The methodology is described in a forthcoming paper in the Journal
-    of Statistical Software (included as vignette 'Countr_guide').
+    of Statistical Software <10.18637/jss.v090.i13> (included as
+    vignette 'Countr_guide' in the package).
 License: GPL (>= 2)
 URL: https://github.com/GeoBosh/Countr https://geobosh.github.io/Countr/
 BugReports: https://github.com/GeoBosh/Countr/issues
@@ -31,7 +32,7 @@ Imports:
     MASS,
     car,
     utils,
-    Rdpack,
+    Rdpack (>= 0.7-0),
     lattice,
     RColorBrewer,
     dplyr,

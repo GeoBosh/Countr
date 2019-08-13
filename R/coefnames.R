@@ -34,6 +34,10 @@
 #' @param ... further arguments to be passed to \code{renewalNames}, usually
 #'     something like \code{target = "weibull"}.
 #' @seealso renewalNames
+#'
+#' @references
+#' \insertRef{CountrJssArticle}{Countr}
+#' 
 #' @export
 renewalCoef <- function(object, ...) {
     UseMethod("renewalCoef", object)
