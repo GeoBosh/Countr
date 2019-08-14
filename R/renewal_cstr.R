@@ -254,6 +254,15 @@ renewal <- function(...) {
 #'     \item{x}{the model matrix (if \code{x = TRUE}).}
 #' }
 #'
+#' @examples
+#' \dontrun{
+#' ## may take some time to run depending on your CPU
+#' data(football)
+#' wei = renewalCount(formula = homeTeamGoals ~ 1,
+#'                     data = football, dist = "weibull", weiMethod = "series_acc",
+#'                     computeHessian = FALSE, control = renewal.control(trace = 0, 
+#'                     method = "nlminb")
+#' }
 #' @importFrom numDeriv hessian jacobian
 #' @importFrom MASS ginv
 #' @import optimx

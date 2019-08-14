@@ -230,6 +230,15 @@ them has mostly smaller values than the other, there is some reason to claim
 that the former is superior. For example (see below), gamModel < poisModel in
 3:1
 }
+\examples{
+\dontrun{
+data(football)
+wei = renewalCount(formula = homeTeamGoals ~ 1,
+                    data = football, dist = "weibull", weiMethod = "series_acc",
+                    computeHessian = FALSE, control = renewal.control(trace = 0, 
+                    method = "nlminb")
+}
+}
 \references{
 \insertRef{CountrJssArticle}{Countr}
 

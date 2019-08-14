@@ -674,7 +674,6 @@ predict.modelMat <- function(object, newdata, ...) {
                                Ev = FALSE, summa = TRUE,
                                seriesPars = NULL, weiMethod = NULL,
                                ..., log = FALSE, xMax = NULL) {
-
     ## check if Y is provided when Ev = TRUE
     if (!Ev) {
         if(is.null(Y))
