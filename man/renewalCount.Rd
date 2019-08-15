@@ -232,11 +232,12 @@ that the former is superior. For example (see below), gamModel < poisModel in
 }
 \examples{
 \dontrun{
+## may take some time to run depending on your CPU
 data(football)
 wei = renewalCount(formula = homeTeamGoals ~ 1,
                     data = football, dist = "weibull", weiMethod = "series_acc",
                     computeHessian = FALSE, control = renewal.control(trace = 0, 
-                    method = "nlminb")
+                    method = "nlminb"))
 }
 }
 \references{

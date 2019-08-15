@@ -6,7 +6,7 @@ library("Countr")
 library("lmtest")
 library("dplyr")
 library("xtable")
-library(BB) ## to run optimisation with spg algo
+library("BB")  # needed for optimisation with spg algo only
 
 # ----football data--------------------------------------------------------
 data("football", package = "Countr")

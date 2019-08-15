@@ -261,7 +261,7 @@ renewal <- function(...) {
 #' wei = renewalCount(formula = homeTeamGoals ~ 1,
 #'                     data = football, dist = "weibull", weiMethod = "series_acc",
 #'                     computeHessian = FALSE, control = renewal.control(trace = 0, 
-#'                     method = "nlminb")
+#'                     method = "nlminb"))
 #' }
 #' @importFrom numDeriv hessian jacobian
 #' @importFrom MASS ginv
