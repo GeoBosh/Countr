@@ -70,6 +70,9 @@ document is done in ~R~ \citep{Rcore} using the contributed package ~Countr~
 compare the weibull-count model to the standard Poisson ~glm~ and describe
 methods to select the best model and access the goodness of fit of the selected
 model.
+
+This vignette is part of package ~Countr~ \citep[see][]{CountrJssArticle}.
+
 #+END_abstract
 
 
