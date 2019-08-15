@@ -16,8 +16,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
@@ -69,7 +68,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fa fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -84,7 +83,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/GeoBosh/Countr">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fa fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -111,6 +110,8 @@
 <ul>
 <li><p>consolidation after the refactoring of the reposotory.</p></li>
 <li><p>created pkgdown website.</p></li>
+<li><p>dealt with ‘xtimes’ problem on Windows (issue<a href='https://github.com/GeoBosh/Countr/issues/1'>#1</a>: the data frame returned by <code>optimx_2018-7.10</code> on Windows has a column <code>xtime</code> not <code>xtimes</code>).</p></li>
+<li><p>a number of updates in connection of the forthcoming release of the JSS paper.</p></li>
 </ul>
 </div>
     <div id="countr-3-5-2-cran" class="section level1">
@@ -182,7 +183,7 @@
 <a href="#countr-3-2-8-2016-12-20" class="anchor"></a>Countr 3.2.8 (2016-12-20)<small> 2016-12-20 </small>
 </h1>
 <ul>
-<li>the call in the printout of renewal objects (and <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code>) could be very wide (annoying in Sweave output), now <code><a href="../reference/renewal_methods.html">print.renewal()</a></code> and <code><a href="../reference/renewal_methods.html">print.summary.renewal()</a></code> obey ‘width’ when possible (see helper function <code>.deparseCall()</code>).</li>
+<li>the call in the printout of renewal objects (and <code><a href="https://www.rdocumentation.org/packages/base/topics/summary">summary()</a></code>) could be very wide (annoying in Sweave output), now <code><a href="../reference/renewal_methods.html">print.renewal()</a></code> and <code><a href="../reference/renewal_methods.html">print.summary.renewal()</a></code> obey ‘width’ when possible (see helper function <code>.deparseCall()</code>).</li>
 <li>bugs corrected in <code><a href="../reference/renewal_methods.html">print.summary.renewal()</a></code> when failure to compute variance or residuals.</li>
 </ul>
 </div>
@@ -348,11 +349,11 @@
 </h1>
 <ul>
 <li>renamed <code>alphagen</code> to <code>alphagenOrig</code>.</li>
-<li>the signatures of the cpp functions now have namespace prefixes for namespaces other than Rcpp. In this way RcppExports.cpp does not need <code>using namespace   arma</code> which is not included by <code><a href="https://rdrr.io/pkg/Rcpp/man/compileAttributes.html">Rcpp::compileAttributes</a></code> and <code><a href="https://rdrr.io/pkg/devtools/man/test.html">devtools::test()</a></code> and so needed to be added manually after these calls.</li>
-</ul>
+<li>
+<p>the signatures of the cpp functions now have namespace prefixes for namespaces other than Rcpp. In this way RcppExports.cpp does not need <code>using namespace arma</code> which is not included by <code><a href="https://www.rdocumentation.org/packages/Rcpp/topics/compileAttributes">Rcpp::compileAttributes</a></code> and <code><a href="https://www.rdocumentation.org/packages/devtools/topics/test">devtools::test()</a></code> and so needed to be added manually after these calls.</p>
 <p>I actually used search and replace to replace occurences in the body of the functions in our cpp files, but since we can put the ‘using namespace’ directives in them, only the signatures of exported functions are important for the abovde purpose.</p>
-<ul>
-<li>replaced std::cout with calls to Rprintf() in C++ code, since direct printing from C++ inside R can cause problems (and is caught by R CMD check). Also removed &lt;iostream.</li>
+</li>
+<li><p>replaced std::cout with calls to Rprintf() in C++ code, since direct printing from C++ inside R can cause problems (and is caught by R CMD check). Also removed &lt;iostream.</p></li>
 </ul>
 </div>
   </div>
@@ -399,7 +400,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
 </div>
       </footer>
    </div>

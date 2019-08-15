@@ -16,8 +16,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
@@ -72,7 +71,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fa fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -87,7 +86,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/GeoBosh/Countr">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fa fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -115,7 +114,7 @@
     </div>
 
     <pre class="usage"><span class='fu'>renewalCount</span>(<span class='no'>formula</span>, <span class='no'>data</span>, <span class='no'>subset</span>, <span class='no'>na.action</span>, <span class='no'>weights</span>, <span class='no'>offset</span>,
-  <span class='kw'>dist</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"weibull"</span>, <span class='st'>"weibullgam"</span>, <span class='st'>"custom"</span>, <span class='st'>"gamma"</span>, <span class='st'>"gengamma"</span>),
+  <span class='kw'>dist</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"weibull"</span>, <span class='st'>"weibullgam"</span>, <span class='st'>"custom"</span>, <span class='st'>"gamma"</span>, <span class='st'>"gengamma"</span>),
   <span class='kw'>anc</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>convPars</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>link</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>time</span> <span class='kw'>=</span> <span class='fl'>1</span>,
   <span class='kw'>control</span> <span class='kw'>=</span> <span class='fu'><a href='renewal.control.html'>renewal.control</a></span>(<span class='no'>...</span>), <span class='kw'>customPars</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>seriesPars</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>weiMethod</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>computeHessian</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
@@ -212,7 +211,7 @@ matrix) be computed numerically at the fitted values.</p></td>
     <tr>
       <th>standardise</th>
       <td><p>logical should the covariates be standardised using
-<code><a href='https://rdrr.io/pkg/standardize/man/standardize.html'>standardize::standardize()</a></code> function.</p></td>
+<code><a href='https://www.rdocumentation.org/packages/standardize/topics/standardize'>standardize::standardize()</a></code> function.</p></td>
     </tr>
     <tr>
       <th>standardise_scale</th>
@@ -368,11 +367,25 @@ that the former is superior. For example (see below), gamModel &lt; poisModel in
     
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
-    <p>Cameron AC, Trivedi PK (2013).
+    <p>Kharrat T, Boshnakov GN, McHale I, Baker R (2019).
+&#8220;Flexible Regression Models for Count Data Based on Renewal Processes: The Countr Package.&#8221;
+<em>Journal of Statistical Software</em>, <b>90</b>(13), 1--35.
+doi: <a href='https://doi.org/10.18637/jss.v090.i13'>10.18637/jss.v090.i13</a>
+.</p>
+<p>Cameron AC, Trivedi PK (2013).
 <em>Regression analysis of count data</em>, volume 53.
 Cambridge university press.</p>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><span class='co'># NOT RUN {</span>
+<span class='co'>## may take some time to run depending on your CPU</span>
+<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>football</span>)
+<span class='no'>wei</span> <span class='kw'>=</span> <span class='fu'>renewalCount</span>(<span class='kw'>formula</span> <span class='kw'>=</span> <span class='no'>homeTeamGoals</span> ~ <span class='fl'>1</span>,
+                    <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>football</span>, <span class='kw'>dist</span> <span class='kw'>=</span> <span class='st'>"weibull"</span>, <span class='kw'>weiMethod</span> <span class='kw'>=</span> <span class='st'>"series_acc"</span>,
+                    <span class='kw'>computeHessian</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>control</span> <span class='kw'>=</span> <span class='fu'><a href='renewal.control.html'>renewal.control</a></span>(<span class='kw'>trace</span> <span class='kw'>=</span> <span class='fl'>0</span>,
+                    <span class='kw'>method</span> <span class='kw'>=</span> <span class='st'>"nlminb"</span>))
+<span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -384,7 +397,9 @@ Cambridge university press.</p>
       <li><a href="#details">Details</a></li>
 
       <li><a href="#references">References</a></li>
-          </ul>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>
@@ -395,7 +410,7 @@ Cambridge university press.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
 </div>
       </footer>
    </div>
