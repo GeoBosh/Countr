@@ -69,14 +69,14 @@
     "description"
     "enumerate")
    (LaTeX-add-labels
-    "sec:orgf5bff3a"
-    "sec:orge464bbd"
-    "sec:org59ef048"
-    "sec:orgbed4489"
-    "sec:orgb2f7206"
-    "sec:org2f252d8"
-    "sec:orgd3c8485"
-    "sec:orgb782043")
+    "sec:orgda29206"
+    "sec:org3832b1d"
+    "sec:orge516109"
+    "sec:org52445c5"
+    "sec:orgb23e441"
+    "sec:org3ce73a3"
+    "sec:orgc88e65d"
+    "sec:org62466dd")
    (LaTeX-add-bibliographies)
    (LaTeX-add-xcolor-definecolors
     "Red"

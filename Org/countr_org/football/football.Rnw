@@ -1,4 +1,4 @@
-% Created 2017-10-26 Thu 08:47
+% Created 2019-08-15 Thu 10:47
 % Intended LaTeX compiler: pdflatex
 \documentclass[a4paper,twoside,11pt]{article}
                               \usepackage[T1]{fontenc}
@@ -60,15 +60,15 @@
 \affil[1]{Salford Business School, University of Salford, UK.}
 \affil[2]{School of Mathematics, University of Manchester, UK.}
 \newcommand{\countr}{\texttt{Countr}\xspace}
-\date{}
+\date{\today}
 \title{Football data analysis\\\medskip
 \large An example with the \texttt{Countr} package.}
 \hypersetup{
- pdfauthor={tarak},
+ pdfauthor={},
  pdftitle={Football data analysis},
  pdfkeywords={},
  pdfsubject={},
- pdfcreator={Emacs 25.2.2 (Org mode 9.0.7)}, 
+ pdfcreator={Emacs 25.3.1 (Org mode 9.1.6)}, 
  pdflang={English}}
 \begin{document}
 
@@ -82,6 +82,8 @@ explain in this document why the renewal-count models should be preferred for
 football data. We hope that the development of the \texttt{Countr} package will
 encourage more data analyst to use renewal-count models, especially when
 investigating sports data.
+
+This vignette is part of package \texttt{Countr} \citep[see][]{CountrJssArticle}.
 \end{abstract}
 
 Before starting our analysis, we need to load the useful packages. On top of
@@ -92,7 +94,7 @@ library(dplyr)
 \end{verbatim}
 
 \section{Motivation}
-\label{sec:org850926f}
+\label{sec:orgda29206}
 
 As discussed in length in \citet[Chapter 4]{TarakPhd} or more briefly in
 \citet{boshnakov2017bivariate}, the main issue with the Poisson model when
@@ -110,7 +112,7 @@ document. Here we simply say that the weibull density seemed to provide the best
 fit and will be used in the rest of this study.
 
 \section{Comparing the Poisson and weibull models}
-\label{sec:orgb7bd33b}
+\label{sec:org3832b1d}
 
 Our aim here is not to conduct an extensive analysis of the data but simply to
 highlight the improvement introduced by the weibull-count model compared to
@@ -119,7 +121,7 @@ example.
 
 
 \subsection{Data}
-\label{sec:org0527ccf}
+\label{sec:orge516109}
 
 The \emph{football} dataset is shipped with the \texttt{Countr} package and can be loaded
 in the usual way by a call to the \texttt{data()} function:
@@ -148,8 +150,9 @@ away_wei <- renewalCount(formula = awayTeamGoals ~ 1, data = football,
 \end{verbatim}
 
 
+
 \subsection{Visual inspection}
-\label{sec:orgde6abc8}
+\label{sec:org52445c5}
 
 We start by investigating the distribution of goals and the associated fitted
 probabilities induced by both models. The away team rarely scores more than 4
@@ -172,6 +175,8 @@ frequency_plot(pears$Counts, pears$Actual,
 \includegraphics[width=.9\linewidth]{foot_hist.png}
 \end{center}
 
+
+
 As expected, the most likely outcome for away goals is 0, 1 and to some
 extent 2. Eyeballing, the weibull-count model is a clear improvement 
 over the Poisson model. Even of the other count values, it seems that the
@@ -180,44 +185,41 @@ findings will be confirmed formally in the next sections by running formal
 statistical tests.
 
 \subsection{Likelihood ratio test}
-\label{sec:org57999c1}
+\label{sec:orgb23e441}
 The Poisson model is a special case of the weibull-count with shape parameter
 set to 1. Therefore, the two models are nested and the likelihood ratio can be
 used to discriminate between them as explained in \citet[Chapter 6]{cameron2013regression}:
 \begin{verbatim}
 library(lmtest)
 lr <- lrtest(away_poiss, away_wei)
-print(lr)
+\end{verbatim}
+
+
+\begin{verbatim}
+lr
 \end{verbatim}
 
 \begin{verbatim}
-Loading required package: zoo
-
-Attaching package: ‘zoo’
-
-The following objects are masked from ‘package:base’:
-
-    as.Date, as.Date.numeric
-Warning message:
-In modelUpdate(objects[[i - 1]], objects[[i]]) :
-  original model was of class "glm", updated model is of class "renewal"
 Likelihood ratio test
 
 Model 1: awayTeamGoals ~ 1
 Model 2: awayTeamGoals ~ 1
-  #Df LogLik Df Chisq Pr(>Chisq)    
-1   1  -4364                        
-2   2  -4350  1  28.5    9.4e-08 ***
+  #Df  LogLik Df  Chisq Pr(>Chisq)    
+1   1 -4364.3                         
+2   2 -4350.1  1 28.484  9.448e-08 ***
 ---
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 \end{verbatim}
+
+
+
 
 The likelihood ratio test null hypothesis (both model present equal fits) is
 rejected at any convenience level and confirms that the Weibull addition
 induced by the shape parameter does improve the fitting.
 
 \subsection{Chi-square goodness-of-fit test}
-\label{sec:org89b0881}
+\label{sec:org3ce73a3}
 Finally, a formal chi-square goodness-of-fit test has been described in in
 \citet[Section 5.3.4]{cameron2013regression} and implemented in 
 \texttt{Countr::chiSq\_gof()}. It can be used to judge how well the weibull model
@@ -232,23 +234,24 @@ print(gof_wei)
 chi-square goodness-of-fit test
 
 Cells considered 0 1 2 3 4 >= 5
-  DF Chisq Pr(>Chisq)
-1  5  7.15       0.21
+  DF  Chisq Pr(>Chisq)
+1  5 7.1479     0.2099
 \end{verbatim}
+
 
 The test concludes that the null hypothesis cannot be rejected (and hence that
 the weibull-count model describes the data well). Note that the same statistic
 computed for the Poisson model yields a value \texttt{\texttt{formatC(gof\_pois[, 2])}} compared to \(\chi^2(5)\) critical value of
 \(9.24\) at 5\%. The Poisson model is hence strongly rejected.
 
-\label{sec:org0d6df21}
+\label{sec:orgc88e65d}
 We conclude this analysis by saving the work space to avoid re-running the
 computation in future exportation of the document:
 \begin{verbatim}
 save.image()
 \end{verbatim}
 
-\label{sec:org94e3bbf}
+\label{sec:org62466dd}
 \bibliographystyle{apalike}
-\bibliography{REFERENCES}
+\bibliography{football}
 \end{document}

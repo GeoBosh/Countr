@@ -70,19 +70,18 @@
     "description"
     "enumerate")
    (LaTeX-add-labels
-    "sec:orga5a3f6d"
-    "sec:org9e0589a"
+    "sec:org7a7364c"
+    "sec:orgf2afda2"
     "tab:quine:days"
-    "sec:orgd1e9d6d"
-    "sec:org084a744"
+    "sec:org8d598bb"
+    "sec:orgb7ea481"
     "tab:lr_pois"
     "tab:lr_gengam"
     "tab:ic_models"
-    "sec:org2626954"
-    "sec:orga3dd32d"
-    "sec:orgdf2f41b")
-   (LaTeX-add-bibliographies
-    "REFERENCES")
+    "sec:org8eb9aaa"
+    "sec:org6d61427"
+    "sec:orge8f4ccf")
+   (LaTeX-add-bibliographies)
    (LaTeX-add-xcolor-definecolors
     "Red"
     "NavyBlue"

@@ -2,6 +2,7 @@
 #+TITLE: Comparing the performance of computation methods
 #+SUBTITLE: an example with package ~Countr~ and the ~fertility~ data
 #+PROPERTY: header-args:R :cache yes :session perf-r :results value :exports both
+#+PROPERTY: header-args:R  :tangle ./perf.R 
 #+OPTIONS: author:nil
 #+OPTIONS: toc:nil
 #+INCLUDE:"../custom_packages.org"
@@ -21,6 +22,8 @@ here is based on the ~fertility~ data shipped with the package and the
 weibull-count model which allows using series based methods on top of the other
 convolution methods. More details about the different computation methods can be
 found in \citet{baker2017event}.
+
+This vignette is part of package ~Countr~ \citep[see][]{CountrJssArticle}.
 #+END_abstract
 
 

@@ -4,6 +4,7 @@
 #+TITLE: Computation of the variance-covariance matrix
 #+SUBTITLE: An example with the ~Countr~ package.
 #+PROPERTY: header-args:R :cache yes :session var-r :results output :exports both
+#+PROPERTY: header-args:R :tangle ./var_covar.R 
 #+LaTeX_CLASS: article_tarak
 #+OPTIONS: author:nil
 #+OPTIONS: toc:nil
@@ -26,6 +27,8 @@ variance-covariance matrix, which in turn can be used to derive standard errors
 and confidence intervals. The second option available in ~Countr~ is to use
 bootsrap \citep{efron1979bootstrap}. In this document, we give the user an
 overview of how to do to the computation in ~Countr~.
+
+This vignette is part of package ~Countr~ \citep[see][]{CountrJssArticle}.
 #+END_abstract
 
 Before starting our analysis, we need to load the useful packages. On top of
@@ -97,7 +100,7 @@ with the fertility data:
 #+NAME: gamma-model-var-asymptotic
 #+BEGIN_SRC R
 data(fertility)
-form <- children ~ german + years_school + voc_train + university + religion +
+form <- children ~ german + years_school + voc_train + university + Religion +
                    year_birth + rural + age_marriage
 gam <- renewalCount(formula = form, data = fertility, dist = "gamma",
                     computeHessian = TRUE, 
@@ -132,9 +135,9 @@ se
 #+RESULTS[75e0bcc1a6bd24e37fc281d49ba30785a83b3dca]: gamma-model-se
 :                   rate_          rate_germanyes       rate_years_school 
 :               0.2523375               0.0590399               0.0265014 
-:       rate_voc_trainyes      rate_universityyes   rate_religionCatholic 
+:       rate_voc_trainyes      rate_universityyes   rate_ReligionCatholic 
 :               0.0358390               0.1296149               0.0578032 
-:     rate_religionMuslim rate_religionProtestant         rate_year_birth 
+:     rate_ReligionMuslim rate_ReligionProtestant         rate_year_birth 
 :               0.0698429               0.0622954               0.0019471 
 :           rate_ruralyes       rate_age_marriage                  shape_ 
 :               0.0311876               0.0053274               0.0710611
@@ -153,9 +156,9 @@ rate_germanyes          -0.3054815 -0.0740495
 rate_years_school       -0.0202566  0.0836270
 rate_voc_trainyes       -0.2141792 -0.0736929
 rate_universityyes      -0.4000943  0.1079867
-rate_religionCatholic    0.0924771  0.3190616
-rate_religionMuslim      0.3857453  0.6595243
-rate_religionProtestant -0.0149604  0.2292330
+rate_ReligionCatholic    0.0924771  0.3190616
+rate_ReligionMuslim      0.3857453  0.6595243
+rate_ReligionProtestant -0.0149604  0.2292330
 rate_year_birth         -0.0014721  0.0061603
 rate_ruralyes           -0.0056353  0.1166177
 rate_age_marriage       -0.0392385 -0.0183553
@@ -246,16 +249,16 @@ print(xtable(varCovar, digits = -1, caption = capboot, label = "tab:varCovar"),
 \centering
 \begin{tabular}{rrrrrrrrrrrrr}
   \hline
- & \begin{sideways} rate\_ \end{sideways} & \begin{sideways} rate\_germanyes \end{sideways} & \begin{sideways} rate\_years\_school \end{sideways} & \begin{sideways} rate\_voc\_trainyes \end{sideways} & \begin{sideways} rate\_universityyes \end{sideways} & \begin{sideways} rate\_religionCatholic \end{sideways} & \begin{sideways} rate\_religionMuslim \end{sideways} & \begin{sideways} rate\_religionProtestant \end{sideways} & \begin{sideways} rate\_year\_birth \end{sideways} & \begin{sideways} rate\_ruralyes \end{sideways} & \begin{sideways} rate\_age\_marriage \end{sideways} & \begin{sideways} shape\_ \end{sideways} \\ 
+ & \begin{sideways} rate\_ \end{sideways} & \begin{sideways} rate\_germanyes \end{sideways} & \begin{sideways} rate\_years\_school \end{sideways} & \begin{sideways} rate\_voc\_trainyes \end{sideways} & \begin{sideways} rate\_universityyes \end{sideways} & \begin{sideways} rate\_ReligionCatholic \end{sideways} & \begin{sideways} rate\_ReligionMuslim \end{sideways} & \begin{sideways} rate\_ReligionProtestant \end{sideways} & \begin{sideways} rate\_year\_birth \end{sideways} & \begin{sideways} rate\_ruralyes \end{sideways} & \begin{sideways} rate\_age\_marriage \end{sideways} & \begin{sideways} shape\_ \end{sideways} \\ 
   \hline
 rate\_ & 7.3E-02 & 5.0E-03 & -5.7E-03 & 8.8E-04 & 1.7E-02 & -7.2E-04 & -3.5E-03 & -6.3E-04 & -1.8E-04 & -2.0E-03 & -3.6E-04 & 8.6E-03 \\ 
   rate\_germanyes & 5.0E-03 & 3.7E-03 & -7.0E-04 & -4.4E-04 & 1.8E-03 & -9.5E-04 & 1.2E-03 & -1.3E-03 & -3.9E-05 & -2.3E-04 & 6.8E-05 & 1.2E-05 \\ 
   rate\_years\_school & -5.7E-03 & -7.0E-04 & 7.2E-04 & -1.6E-04 & -2.3E-03 & -5.1E-05 & 1.4E-04 & -4.9E-05 & 5.6E-06 & 1.2E-04 & -1.9E-05 & 6.3E-05 \\ 
   rate\_voc\_trainyes & 8.8E-04 & -4.4E-04 & -1.6E-04 & 1.4E-03 & 1.7E-03 & 5.5E-05 & 2.1E-04 & 9.6E-06 & 9.9E-06 & 3.5E-04 & -3.0E-06 & 4.8E-04 \\ 
   rate\_universityyes & 1.7E-02 & 1.8E-03 & -2.3E-03 & 1.7E-03 & 1.6E-02 & 5.2E-04 & 5.0E-04 & 5.3E-04 & 3.1E-06 & 4.0E-04 & 3.1E-05 & 4.1E-04 \\ 
-  rate\_religionCatholic & -7.2E-04 & -9.5E-04 & -5.1E-05 & 5.5E-05 & 5.2E-04 & 3.2E-03 & 1.6E-03 & 2.8E-03 & -2.4E-06 & 2.1E-04 & -3.1E-05 & -6.7E-05 \\ 
-  rate\_religionMuslim & -3.5E-03 & 1.2E-03 & 1.4E-04 & 2.1E-04 & 5.0E-04 & 1.6E-03 & 4.7E-03 & 1.4E-03 & -1.8E-05 & 3.8E-04 & 1.8E-05 & 8.1E-05 \\ 
-  rate\_religionProtestant & -6.3E-04 & -1.3E-03 & -4.9E-05 & 9.6E-06 & 5.3E-04 & 2.8E-03 & 1.4E-03 & 3.7E-03 & 1.7E-06 & 1.9E-04 & -4.4E-05 & -2.3E-04 \\ 
+  rate\_ReligionCatholic & -7.2E-04 & -9.5E-04 & -5.1E-05 & 5.5E-05 & 5.2E-04 & 3.2E-03 & 1.6E-03 & 2.8E-03 & -2.4E-06 & 2.1E-04 & -3.1E-05 & -6.7E-05 \\ 
+  rate\_ReligionMuslim & -3.5E-03 & 1.2E-03 & 1.4E-04 & 2.1E-04 & 5.0E-04 & 1.6E-03 & 4.7E-03 & 1.4E-03 & -1.8E-05 & 3.8E-04 & 1.8E-05 & 8.1E-05 \\ 
+  rate\_ReligionProtestant & -6.3E-04 & -1.3E-03 & -4.9E-05 & 9.6E-06 & 5.3E-04 & 2.8E-03 & 1.4E-03 & 3.7E-03 & 1.7E-06 & 1.9E-04 & -4.4E-05 & -2.3E-04 \\ 
   rate\_year\_birth & -1.8E-04 & -3.9E-05 & 5.6E-06 & 9.9E-06 & 3.1E-06 & -2.4E-06 & -1.8E-05 & 1.7E-06 & 3.7E-06 & -2.1E-07 & -2.3E-06 & -2.4E-05 \\ 
   rate\_ruralyes & -2.0E-03 & -2.3E-04 & 1.2E-04 & 3.5E-04 & 4.0E-04 & 2.1E-04 & 3.8E-04 & 1.9E-04 & -2.1E-07 & 1.0E-03 & 1.3E-05 & 1.3E-04 \\ 
   rate\_age\_marriage & -3.6E-04 & 6.8E-05 & -1.9E-05 & -3.0E-06 & 3.1E-05 & -3.1E-05 & 1.8E-05 & -4.4E-05 & -2.3E-06 & 1.3E-05 & 3.0E-05 & 8.9E-05 \\ 
@@ -280,9 +283,9 @@ se_boot
 #+RESULTS[ab20eddcd420bf753e5a06924e4139077b39b448]: gamma-model-se-boot
 :                   rate_          rate_germanyes       rate_years_school 
 :               0.2705321               0.0610739               0.0268098 
-:       rate_voc_trainyes      rate_universityyes   rate_religionCatholic 
+:       rate_voc_trainyes      rate_universityyes   rate_ReligionCatholic 
 :               0.0375714               0.1257020               0.0564330 
-:     rate_religionMuslim rate_religionProtestant         rate_year_birth 
+:     rate_ReligionMuslim rate_ReligionProtestant         rate_year_birth 
 :               0.0684739               0.0608356               0.0019361 
 :           rate_ruralyes       rate_age_marriage                  shape_ 
 :               0.0322879               0.0054811               0.1133149
@@ -308,9 +311,9 @@ rate_germanyes          -0.3116866 -0.0722812
 rate_years_school       -0.0176548  0.0874376
 rate_voc_trainyes       -0.2211511 -0.0738740
 rate_universityyes      -0.4072628  0.0854802
-rate_religionCatholic    0.0985243  0.3197377
-rate_religionMuslim      0.3871631  0.6555759
-rate_religionProtestant -0.0133962  0.2250750
+rate_ReligionCatholic    0.0985243  0.3197377
+rate_ReligionMuslim      0.3871631  0.6555759
+rate_ReligionProtestant -0.0133962  0.2250750
 rate_year_birth         -0.0016933  0.0058961
 rate_ruralyes           -0.0098069  0.1167594
 rate_age_marriage       -0.0401915 -0.0187062
@@ -327,5 +330,5 @@ save.image()
 
 * Bibliography :ignoreheading:
 \bibliographystyle{apalike}
-\bibliography{REFERENCES}
+\bibliography{var_covar}
 

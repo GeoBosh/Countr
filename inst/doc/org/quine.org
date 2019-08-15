@@ -2,6 +2,7 @@
 #+TITLE: Model selection and comparison
 #+SUBTITLE: an example with package ~Countr~
 #+PROPERTY: header-args:R   :cache yes :session quine-r :results value :exports both
+#+PROPERTY: header-args:R  :tangle ./quine.R 
 #+OPTIONS: author:nil
 #+OPTIONS: toc:nil
 #+INCLUDE:"../custom_packages.org"
@@ -21,6 +22,8 @@ count models. The computation described in this document is done in ~R~
 the ~quine~ data shipped with the ~MASS~ package \citep{Venables20102MASS}. The
 ideas used here are inspired by the demand for medical care example detailed in
 \citet[Section 6.3]{cameron2013regression}. 
+
+This vignette is part of package ~Countr~ \citep[see][]{CountrJssArticle}.
 #+END_abstract
 
 

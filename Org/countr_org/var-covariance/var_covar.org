@@ -27,6 +27,8 @@ variance-covariance matrix, which in turn can be used to derive standard errors
 and confidence intervals. The second option available in ~Countr~ is to use
 bootsrap \citep{efron1979bootstrap}. In this document, we give the user an
 overview of how to do to the computation in ~Countr~.
+
+This vignette is part of package ~Countr~ \citep[see][]{CountrJssArticle}.
 #+END_abstract
 
 Before starting our analysis, we need to load the useful packages. On top of
@@ -328,5 +330,5 @@ save.image()
 
 * Bibliography :ignoreheading:
 \bibliographystyle{apalike}
-\bibliography{REFERENCES}
+\bibliography{var_covar}
 

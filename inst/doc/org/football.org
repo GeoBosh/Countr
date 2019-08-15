@@ -4,6 +4,7 @@
 #+TITLE: Football data analysis 
 #+SUBTITLE: An example with the ~Countr~ package.
 #+PROPERTY: header-args:R :cache yes :session foot-r :results output :exports both
+#+PROPERTY: header-args:R  :tangle ./football.R 
 #+LaTeX_CLASS: article_tarak
 #+OPTIONS: author:nil
 #+OPTIONS: toc:nil
@@ -23,6 +24,8 @@ explain in this document why the renewal-count models should be preferred for
 football data. We hope that the development of the ~Countr~ package will
 encourage more data analyst to use renewal-count models, especially when
 investigating sports data.
+
+This vignette is part of package ~Countr~ \citep[see][]{CountrJssArticle}.
 #+END_abstract
 
 Before starting our analysis, we need to load the useful packages. On top of

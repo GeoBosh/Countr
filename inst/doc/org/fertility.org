@@ -2,6 +2,7 @@
 #+TITLE: Fertility Data
 #+SUBTITLE: Extensive Analysis
 #+PROPERTY: header-args:R   :cache yes :session fertility-r :results value :exports both
+#+PROPERTY: header-args:R  :tangle ./fertility.R
 #+OPTIONS: author:nil
 #+OPTIONS: toc:nil
 #+INCLUDE:"../custom_packages.org"
@@ -69,6 +70,9 @@ document is done in ~R~ \citep{Rcore} using the contributed package ~Countr~
 compare the weibull-count model to the standard Poisson ~glm~ and describe
 methods to select the best model and access the goodness of fit of the selected
 model.
+
+This vignette is part of package ~Countr~ \citep[see][]{CountrJssArticle}.
+
 #+END_abstract
 
 
@@ -97,7 +101,7 @@ we are thankful to Blake McShane for sharing it with us.
 We changed somewhat the
 format of the columns by replacing dummy variables with factor variables and
 renaming them. For example, the dummy variables for the different religions are
-replaced by a single variable ~"religion"~, a factor with levels Other,
+replaced by a single variable ~"Religion"~, a factor with levels Other,
 Catholic, Muslim and Protestant. 
 These reformatted data are shipped with package ~Countr~ and can
 be loaded in the usual way:
@@ -121,7 +125,7 @@ print(xtable(head(fertility), caption = dataCaption, label = "tbl:data"),
 \centering
 \begin{tabular}{rrlrlllrlr}
   \hline
- & \begin{sideways} children \end{sideways} & \begin{sideways} german \end{sideways} & \begin{sideways} years\_school \end{sideways} & \begin{sideways} voc\_train \end{sideways} & \begin{sideways} university \end{sideways} & \begin{sideways} religion \end{sideways} & \begin{sideways} year\_birth \end{sideways} & \begin{sideways} rural \end{sideways} & \begin{sideways} age\_marriage \end{sideways} \\ 
+ & \begin{sideways} children \end{sideways} & \begin{sideways} german \end{sideways} & \begin{sideways} years\_school \end{sideways} & \begin{sideways} voc\_train \end{sideways} & \begin{sideways} university \end{sideways} & \begin{sideways} Religion \end{sideways} & \begin{sideways} year\_birth \end{sideways} & \begin{sideways} rural \end{sideways} & \begin{sideways} age\_marriage \end{sideways} \\ 
   \hline
 1 &   2 & no &   8 & no & no & Other &  42 & yes &  20 \\ 
   2 &   3 & no &   8 & no & no & Other &  55 & yes &  21 \\ 
@@ -218,7 +222,7 @@ print(xtable(fert_factor, caption = "Summary of the factor variables", label = "
 \centering
 \begin{tabular}{rlllll}
   \hline
- & german & voc\_train & university &  religion & rural \\ 
+ & german & voc\_train & university &       Religion & rural \\ 
   \hline
 1 & no :245   & no :704   & no :1207   & Other     :130   & no :613   \\ 
   2 & yes:998   & yes:539   & yes:  36   & Catholic  :502   & yes:630   \\ 
@@ -271,7 +275,7 @@ The benchmark for this data set is the Poisson ~glm~. It can be fitted in the
 usual way using the ~glm()~ function.
 #+NAME: poisson-model
 #+BEGIN_SRC R  :results output
-form <- children ~ german + years_school + voc_train + university + religion +
+form <- children ~ german + years_school + voc_train + university + Religion +
     year_birth + rural + age_marriage
 pois <- glm(formula = form, data = fertility, family = poisson())
 summary(pois)
@@ -295,9 +299,9 @@ germanyes          -0.200362   0.072135  -2.778 0.005476 **
 years_school        0.033506   0.032455   1.032 0.301901    
 voc_trainyes       -0.152776   0.043856  -3.484 0.000495 ***
 universityyes      -0.154830   0.158779  -0.975 0.329498    
-religionCatholic    0.218038   0.070716   3.083 0.002047 ** 
-religionMuslim      0.547571   0.085039   6.439 1.20e-10 ***
-religionProtestant  0.113410   0.076272   1.487 0.137038    
+ReligionCatholic    0.218038   0.070716   3.083 0.002047 ** 
+ReligionMuslim      0.547571   0.085039   6.439 1.20e-10 ***
+ReligionProtestant  0.113410   0.076272   1.487 0.137038    
 year_birth          0.002418   0.002383   1.015 0.310213    
 ruralyes            0.059072   0.038120   1.550 0.121224    
 age_marriage       -0.030446   0.006510  -4.677 2.91e-06 ***
@@ -350,7 +354,7 @@ default algorithm and the ~PORT~ optimisation routine (\code{nlminb}).
 
 #+NAME: weibull-model
 #+BEGIN_SRC R :results output
-form <- children ~ german + years_school + voc_train + university + religion +
+form <- children ~ german + years_school + voc_train + university + Religion +
     year_birth + rural + age_marriage
 wei <- renewalCount(formula = form, data = fertility, dist = "weibull",
                     weiMethod = "conv_dePril",
@@ -380,9 +384,9 @@ scale_germanyes          -0.222547   0.072208  -3.082 0.002056 **
 scale_years_school        0.038533   0.032604   1.182 0.237269    
 scale_voc_trainyes       -0.173348   0.043996  -3.940 8.15e-05 ***
 scale_universityyes      -0.181454   0.159394  -1.138 0.254953    
-scale_religionCatholic    0.241996   0.070708   3.422 0.000621 ***
-scale_religionMuslim      0.638743   0.086420   7.391 1.46e-13 ***
-scale_religionProtestant  0.123141   0.076195   1.616 0.106064    
+scale_ReligionCatholic    0.241996   0.070708   3.422 0.000621 ***
+scale_ReligionMuslim      0.638743   0.086420   7.391 1.46e-13 ***
+scale_ReligionProtestant  0.123141   0.076195   1.616 0.106064    
 scale_year_birth          0.002305   0.002383   0.967 0.333439    
 scale_ruralyes            0.068059   0.038169   1.783 0.074570 .  
 scale_age_marriage       -0.034026   0.006537  -5.205 1.94e-07 ***
@@ -505,7 +509,7 @@ value, the user can use the following code:
 
 #+NAME: weibull-model-t-test
 #+BEGIN_SRC R :results value silent
-form <- children ~ german + years_school + voc_train + university + religion +
+form <- children ~ german + years_school + voc_train + university + Religion +
                    year_birth + rural + age_marriage
 wei <- renewalCount(formula = form, data = fertility, dist = "weibull",
                     control = renewal.control(trace = 0, method = "nlminb")
@@ -567,9 +571,9 @@ lrtest(pois, wei)
 [1] "7.794"
 Likelihood ratio test
 
-Model 1: children ~ german + years_school + voc_train + university + religion + 
+Model 1: children ~ german + years_school + voc_train + university + Religion + 
     year_birth + rural + age_marriage
-Model 2: children ~ german + years_school + voc_train + university + religion + 
+Model 2: children ~ german + years_school + voc_train + university + Religion + 
     year_birth + rural + age_marriage
   #Df  LogLik Df  Chisq Pr(>Chisq)    
 1  11 -2101.8                         
@@ -615,7 +619,7 @@ also been merged.
 
 #+NAME: compare-glm
 #+BEGIN_SRC R :results output latex
-form <- children ~ german + years_school + voc_train + university + religion +
+form <- children ~ german + years_school + voc_train + university + Religion +
     year_birth + rural + age_marriage
 pois <- glm(formula = form, data = fertility, family = poisson())
 wei <- renewalCount(formula = form, data = fertility, dist = "weibull",
@@ -702,7 +706,7 @@ parameters estimated is based on maximum-likelihood.
 
 #+NAME: go-f
 #+BEGIN_SRC R :results output
-  form <- children ~ german + years_school + voc_train + university + religion +
+  form <- children ~ german + years_school + voc_train + university + Religion +
       year_birth + rural + age_marriage
   wei <- renewalCount(formula = form, data = fertility, dist = "weibull",
                       control = renewal.control(trace = 0, method = "nlminb")
