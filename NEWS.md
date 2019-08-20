@@ -1,3 +1,7 @@
+# Countr 3.5.4 (CRAN)
+
+- fixed wrong links in inst/doc/index.html.
+
 # Countr 3.5.3
 
 - consolidation after the refactoring of the reposotory.
