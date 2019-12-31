@@ -1,3 +1,6 @@
+joineRML <img src="inst/images/CountR.png" width = "175" height = "200" align="right" />
+=====================================================================================
+
 [![CRANStatusBadge](http://www.r-pkg.org/badges/version/Countr)](https://cran.r-project.org/package=Countr)
 
 # Installing Countr
