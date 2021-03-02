@@ -1,3 +1,10 @@
+# Countr 3.5.5 (CRAN)
+
+- changed maintainer.
+
+- fixed a doi reference in DESCRIPTION to be in proper format.
+
+
 # Countr 3.5.4 (CRAN)
 
 - fixed wrong links in inst/doc/index.html.
