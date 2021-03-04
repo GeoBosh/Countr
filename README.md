@@ -1,4 +1,7 @@
+<!-- badges: start -->
 [![CRANStatusBadge](http://www.r-pkg.org/badges/version/Countr)](https://cran.r-project.org/package=Countr)
+[![R-CMD-check](https://github.com/GeoBosh/Countr/workflows/R-CMD-check/badge.svg)](https://github.com/GeoBosh/Countr/actions)
+<!-- badges: end -->
 
 # Installing Countr
 
