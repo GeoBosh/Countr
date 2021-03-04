@@ -1,3 +1,8 @@
+# Countr 3.5.6
+
+- switched from travisci to github actions.
+
+
 # Countr 3.5.5 (CRAN)
 
 - changed maintainer.
