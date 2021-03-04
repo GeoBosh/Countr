@@ -11,3 +11,5 @@ README_devel.md
 ^auto$
 [^/]*[.]Rout$
 ^sav[0-9]*[.]Rhistory
+^\.github$
+^codecov\.yml$
