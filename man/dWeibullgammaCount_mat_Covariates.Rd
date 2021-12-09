@@ -5,8 +5,17 @@
 \title{Univariate Weibull Count Probability with gamma and
 covariate heterogeneity}
 \usage{
-dWeibullgammaCount_mat_Covariates(x, cc, r, alpha, Xcovar, beta, t = 1,
-  logFlag = FALSE, jmax = 100L)
+dWeibullgammaCount_mat_Covariates(
+  x,
+  cc,
+  r,
+  alpha,
+  Xcovar,
+  beta,
+  t = 1,
+  logFlag = FALSE,
+  jmax = 100L
+)
 }
 \arguments{
 \item{x, cc, t, logFlag, jmax}{TODO

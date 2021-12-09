@@ -5,11 +5,19 @@
 \alias{dWeibullCount_acc}
 \title{Univariate Weibull Count Probability}
 \usage{
-dWeibullCount_mat(x, shape, scale, time = 1, logFlag = FALSE,
-  jmax = 50L)
+dWeibullCount_mat(x, shape, scale, time = 1, logFlag = FALSE, jmax = 50L)
 
-dWeibullCount_acc(x, shape, scale, time = 1, logFlag = FALSE,
-  jmax = 50L, nmax = 300L, eps = 1e-10, printa = FALSE)
+dWeibullCount_acc(
+  x,
+  shape,
+  scale,
+  time = 1,
+  logFlag = FALSE,
+  jmax = 50L,
+  nmax = 300L,
+  eps = 1e-10,
+  printa = FALSE
+)
 }
 \arguments{
 \item{x}{integer (vector), the desired count values.}

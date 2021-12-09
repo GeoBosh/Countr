@@ -4,8 +4,14 @@
 \alias{renewal.control}
 \title{Creates the renewal control list}
 \usage{
-renewal.control(method = "nlminb", maxit = 1000, trace = 1,
-  start = NULL, kkt = FALSE, ...)
+renewal.control(
+  method = "nlminb",
+  maxit = 1000,
+  trace = 1,
+  start = NULL,
+  kkt = FALSE,
+  ...
+)
 }
 \arguments{
 \item{method}{character, one or more of the optimization methods accepted by

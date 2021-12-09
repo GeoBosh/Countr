@@ -4,7 +4,8 @@
 \name{fertility}
 \alias{fertility}
 \title{Fertility data}
-\format{A data frame with 9 variables (5 factors, 4 integers) and 1243 observations:
+\format{
+A data frame with 9 variables (5 factors, 4 integers) and 1243 observations:
 \describe{
 \item{\code{children}}{integer; response variable: number of children
 per woman (integer).}
@@ -19,7 +20,8 @@ or Others (reference).}
 \item{\code{age_marriage}}{integer; age at marriage}
 }
 
-For further details, see Winlemann(1995).}
+For further details, see Winlemann(1995).
+}
 \usage{
 fertility
 }

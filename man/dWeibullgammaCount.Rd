@@ -7,27 +7,68 @@
 \alias{evWeibullgammaCount}
 \title{Fast Univariate Weibull Count Probability with gamma heterogeneity}
 \usage{
-dWeibullgammaCount_acc(x, shape, r, alpha, time = 1, logFlag = FALSE,
-  jmax = 100L, nmax = 300L, eps = 1e-10, printa = FALSE)
+dWeibullgammaCount_acc(
+  x,
+  shape,
+  r,
+  alpha,
+  time = 1,
+  logFlag = FALSE,
+  jmax = 100L,
+  nmax = 300L,
+  eps = 1e-10,
+  printa = FALSE
+)
 
-dWeibullgammaCount(x, shape, shapeGam, scaleGam, Xcovar = NULL,
-  beta = NULL, method = c("series_acc", "series_mat"), time = 1,
-  log = FALSE, series_terms = 50, series_acc_niter = 300,
-  series_acc_eps = 1e-10)
+dWeibullgammaCount(
+  x,
+  shape,
+  shapeGam,
+  scaleGam,
+  Xcovar = NULL,
+  beta = NULL,
+  method = c("series_acc", "series_mat"),
+  time = 1,
+  log = FALSE,
+  series_terms = 50,
+  series_acc_niter = 300,
+  series_acc_eps = 1e-10
+)
 
-dWeibullgammaCount_loglik(x, shape, shapeGam, scaleGam, Xcovar = NULL,
-  beta = NULL, method = c("series_acc", "series_mat"), time = 1,
-  na.rm = TRUE, series_terms = 50, series_acc_niter = 300,
-  series_acc_eps = 1e-10, weights = NULL)
+dWeibullgammaCount_loglik(
+  x,
+  shape,
+  shapeGam,
+  scaleGam,
+  Xcovar = NULL,
+  beta = NULL,
+  method = c("series_acc", "series_mat"),
+  time = 1,
+  na.rm = TRUE,
+  series_terms = 50,
+  series_acc_niter = 300,
+  series_acc_eps = 1e-10,
+  weights = NULL
+)
 
-evWeibullgammaCount(xmax, shape, shapeGam, scaleGam, Xcovar = NULL,
-  beta = NULL, method = c("series_acc", "series_mat"), time = 1,
-  series_terms = 50, series_acc_niter = 300, series_acc_eps = 1e-10)
+evWeibullgammaCount(
+  xmax,
+  shape,
+  shapeGam,
+  scaleGam,
+  Xcovar = NULL,
+  beta = NULL,
+  method = c("series_acc", "series_mat"),
+  time = 1,
+  series_terms = 50,
+  series_acc_niter = 300,
+  series_acc_eps = 1e-10
+)
 }
 \arguments{
 \item{x}{integer (vector), the desired count values.}
 
-\item{shape}{numeric, shape parameter.}
+\item{shape}{numeric (length 1), shape parameter of the Weibull count.}
 
 \item{r}{numeric shape of the gamma distribution}
 
@@ -76,12 +117,6 @@ probaility; default = \code{TRUE}.}
 be applied.}
 
 \item{xmax}{unsigned integer, maximum count to be used.}
-
-\item{shape}{numeric (length 1), shape parameter of the Weibull count.}
-
-\item{x}{integer (vector), the desired count values.}
-
-\item{time}{double, length of the observation window (defaults to 1).}
 }
 \value{
 for \code{dWeibullgammaCount}, a vector of probabilities

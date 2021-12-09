@@ -6,21 +6,47 @@
 \alias{evWeibullCount}
 \title{Probability calculations for Weibull count models}
 \usage{
-dWeibullCount(x, shape, scale, method = c("series_acc", "series_mat",
-  "conv_direct", "conv_naive", "conv_dePril"), time = 1, log = FALSE,
-  conv_steps = 100, conv_extrap = TRUE, series_terms = 50,
-  series_acc_niter = 300, series_acc_eps = 1e-10)
+dWeibullCount(
+  x,
+  shape,
+  scale,
+  method = c("series_acc", "series_mat", "conv_direct", "conv_naive", "conv_dePril"),
+  time = 1,
+  log = FALSE,
+  conv_steps = 100,
+  conv_extrap = TRUE,
+  series_terms = 50,
+  series_acc_niter = 300,
+  series_acc_eps = 1e-10
+)
 
-dWeibullCount_loglik(x, shape, scale, method = c("series_acc",
-  "series_mat", "conv_direct", "conv_naive", "conv_dePril"), time = 1,
-  na.rm = TRUE, conv_steps = 100, conv_extrap = TRUE,
-  series_terms = 50, series_acc_niter = 300, series_acc_eps = 1e-10,
-  weights = NULL)
+dWeibullCount_loglik(
+  x,
+  shape,
+  scale,
+  method = c("series_acc", "series_mat", "conv_direct", "conv_naive", "conv_dePril"),
+  time = 1,
+  na.rm = TRUE,
+  conv_steps = 100,
+  conv_extrap = TRUE,
+  series_terms = 50,
+  series_acc_niter = 300,
+  series_acc_eps = 1e-10,
+  weights = NULL
+)
 
-evWeibullCount(xmax, shape, scale, method = c("series_acc", "series_mat",
-  "conv_direct", "conv_naive", "conv_dePril"), time = 1,
-  conv_steps = 100, conv_extrap = TRUE, series_terms = 50,
-  series_acc_niter = 300, series_acc_eps = 1e-10)
+evWeibullCount(
+  xmax,
+  shape,
+  scale,
+  method = c("series_acc", "series_mat", "conv_direct", "conv_naive", "conv_dePril"),
+  time = 1,
+  conv_steps = 100,
+  conv_extrap = TRUE,
+  series_terms = 50,
+  series_acc_niter = 300,
+  series_acc_eps = 1e-10
+)
 }
 \arguments{
 \item{x}{integer (vector), the desired count values.}

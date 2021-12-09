@@ -5,11 +5,28 @@
 \alias{dCount_naive_user}
 \title{Compute count probabilities using naive convolution (bi)}
 \usage{
-dCount_naive_bi(x, distPars, dist, nsteps = 100L, time = 1,
-  extrap = TRUE, cdfout = FALSE, logFlag = FALSE)
+dCount_naive_bi(
+  x,
+  distPars,
+  dist,
+  nsteps = 100L,
+  time = 1,
+  extrap = TRUE,
+  cdfout = FALSE,
+  logFlag = FALSE
+)
 
-dCount_naive_user(x, distPars, extrapolPars, survR, nsteps = 100L,
-  time = 1, extrap = TRUE, cdfout = FALSE, logFlag = FALSE)
+dCount_naive_user(
+  x,
+  distPars,
+  extrapolPars,
+  survR,
+  nsteps = 100L,
+  time = 1,
+  extrap = TRUE,
+  cdfout = FALSE,
+  logFlag = FALSE
+)
 }
 \arguments{
 \item{cdfout}{logical if \code{TRUE}, the cdf will be returned instead of

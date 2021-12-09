@@ -5,11 +5,26 @@
 \alias{dCount_allProbs_user}
 \title{Compute count probabilities using simple convolution}
 \usage{
-dCount_allProbs_bi(x, distPars, dist, nsteps = 100L, time = 1,
-  extrap = TRUE, logFlag = FALSE)
+dCount_allProbs_bi(
+  x,
+  distPars,
+  dist,
+  nsteps = 100L,
+  time = 1,
+  extrap = TRUE,
+  logFlag = FALSE
+)
 
-dCount_allProbs_user(x, distPars, extrapolPars, survR, nsteps = 100L,
-  time = 1, extrap = TRUE, logFlag = FALSE)
+dCount_allProbs_user(
+  x,
+  distPars,
+  extrapolPars,
+  survR,
+  nsteps = 100L,
+  time = 1,
+  extrap = TRUE,
+  logFlag = FALSE
+)
 }
 \arguments{
 \item{x}{integer (vector), the desired count values.}

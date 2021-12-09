@@ -4,13 +4,30 @@
 \alias{renewalCount}
 \title{Fit renewal count processes regression models}
 \usage{
-renewalCount(formula, data, subset, na.action, weights, offset,
+renewalCount(
+  formula,
+  data,
+  subset,
+  na.action,
+  weights,
+  offset,
   dist = c("weibull", "weibullgam", "custom", "gamma", "gengamma"),
-  anc = NULL, convPars = NULL, link = NULL, time = 1,
-  control = renewal.control(...), customPars = NULL,
-  seriesPars = NULL, weiMethod = NULL, computeHessian = TRUE,
-  standardise = FALSE, standardise_scale = 1, model = TRUE,
-  y = TRUE, x = FALSE, ...)
+  anc = NULL,
+  convPars = NULL,
+  link = NULL,
+  time = 1,
+  control = renewal.control(...),
+  customPars = NULL,
+  seriesPars = NULL,
+  weiMethod = NULL,
+  computeHessian = TRUE,
+  standardise = FALSE,
+  standardise_scale = 1,
+  model = TRUE,
+  y = TRUE,
+  x = FALSE,
+  ...
+)
 }
 \arguments{
 \item{formula}{a formula object. If it is a standard formula object, the left
@@ -178,6 +195,7 @@ it is not necessary to repeat the rhs. For example, \code{Y | shape ~ x + y}
 is equivalent to \code{Y | shape ~ x + y | x + y}. Note that this is applied
 only to parameters listed on the lhs, so \code{Y ~ x + y} specifies
 covariates only for the response variable and not any other parameters.
+
 
 Distributions for inter-arrival times supported internally by this package
 can be chosen by setting argument \code{"dist"} to a suitable character

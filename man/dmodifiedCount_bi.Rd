@@ -5,12 +5,32 @@
 \alias{dmodifiedCount_user}
 \title{Compute count probabilities based on modified renewal process (bi)}
 \usage{
-dmodifiedCount_bi(x, distPars, dist, distPars0, dist0, nsteps = 100L,
-  time = 1, extrap = TRUE, cdfout = FALSE, logFlag = FALSE)
+dmodifiedCount_bi(
+  x,
+  distPars,
+  dist,
+  distPars0,
+  dist0,
+  nsteps = 100L,
+  time = 1,
+  extrap = TRUE,
+  cdfout = FALSE,
+  logFlag = FALSE
+)
 
-dmodifiedCount_user(x, distPars, survR, distPars0, survR0, extrapolPars,
-  nsteps = 100L, time = 1, extrap = TRUE, cdfout = FALSE,
-  logFlag = FALSE)
+dmodifiedCount_user(
+  x,
+  distPars,
+  survR,
+  distPars0,
+  survR0,
+  extrapolPars,
+  nsteps = 100L,
+  time = 1,
+  extrap = TRUE,
+  cdfout = FALSE,
+  logFlag = FALSE
+)
 }
 \arguments{
 \item{x}{integer (vector), the desired count values.}

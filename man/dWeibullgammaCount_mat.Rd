@@ -4,8 +4,15 @@
 \alias{dWeibullgammaCount_mat}
 \title{Univariate Weibull Count Probability with gamma heterogeneity}
 \usage{
-dWeibullgammaCount_mat(x, shape, r, alpha, time = 1, logFlag = FALSE,
-  jmax = 100L)
+dWeibullgammaCount_mat(
+  x,
+  shape,
+  r,
+  alpha,
+  time = 1,
+  logFlag = FALSE,
+  jmax = 100L
+)
 }
 \arguments{
 \item{r, alpha}{double gamma parameters}

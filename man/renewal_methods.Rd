@@ -23,24 +23,31 @@
 
 \method{vcov}{renewal}(object, ...)
 
-\method{residuals}{renewal}(object, type = c("pearson", "response",
-  "prob"), ...)
+\method{residuals}{renewal}(object, type = c("pearson", "response", "prob"), ...)
 
-\method{residuals_plot}{renewal}(object, type = c("pearson", "response",
-  "prob"), ...)
+\method{residuals_plot}{renewal}(object, type = c("pearson", "response", "prob"), ...)
 
 \method{fitted}{renewal}(object, ...)
 
-\method{confint}{renewal}(object, parm, level = 0.95,
-  type = c("asymptotic", "boot"), bootType = c("norm", "bca", "basic",
-  "perc"), ...)
+\method{confint}{renewal}(
+  object,
+  parm,
+  level = 0.95,
+  type = c("asymptotic", "boot"),
+  bootType = c("norm", "bca", "basic", "perc"),
+  ...
+)
 
 \method{summary}{renewal}(object, ...)
 
 \method{print}{renewal}(x, digits = max(3, getOption("digits") - 3), ...)
 
-\method{print}{summary.renewal}(x, digits = max(3, getOption("digits") -
-  3), width = getOption("width"), ...)
+\method{print}{summary.renewal}(
+  x,
+  digits = max(3, getOption("digits") - 3),
+  width = getOption("width"),
+  ...
+)
 
 \method{model.matrix}{renewal}(object, ...)
 

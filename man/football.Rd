@@ -4,14 +4,16 @@
 \name{football}
 \alias{football}
 \title{Football data}
-\format{a data.frame with 6 columns and 1104 observations:
+\format{
+a data.frame with 6 columns and 1104 observations:
 \describe{
 \item{\code{seasonId}}{integer season identifier (year of the first month of competition).}
 \item{\code{gameDate}}{POSIXct game date and time.}
 \item{\code{homeTeam,awayTeam}}{character home and away team name}.
 \item{\code{homeTeamGoals,awayTeamGoals}}{integer number of goals scored by the home
 and the away team.}
-}}
+}
+}
 \usage{
 football
 }

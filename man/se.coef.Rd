@@ -7,8 +7,7 @@
 \usage{
 se.coef(object, parm, type, ...)
 
-\method{se.coef}{renewal}(object, parm, type = c("asymptotic", "boot"),
-  ...)
+\method{se.coef}{renewal}(object, parm, type = c("asymptotic", "boot"), ...)
 }
 \arguments{
 \item{object}{object returned by one of the count-modeling functions}
