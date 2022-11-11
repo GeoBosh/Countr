@@ -230,7 +230,6 @@ fitted.renewal <- function (object, ...) {
 #' % param parm parameters name or index
 #' % param type type of standard error. User can choose between asymtotic normal
 #' %    standard errors (\code{asymptotic}) or bootsrap (\code{boot}).
-#' @inheritParams se.coef
 #'
 #' @examples
 #' ## see examples for renewal_methods

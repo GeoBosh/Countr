@@ -1,5 +1,12 @@
 # Countr 3.5.6
 
+- several documentation files had duplicated descirptions of some arguments.
+
+- changed several instances of `class(...) = "..."`to use `inherits`.
+
+- changed http://www.football-data.co.uk/englandm.php
+  to https://www.football-data.co.uk to fix a NOTE from R check.
+
 - switched from travisci to github actions.
 
 
@@ -14,6 +21,7 @@
 
 - fixed wrong links in inst/doc/index.html.
 
+
 # Countr 3.5.3
 
 - consolidation after the refactoring of the reposotory.
@@ -27,6 +35,7 @@
 - a number of updates in connection of the forthcoming release of the
   JSS paper.
 
+
 # Countr 3.5.2 (CRAN)
 
 - small adjustments before submission.
@@ -34,6 +43,7 @@
 - renamed 'Countr.R' to 'Countr-package.R'.
 
 - updated the main vignette with the accepted version of the JSS paper.
+
 
 # Countr 3.5.0
 

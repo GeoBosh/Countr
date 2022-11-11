@@ -133,7 +133,6 @@ dWeibullCount <- function(x, shape, scale,
 #'     default is \code{TRUE}.
 #' @param weights numeric, vector of weights to apply. If \code{NULL}, a vector
 #'     of one's will be applied.
-#' @inheritParams dWeibullCount
 #'
 #' @return for \code{dWeibullCount_loglik},
 #'     a double, the log-likelihood of the count process.
@@ -171,7 +170,6 @@ dWeibullCount_loglik <- function(x, shape, scale,
 #' \code{evWeibullCount} computes the expected value and variance.
 #'
 #' @param xmax unsigned integer, maximum count to be used.
-#' @inheritParams dWeibullCount
 #' @return for \code{evWeibullCount}, a list with components:
 #'     \item{ExpectedValue}{expected value,}
 #'     \item{Variance}{variance.}

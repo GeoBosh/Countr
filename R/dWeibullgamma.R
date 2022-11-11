@@ -158,7 +158,6 @@ dWeibullgammaCount <- function(x, shape, shapeGam, scaleGam,
 #'     probaility; default = \code{TRUE}.
 #' @param weights numeric, vector of weights to apply. If \code{NULL}, one will
 #'     be applied.
-#' @inheritParams dWeibullgammaCount
 #'
 #' @return
 #'     for \code{dWeibullgammaCount_loglik}, double,
@@ -196,7 +195,6 @@ dWeibullgammaCount_loglik <- function(x, shape, shapeGam, scaleGam,
 #' \code{evWeibullgammaCount} computes the expected value and variance.
 #'
 #' @param xmax unsigned integer, maximum count to be used.
-#' @inheritParams dWeibullgammaCount
 #' @return
 #'     for \code{evWeibullgammaCount}, a list with components
 #'     \code{"ExpectedValue"} and \code{"Variance"}.

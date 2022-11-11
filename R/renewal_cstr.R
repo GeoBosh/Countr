@@ -359,7 +359,7 @@ renewalCount <- function(formula, data, subset, na.action, weights, offset,
     names(weights) <- rownames(mf)
 
     ## get the inverse link function
-    if (class(link) == "InverseLink")
+    if (inherits(link, "InverseLink"))  # was: class(link) == "InverseLink"
         linkList <- link
     else
         linkList <- .getLinkList(dist, link, customPars)

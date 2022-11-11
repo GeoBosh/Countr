@@ -31,7 +31,7 @@
 #' Final scores of all matches in the English Premier League from seasons
 #' 2009/2010 to 2016/2017.
 #'
-#' The data were collected from \url{http://www.football-data.co.uk/englandm.php}
+#' The data were collected from \url{https://www.football-data.co.uk/}
 #' and slightly formatted and simplified.
 #'
 #' @format a data.frame with 6 columns and 1104 observations:

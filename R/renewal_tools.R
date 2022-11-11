@@ -372,14 +372,16 @@ renewal.convPars <- function(convPars, dist) {
     ## check survivalFct
     if (is.null(customPars$survivalFct))
         stop("survivalFct should be provided in customPars !")
-    else if (class(customPars$survivalFct) != "function")
+    else if (!inherits(customPars$survivalFct, "function"))
+                                        # was: class(customPars$survivalFct) != "function"
         stop("survivalFct must be a function object !")
 
     if (extrap) {
         ## check extrapolFct
         if (is.null(customPars$extrapolFct))
             stop("extrapolFct should be provided in customPars !")
-        else if (class(customPars$extrapolFct) != "function")
+        else if (!inherits(customPars$extrapolFct, "function"))
+                                        # was: class(customPars$extrapolFct) != "function"
             stop("extrapolFct must be a function object !")
     }
 
