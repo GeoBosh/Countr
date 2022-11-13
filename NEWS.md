@@ -1,8 +1,8 @@
-# Countr 3.5.6
+# Countr 3.5.6 (CRAN)
 
-- several documentation files had duplicated descirptions of some arguments.
+- several documentation files had duplicated descriptions of some arguments.
 
-- changed several instances of `class(...) = "..."`to use `inherits`.
+- changed several instances of `class(...) = "..."` to use `inherits`.
 
 - changed http://www.football-data.co.uk/englandm.php
   to https://www.football-data.co.uk to fix a NOTE from R check.
