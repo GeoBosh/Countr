@@ -1,7 +1,7 @@
 Package: Countr
 Type: Package
 Title: Flexible Univariate Count Models Based on Renewal Processes
-Version: 3.5.6.9000
+Version: 3.5.8
 Authors@R: c( person(given = "Tarak", family = "Kharrat",
                      role = c("aut"), 
                      email = "tarak@realanalytics.co.uk"),
@@ -13,6 +13,10 @@ Description: Flexible univariate count models based on renewal processes. The
     syntax as in glm() and package 'flexsurv'.  The methodology is described by
     Kharrat et all (2019) <doi:10.18637/jss.v090.i13> (included as vignette
     'Countr_guide' in the package).
+    If the suggested package 'pscl' is not available from CRAN, it can be
+    installed with 'remotes::install_github("cran/pscl")'. It is no longer used
+    by the functions in this package but is needed for some of the extended
+    examples.
 License: GPL (>= 2)
 URL: https://geobosh.github.io/Countr/ (doc), https://github.com/GeoBosh/Countr (devel)
 BugReports: https://github.com/GeoBosh/Countr/issues
@@ -35,17 +39,17 @@ Imports:
     RColorBrewer,
     dplyr,
     standardize,
-    pscl,
     lmtest,
     xtable
 LinkingTo: Rcpp, RcppArmadillo
 Suggests:
     testthat,
-    knitr
+    knitr,
+    pscl
 RdMacros: Rdpack
 VignetteBuilder: knitr
 LazyData: true
-RoxygenNote: 7.2.1
+RoxygenNote: 7.2.3
 NeedsCompilation: yes
 Collate: 
     'Countr-package.R'
@@ -58,6 +62,7 @@ Collate:
     'dWeibull.R'
     'dWeibullgamma.R'
     'data.R'
+    'probpredict.R'
     'renewal_IV.R'
     'renewal_tools.R'
     'renewal_cstr.R'

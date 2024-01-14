@@ -48,5 +48,5 @@ simply concatenated in one long vector.
 \insertRef{CountrJssArticle}{Countr}
 }
 \seealso{
-renewalNames
+\code{\link{renewalNames}}
 }

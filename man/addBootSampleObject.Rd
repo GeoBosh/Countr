@@ -7,7 +7,7 @@
 addBootSampleObject(object, ...)
 }
 \arguments{
-\item{object}{an object to add boot object to}
+\item{object}{an object to add boot object to.}
 
 \item{...}{extra parameters to be passed to the \code{boot::boot()} function
 other than \code{data} and \code{statistic}.}

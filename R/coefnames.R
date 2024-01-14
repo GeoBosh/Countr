@@ -33,7 +33,7 @@
 #' @param object an object, there are methods for several classes, see Details.
 #' @param ... further arguments to be passed to \code{renewalNames}, usually
 #'     something like \code{target = "weibull"}.
-#' @seealso renewalNames
+#' @seealso \code{\link{renewalNames}}
 #'
 #' @references
 #' \insertRef{CountrJssArticle}{Countr}
@@ -91,6 +91,9 @@ renewalCoef.renewalCoefList <- function(object, ...) {
 #' this list back to a vector.
 #'
 #' @param coef a named vector
+#' 
+#' @seealso \code{\link{renewalNames}}, \code{\link{renewalCoef}}
+#'
 #' @export
 renewalCoefList <- function(coef) {
     m <- regexpr("^[^_]+_", names(coef))
@@ -125,6 +128,8 @@ renewalCoefList <- function(coef) {
 #'
 #' @param object an object.
 #' @param ...    further arguments.
+#'
+#' @seealso \code{\link{renewalCoefList}}, \code{\link{renewalCoef}}
 #' @export
 renewalNames <- function(object, ...) {
     UseMethod("renewalNames", object)

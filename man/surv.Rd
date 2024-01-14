@@ -2,7 +2,7 @@
 % Please edit documentation in R/RcppExports.R
 \name{surv}
 \alias{surv}
-\title{Wrapper to built in survival functions}
+\title{Wrapper to built-in survival functions}
 \usage{
 surv(t, distPars, dist)
 }
@@ -15,11 +15,11 @@ see details.}
 \item{dist}{character name of the built-in distribution, see details.}
 }
 \value{
-a double giving the value of the survival function at time point
-\code{t} at the parameters' values.
+a double, giving the value of the survival function at time point
+    \code{t} at the parameters' values.
 }
 \description{
-Wrapper to built in survival functions
+Wrapper to built-in survival functions
 }
 \details{
 The function wraps all builtin-survival distributions. User can choose

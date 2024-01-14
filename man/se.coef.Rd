@@ -10,9 +10,9 @@ se.coef(object, parm, type, ...)
 \method{se.coef}{renewal}(object, parm, type = c("asymptotic", "boot"), ...)
 }
 \arguments{
-\item{object}{object returned by one of the count-modeling functions}
+\item{object}{an object returned by one of the count modeling functions.}
 
-\item{parm}{parameter's name or index}
+\item{parm}{parameter's name or index.}
 
 \item{type}{type of standard error: asymtotic normal standard errors
 (\code{"asymptotic"}) or bootsrap (\code{"boot"}).}
@@ -24,7 +24,7 @@ a named numeric vector
 }
 \description{
 Extract standard errors of model coefficients from objects returned by
-count-modeling functions.
+count modeling functions.
 
 % Extract Standard Errors of Model Coefficients
 }

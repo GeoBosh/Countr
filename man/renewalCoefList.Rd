@@ -23,3 +23,6 @@ This is a convenience function allowing users to manipulate the coefficients
 related to a parameter more easily. \code{\link{renewalCoef}} can convert
 this list back to a vector.
 }
+\seealso{
+\code{\link{renewalNames}}, \code{\link{renewalCoef}}
+}

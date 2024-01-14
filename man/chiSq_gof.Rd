@@ -16,13 +16,13 @@ chiSq_gof(object, breaks, ...)
 \method{chiSq_gof}{glm}(object, breaks, ...)
 }
 \arguments{
-\item{object}{an object from class \code{renewal}}
+\item{object}{an object from class \code{renewal}.}
 
 \item{breaks}{integer values at which the breaks shoudl happen. The function
 will compute the observed frequencies in the intervals \code{[breaks[i],
 breaks[i + 1])}.}
 
-\item{...}{currently not used}
+\item{...}{currently not used.}
 }
 \value{
 data.frame

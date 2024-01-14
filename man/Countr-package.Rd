@@ -11,10 +11,9 @@ processes. The models may include covariates and can be specified
 with familiar formula syntax as in glm() and 'flexsurv'.
 }
 \details{
-The methodology is described in the forthcoming paper
-\insertCiteOnly{CountrJssArticle}{Countr}
-in the Journal of Statistical Software (included in the package as vignette
-\code{vignette('Countr_guide_paper', package = "Countr")}).
+The methodology is described by
+\insertCiteOnly{CountrJssArticle;textual}{Countr}.  The paper is included in
+the package as vignette \code{vignette('Countr_guide_paper', package = "Countr")}).
 
 The main function is \code{\link{renewalCount}}, see its documentation for
 examples.
@@ -24,15 +23,13 @@ count renewal models are implemented in \code{\link{chiSq_gof}} and
 \code{\link{chiSq_pearson}}.
 }
 \references{
-\insertRef{CountrJssArticle}{Countr}
-
 \insertRef{baker2017event}{Countr}
 
 \insertRef{boshnakov2017bivariate}{Countr}
 
 \insertRef{cameron2013regression}{Countr}
 
-\insertRef{TarakEtAl2018jss}{Countr}
+\insertRef{CountrJssArticle}{Countr}
 
 \insertRef{mcshane2008count}{Countr}
 

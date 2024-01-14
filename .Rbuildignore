@@ -13,3 +13,4 @@ README_devel.md
 ^sav[0-9]*[.]Rhistory
 ^\.github$
 ^codecov\.yml$
+.rsync_exclude

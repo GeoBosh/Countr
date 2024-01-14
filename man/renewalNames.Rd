@@ -26,3 +26,6 @@ is the same that would be used to call \code{renewalCount}. In this case
 \code{renewalNames} returns the names that would be used by renewalCount for
 the coefficients of the fitted model.
 }
+\seealso{
+\code{\link{renewalCoefList}}, \code{\link{renewalCoef}}
+}

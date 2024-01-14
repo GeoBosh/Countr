@@ -13,9 +13,9 @@ chiSq_pearson(object, ...)
 \method{chiSq_pearson}{glm}(object, ...)
 }
 \arguments{
-\item{object}{an object from class \code{renewal}}
+\item{object}{an object from class \code{renewal}.}
 
-\item{...}{currently not used}
+\item{...}{currently not used.}
 }
 \value{
 data.frame with 5 columns given the count values (\code{Counts}),

@@ -64,12 +64,12 @@
 \arguments{
 \item{object}{an object from class \code{"renewal"}.}
 
-\item{...}{further arguments for methods}
+\item{...}{further arguments for methods.}
 
 \item{type, parm, level, bootType, x, digits}{see the corresponding generics and section
-Details.}
+\sQuote{Details}.}
 
-\item{width}{numeric width length}
+\item{width}{numeric width length.}
 
 \item{fit, scale, k}{same as in the generic.}
 }

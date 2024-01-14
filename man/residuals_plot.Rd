@@ -7,7 +7,7 @@
 residuals_plot(object, type, ...)
 }
 \arguments{
-\item{object}{object returned by one of the count-modeling functions}
+\item{object}{object returned by one of the count modeling functions.}
 
 \item{type}{character type of residuals to be used.}
 

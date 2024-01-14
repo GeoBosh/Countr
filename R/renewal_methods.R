@@ -23,10 +23,10 @@ NULL
 #' Extract Standard Errors of Model Coefficients
 #'
 #' Extract standard errors of model coefficients from objects returned by
-#' count-modeling functions.
+#' count modeling functions.
 #'
-#' @param object object returned by one of the count-modeling functions
-#' @param parm parameter's name or index
+#' @param object an object returned by one of the count modeling functions.
+#' @param parm parameter's name or index.
 #' @param type type of standard error: asymtotic normal standard errors
 #'     (\code{"asymptotic"}) or bootsrap (\code{"boot"}).
 #' @param ... further arguments for methods.
@@ -50,9 +50,9 @@ se.coef <- function(object, parm, type, ...) {
 #' for many of the familiar functions for interacting with fitted models.
 #'
 #' @param object an object from class \code{"renewal"}.
-#' @param ... further arguments for methods
+#' @param ... further arguments for methods.
 #' @param type,parm,level,bootType,x,digits see the corresponding generics and section
-#'     Details.
+#'     \sQuote{Details}.
 #'
 #' @examples
 #' fn <- system.file("extdata", "McShane_Wei_results_boot.RDS", package = "Countr")
@@ -88,11 +88,11 @@ coef.renewal <- function(object, ...) {
 
 #' @rdname renewal_methods
 #' @method vcov renewal
-## #' @param object object from class \code{renewal()}
+## #' @param object object from class \code{renewal()}.
 ## #' @param ... extra parameters to be passed. user can pass parameter
-## #' \code{method} with option \code{asymptotic} (numerical hessian) or
-## #' \code{boot} (bootsrap). The other parameters will be passed to the \code{boot}
-## #' function called inside \code{addBootSampleObject()}.
+## #'   \code{method} with option \code{asymptotic} (numerical hessian) or
+## #'   \code{boot} (bootsrap). The other parameters will be passed to the \code{boot}
+## #'   function called inside \code{addBootSampleObject()}.
 #' @export
 vcov.renewal <- function(object, ...) {
     v <- object$vcov
@@ -163,7 +163,7 @@ residuals.renewal <- function (object, type = c("pearson", "response",
 #'
 #' A method to visualise the residuals
 #'
-#' @param object object returned by one of the count-modeling functions
+#' @param object object returned by one of the count modeling functions.
 #' @param type character type of residuals to be used.
 #' @param ... further arguments for methods.
 #'
@@ -355,7 +355,7 @@ print.renewal <- function(x, digits = max(3, getOption("digits") - 3), ...) {
 
 #' @rdname renewal_methods
 #' @method print summary.renewal
-#' @param width numeric width length
+#' @param width numeric width length.
 #' @export
 print.summary.renewal <- function(x, digits = max(3, getOption("digits") - 3),
                                   width = getOption("width"),
@@ -431,8 +431,8 @@ model.matrix.renewal <- function(object, ...) {
 }
 
 ## \code{logLik} method for class \code{renewal}
-## @param object an object from class \code{renewal}
-## @param ... not used
+## @param object an object from class \code{renewal}.
+## @param ... not used.
 #' @method logLik renewal
 #' @rdname renewal_methods
 #' @export
@@ -442,8 +442,8 @@ logLik.renewal <- function (object, ...) {
 }
 
 ## \code{nobs} method for class \code{renewal}
-## @param object an object from class \code{renewal}
-## @param ... not used
+## @param object an object from class \code{renewal}.
+## @param ... not used.
 #' @method nobs renewal
 #' @examples
 #' ## see renewal_methods
@@ -620,7 +620,7 @@ predict.renewal <- function(object, newdata = NULL, type = c("response", "prob")
 #' The bootstrap sample is stored in \code{object} as component \code{"boot"}.
 #' Arguments in \code{"..."} can be used customise the \code{boot()} call.
 #'
-#' @param object an object to add boot object to
+#' @param object an object to add boot object to.
 #' @param ... extra parameters to be passed to the \code{boot::boot()} function
 #'     other than \code{data} and \code{statistic}.
 #' @return \code{object} with additional component \code{"boot"}
@@ -739,8 +739,8 @@ update.renewal <- function(object, formula., anc, ..., evaluate = TRUE) {
 #' to the Pearson's chi-square test statistic is reported. The idea is to check if
 #' the fitted model has a tendancy to over or under predict some ranges of data
 #'
-#' @param object an object from class \code{renewal}
-#' @param ... currently not used
+#' @param object an object from class \code{renewal}.
+#' @param ... currently not used.
 #' @return data.frame with 5 columns given the count values (\code{Counts}),
 #'     observed frequencies (\code{Actual}), model's prediction
 #'     (\code{Predicted}), the difference (\code{Diff}) and the contribution to
@@ -793,7 +793,6 @@ chiSq_pearson.renewal <- function (object, ...) {
 
 #' @rdname chiSq_pearson
 #' @method chiSq_pearson glm
-#' @importFrom pscl predprob
 #' @export
 chiSq_pearson.glm <- function (object, ...) {
     ## compute empirical frequencies
@@ -802,7 +801,7 @@ chiSq_pearson.glm <- function (object, ...) {
     obs_freq <- as.numeric(tab) / length(object$y)
 
     ## compute fitted frequncy
-    pbs <- pscl::predprob(object)[, as.character(count)]
+    pbs <- prob_predict(object)[, as.character(count)]
     fitted_freq <- colMeans(pbs)
 
     ## error computation
@@ -828,11 +827,11 @@ chiSq_pearson.glm <- function (object, ...) {
 #' Section 5.3.4). We compute the asymptotically equivalent outer product of the
 #' gradient version which is justified for renewal models (fully parametric +
 #' parameters based on MLE).
-#' @param object an object from class \code{renewal}
+#' @param object an object from class \code{renewal}.
 #' @param breaks integer values at which the breaks shoudl happen. The function
 #'     will compute the observed frequencies in the intervals \code{[breaks[i],
 #'     breaks[i + 1])}.
-#' @param ... currently not used
+#' @param ... currently not used.
 #' @return data.frame
 #' @seealso \code{\link{chiSq_pearson}}
 #' @references \insertRef{cameron2013regression}{Countr}
@@ -911,7 +910,7 @@ chiSq_gof.negbin <- function (object, breaks, ...) {
 
     ## compute the d_{ij}(y_i) - p_{ij}(x_i, \theta), for j in 1, ..., J -1
     ## --- compute pij
-    pij <- pscl::predprob(object)
+    pij <- prob_predict(object)
     if (!missing(breaks))
         pij <- .adjust_breaks(breaks, res, pij)
 
@@ -951,7 +950,7 @@ chiSq_gof.glm <- function (object, breaks, ...) {
 
     ## compute the d_{ij}(y_i) - p_{ij}(x_i, \theta), for j in 1, ..., J -1
     ## --- compute pij
-    pij <- pscl::predprob(object)
+    pij <- prob_predict(object)
     if (!missing(breaks))
         pij <- .adjust_breaks(breaks, res, pij)
 

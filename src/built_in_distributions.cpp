@@ -117,9 +117,9 @@ double sgengamma(double t, const Rcpp::List distPars) {
   return out ;
 }
 
-//' Wrapper to built in survival functions
+//' Wrapper to built-in survival functions
 //'
-//' Wrapper to built in survival functions
+//' Wrapper to built-in survival functions
 //'
 //' The function wraps all builtin-survival distributions. User can choose
 //' between the \code{weibull}, \code{gamma}, \code{gengamma}(generalized gamma)
@@ -139,8 +139,8 @@ double sgengamma(double t, const Rcpp::List distPars) {
 //' @param distPars \code{Rcpp::List} with distribution specific slots,
 //'     see details.
 //' @param dist character name of the built-in distribution, see details.
-//' @return a double giving the value of the survival function at time point
-//' \code{t} at the parameters' values.
+//' @return a double, giving the value of the survival function at time point
+//'     \code{t} at the parameters' values.
 //'
 //' @examples
 //' tt <- 2.5

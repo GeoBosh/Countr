@@ -21,9 +21,9 @@ sgengamma <- function(t, distPars) {
     .Call('_Countr_sgengamma', PACKAGE = 'Countr', t, distPars)
 }
 
-#' Wrapper to built in survival functions
+#' Wrapper to built-in survival functions
 #'
-#' Wrapper to built in survival functions
+#' Wrapper to built-in survival functions
 #'
 #' The function wraps all builtin-survival distributions. User can choose
 #' between the \code{weibull}, \code{gamma}, \code{gengamma}(generalized gamma)
@@ -43,8 +43,8 @@ sgengamma <- function(t, distPars) {
 #' @param distPars \code{Rcpp::List} with distribution specific slots,
 #'     see details.
 #' @param dist character name of the built-in distribution, see details.
-#' @return a double giving the value of the survival function at time point
-#' \code{t} at the parameters' values.
+#' @return a double, giving the value of the survival function at time point
+#'     \code{t} at the parameters' values.
 #'
 #' @examples
 #' tt <- 2.5
@@ -149,7 +149,6 @@ dCount_allProbs_vec_user <- function(x, distPars, extrapolPars, survR, nsteps = 
 #' Richardson extrapolation if \code{extrap} is \code{TRUE} using the
 #' algorithm of section 3.2.
 #'
-#' @param inheritParams dCount_naive_bi
 #' @return vector of probabilities P(x(i)) for i = 1, ..., n where n is
 #' \code{length} of \code{x}.
 #'
@@ -206,7 +205,7 @@ dCount_dePril_vec_user <- function(x, distPars, extrapolPars, survR, nsteps = 10
 #'
 #' @param cdfout logical if \code{TRUE}, the cdf will be returned instead of
 #' the count probability.
-#' @param inheritParams dCount_allProbs_bi
+#' @inheritParams dCount_allProbs_bi
 #' @return vector of probabilities P(x(i)) for i = 1, ..., n where n is
 #' \code{length} of \code{x}.
 #'
