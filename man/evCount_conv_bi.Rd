@@ -3,7 +3,7 @@
 \name{evCount_conv_bi}
 \alias{evCount_conv_bi}
 \alias{evCount_conv_user}
-\title{Expected value and variance of renewal count process}
+\title{Expected value and variance of a renewal count process}
 \usage{
 evCount_conv_bi(
   xmax,
@@ -51,9 +51,9 @@ applied to improve accuracy.}
 is a list of distribution parameters. It should return a double value.}
 }
 \value{
-a named list with components \code{"ExpectedValue"} and \code{"Variance"}.
+a named list with components \code{ExpectedValue} and \code{Variance}
 
-% List named vector with ExpectedValue and Variance
+% a named list with components \code{ExpectedValue} and \code{Variance}
 }
 \description{
 Compute numerically expected values and variances of renewal count processes.
@@ -65,7 +65,7 @@ Compute numerically expected values and variances of renewal count processes.
 count processes for the builtin distirbutions of inter-arrival times.
 
 \code{evCount_conv_user} computes the expected value and variance for a user
-specified distirbution of the inter-arrival times.
+specified distribution of the inter-arrival times.
 }
 \examples{
 pwei_user <- function(tt, distP) {

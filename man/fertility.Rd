@@ -20,7 +20,7 @@ or Others (reference).}
 \item{\code{age_marriage}}{integer; age at marriage}
 }
 
-For further details, see Winlemann(1995).
+For further details, see \insertCite{winkelmann1995duration;textual}{Countr}.
 }
 \usage{
 fertility

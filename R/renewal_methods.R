@@ -90,9 +90,9 @@ coef.renewal <- function(object, ...) {
 #' @method vcov renewal
 ## #' @param object object from class \code{renewal()}.
 ## #' @param ... extra parameters to be passed. user can pass parameter
-## #'   \code{method} with option \code{asymptotic} (numerical hessian) or
-## #'   \code{boot} (bootsrap). The other parameters will be passed to the \code{boot}
-## #'   function called inside \code{addBootSampleObject()}.
+## #' \code{method} with option \code{asymptotic} (numerical hessian) or
+## #' \code{boot} (bootsrap). The other parameters will be passed to the \code{boot}
+## #' function called inside \code{addBootSampleObject()}.
 #' @export
 vcov.renewal <- function(object, ...) {
     v <- object$vcov
@@ -793,6 +793,7 @@ chiSq_pearson.renewal <- function (object, ...) {
 
 #' @rdname chiSq_pearson
 #' @method chiSq_pearson glm
+#' @importFrom pscl predprob
 #' @export
 chiSq_pearson.glm <- function (object, ...) {
     ## compute empirical frequencies
@@ -801,7 +802,7 @@ chiSq_pearson.glm <- function (object, ...) {
     obs_freq <- as.numeric(tab) / length(object$y)
 
     ## compute fitted frequncy
-    pbs <- prob_predict(object)[, as.character(count)]
+    pbs <- pscl::predprob(object)[, as.character(count)]
     fitted_freq <- colMeans(pbs)
 
     ## error computation
@@ -910,7 +911,7 @@ chiSq_gof.negbin <- function (object, breaks, ...) {
 
     ## compute the d_{ij}(y_i) - p_{ij}(x_i, \theta), for j in 1, ..., J -1
     ## --- compute pij
-    pij <- prob_predict(object)
+    pij <- pscl::predprob(object)
     if (!missing(breaks))
         pij <- .adjust_breaks(breaks, res, pij)
 
@@ -950,7 +951,7 @@ chiSq_gof.glm <- function (object, breaks, ...) {
 
     ## compute the d_{ij}(y_i) - p_{ij}(x_i, \theta), for j in 1, ..., J -1
     ## --- compute pij
-    pij <- prob_predict(object)
+    pij <- pscl::predprob(object)
     if (!missing(breaks))
         pij <- .adjust_breaks(breaks, res, pij)
 

@@ -15,7 +15,6 @@
 #' cases allow the user to do this in a single line.
 #'
 #' The default method extracts the coefficients of \code{object} using
-#'
 #' \code{co <- coef(object)} (an error is raised if this fails). It prepares a
 #' named numeric vector with names requested by the arguments in \code{"..."}
 #' and assigns \code{co} to the first \code{length(co)} elements of the prepared
@@ -30,7 +29,7 @@
 #' If object is from class \code{\link{renewalCoefList}}, its elements are
 #' simply concatenated in one long vector.
 #'
-#' @param object an object, there are methods for several classes, see Details.
+#' @param object an object, there are methods for several classes, see section \sQuote{Details}.
 #' @param ... further arguments to be passed to \code{renewalNames}, usually
 #'     something like \code{target = "weibull"}.
 #' @seealso \code{\link{renewalNames}}
@@ -128,7 +127,7 @@ renewalCoefList <- function(coef) {
 #'
 #' @param object an object.
 #' @param ...    further arguments.
-#'
+#' 
 #' @seealso \code{\link{renewalCoefList}}, \code{\link{renewalCoef}}
 #' @export
 renewalNames <- function(object, ...) {

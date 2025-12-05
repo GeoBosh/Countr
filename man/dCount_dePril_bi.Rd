@@ -29,6 +29,9 @@ dCount_dePril_user(
 )
 }
 \arguments{
+\item{cdfout}{logical if \code{TRUE}, the cdf will be returned instead of
+the count probability.}
+
 \item{survR}{Rcpp::Function user passed survival function; should have the
 signature \code{function(t, distPars)} where \code{t} is a real number (>0)
 where the survival function is evaluated and \code{distPars} is a list of

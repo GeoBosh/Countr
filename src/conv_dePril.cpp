@@ -506,6 +506,7 @@ arma::vec getProbs_dePril(unsigned xnum, const Rcpp::List distPars,
 //' Richardson extrapolation if \code{extrap} is \code{TRUE} using the
 //' algorithm of section 3.2.
 //'
+//' @inheritParams dCount_naive_bi
 //' @return vector of probabilities P(x(i)) for i = 1, ..., n where n is
 //' \code{length} of \code{x}.
 //'

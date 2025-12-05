@@ -21,7 +21,7 @@
 #'     considered.
 #' @param time double, length of the observation window (defaults to 1).
 #' @param log logical, if TRUE, the log of the probability will be returned.
-#' @param method character one of the available methods. See details.
+#' @param method character one of the available methods. see section \sQuote{Details}.
 #' @param series_terms numeric number of terms in the series expansion.
 #' @param series_acc_niter numeric number of iteration in the Euler-van
 #'     Wijngaarden algorithm.

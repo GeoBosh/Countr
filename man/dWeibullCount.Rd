@@ -55,7 +55,7 @@ evWeibullCount(
 
 \item{scale}{numeric (length 1), scale parameter of the Weibull count.}
 
-\item{method}{character, one of the available methods, see details.}
+\item{method}{character, one of the available methods, see section \sQuote{Details}.}
 
 \item{time}{double, length of the observation window (defaults to 1).}
 

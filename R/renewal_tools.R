@@ -217,8 +217,8 @@ compareToGLM <- function(poisson_model, breaks, nbinom_model, ...) {
 #' Return the names of the parameters of a count distribution.
 #'
 #' @param dist character, name of the distribution.
-#' @param ... parameters to pass when dist == "custom".
-#' @return character vector with the names of the distribution parameters.
+#' @param ... parameters to pass when \code{dist == "custom"}.
+#' @return character vector with the names of the distribution parameters
 #' @export
 getParNames <- function(dist, ...) {
     switch(dist,
@@ -243,51 +243,25 @@ getParNames <- function(dist, ...) {
            )
 }
 
-## inverse links - no need to compute them every time.
-.inverseLinks <- list(
-    "log"      = function(x) exp(x),
-    "cauchit"  = function(x) cauchit(x, inverse = TRUE),
-    "cloglog"  = function(x) cloglog(x, inverse = TRUE),
-    "probit"   = function(x) probit(x, inverse = TRUE),
-    "logit"    = function(x) logit(x, inverse = TRUE),
-    "identity" = function(x) x
-    )
-
 ## compute the link function inverse.
-#' @importFrom VGAM cauchit
-#' @importFrom VGAM cloglog
-#' @importFrom VGAM probit
-#' @importFrom VGAM logit
+#' @importFrom VGAM cauchitlink
+#' @importFrom VGAM clogloglink
+#' @importFrom VGAM probitlink
+#' @importFrom VGAM logitlink
 .computeInverseLink <- function(link = c("log", "cauchit", "cloglog",
                                     "probit", "logit", "identity")) {
     link <- match.arg(link)
     obj <- switch(link,
                   "log" = {function(x) exp(x)},
-                  "cauchit" = {function(x) cauchit(x, inverse = TRUE)},
-                  "cloglog" = {function(x) cloglog(x, inverse = TRUE)},
-                  "probit" = {function(x) probit(x, inverse = TRUE)},
-                  "logit" = {function(x) logit(x, inverse = TRUE)},
+                  "cauchit" = {function(x) cauchitlink(x, inverse = TRUE)},
+                  "cloglog" = {function(x) clogloglink(x, inverse = TRUE)},
+                  "probit" = {function(x) probitlink(x, inverse = TRUE)},
+                  "logit" = {function(x) logitlink(x, inverse = TRUE)},
                   "identity" = {function(x) x}
                   )
     attr(obj, "functionName") <- link
     obj
 }
-
-
-## set attribute "functionName" for the functions in .inverseLinks
-##  (note the non-local assignment)
-lapply(names(.inverseLinks),
-       function(link) attr(.inverseLinks[[link]], "functionName") <<- link
-       )
-
-## TODO: remove after testing and replace the calls to  .computeInverseLink() accordingly.
-stopifnot(all(sapply(names(.inverseLinks),
-    function(link)
-        identical(body(.inverseLinks[[link]]), body(.computeInverseLink(link))) &&
-        identical(args(.inverseLinks[[link]]), args(.computeInverseLink(link))) &&
-        identical(attr(.inverseLinks[[link]], "functionName"),
-                  attr(.computeInverseLink(link), "functionName"))
-    )))
 
 ## create a string with link function information
 .summarizeLinkInformation <- function(linkObj) {
@@ -640,6 +614,7 @@ renewal.weiMethod <- function(weiMethod) {
     modelMatRes
 }
 
+#' @export
 predict.modelMat <- function(object, newdata, ...) {
     .fct <- function(x) {
         stan <- attr(x, "standardize")

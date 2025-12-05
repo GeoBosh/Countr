@@ -140,7 +140,7 @@ double sgengamma(double t, const Rcpp::List distPars) {
 //'     see details.
 //' @param dist character name of the built-in distribution, see details.
 //' @return a double, giving the value of the survival function at time point
-//'     \code{t} at the parameters' values.
+//' \code{t} at the parameters' values.
 //'
 //' @examples
 //' tt <- 2.5

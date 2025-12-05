@@ -26,6 +26,48 @@ namespace Countr {
         }
     }
 
+    inline arma::vec dRenewalFrankCopula_user(arma::Col <unsigned> x, arma::Col <unsigned> y, Rcpp::Function survX, Rcpp::Function survY, Rcpp::List distParsX, Rcpp::List distParsY, Rcpp::List extrapolParsX, Rcpp::List extrapolParsY, double theta, double time = 1.0, bool logFlag = false, unsigned nsteps = 100, bool extrap = true) {
+        typedef SEXP(*Ptr_dRenewalFrankCopula_user)(SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP);
+        static Ptr_dRenewalFrankCopula_user p_dRenewalFrankCopula_user = NULL;
+        if (p_dRenewalFrankCopula_user == NULL) {
+            validateSignature("arma::vec(*dRenewalFrankCopula_user)(arma::Col <unsigned>,arma::Col <unsigned>,Rcpp::Function,Rcpp::Function,Rcpp::List,Rcpp::List,Rcpp::List,Rcpp::List,double,double,bool,unsigned,bool)");
+            p_dRenewalFrankCopula_user = (Ptr_dRenewalFrankCopula_user)R_GetCCallable("Countr", "_Countr_dRenewalFrankCopula_user");
+        }
+        RObject rcpp_result_gen;
+        {
+            RNGScope RCPP_rngScope_gen;
+            rcpp_result_gen = p_dRenewalFrankCopula_user(Shield<SEXP>(Rcpp::wrap(x)), Shield<SEXP>(Rcpp::wrap(y)), Shield<SEXP>(Rcpp::wrap(survX)), Shield<SEXP>(Rcpp::wrap(survY)), Shield<SEXP>(Rcpp::wrap(distParsX)), Shield<SEXP>(Rcpp::wrap(distParsY)), Shield<SEXP>(Rcpp::wrap(extrapolParsX)), Shield<SEXP>(Rcpp::wrap(extrapolParsY)), Shield<SEXP>(Rcpp::wrap(theta)), Shield<SEXP>(Rcpp::wrap(time)), Shield<SEXP>(Rcpp::wrap(logFlag)), Shield<SEXP>(Rcpp::wrap(nsteps)), Shield<SEXP>(Rcpp::wrap(extrap)));
+        }
+        if (rcpp_result_gen.inherits("interrupted-error"))
+            throw Rcpp::internal::InterruptedException();
+        if (Rcpp::internal::isLongjumpSentinel(rcpp_result_gen))
+            throw Rcpp::LongjumpException(rcpp_result_gen);
+        if (rcpp_result_gen.inherits("try-error"))
+            throw Rcpp::exception(Rcpp::as<std::string>(rcpp_result_gen).c_str());
+        return Rcpp::as<arma::vec >(rcpp_result_gen);
+    }
+
+    inline arma::vec dRenewalFrankCopula_bi(arma::Col <unsigned> x, arma::Col <unsigned> y, const std::string distX, const std::string distY, Rcpp::List distParsX, Rcpp::List distParsY, double theta, double time = 1.0, bool logFlag = false, unsigned nsteps = 100, bool extrap = true) {
+        typedef SEXP(*Ptr_dRenewalFrankCopula_bi)(SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP);
+        static Ptr_dRenewalFrankCopula_bi p_dRenewalFrankCopula_bi = NULL;
+        if (p_dRenewalFrankCopula_bi == NULL) {
+            validateSignature("arma::vec(*dRenewalFrankCopula_bi)(arma::Col <unsigned>,arma::Col <unsigned>,const std::string,const std::string,Rcpp::List,Rcpp::List,double,double,bool,unsigned,bool)");
+            p_dRenewalFrankCopula_bi = (Ptr_dRenewalFrankCopula_bi)R_GetCCallable("Countr", "_Countr_dRenewalFrankCopula_bi");
+        }
+        RObject rcpp_result_gen;
+        {
+            RNGScope RCPP_rngScope_gen;
+            rcpp_result_gen = p_dRenewalFrankCopula_bi(Shield<SEXP>(Rcpp::wrap(x)), Shield<SEXP>(Rcpp::wrap(y)), Shield<SEXP>(Rcpp::wrap(distX)), Shield<SEXP>(Rcpp::wrap(distY)), Shield<SEXP>(Rcpp::wrap(distParsX)), Shield<SEXP>(Rcpp::wrap(distParsY)), Shield<SEXP>(Rcpp::wrap(theta)), Shield<SEXP>(Rcpp::wrap(time)), Shield<SEXP>(Rcpp::wrap(logFlag)), Shield<SEXP>(Rcpp::wrap(nsteps)), Shield<SEXP>(Rcpp::wrap(extrap)));
+        }
+        if (rcpp_result_gen.inherits("interrupted-error"))
+            throw Rcpp::internal::InterruptedException();
+        if (Rcpp::internal::isLongjumpSentinel(rcpp_result_gen))
+            throw Rcpp::LongjumpException(rcpp_result_gen);
+        if (rcpp_result_gen.inherits("try-error"))
+            throw Rcpp::exception(Rcpp::as<std::string>(rcpp_result_gen).c_str());
+        return Rcpp::as<arma::vec >(rcpp_result_gen);
+    }
+
     inline arma::vec dWeibullgammaCount_mat(arma::Col<unsigned> x, double shape, double r, double alpha, double time = 1.0, bool logFlag = false, unsigned jmax = 100) {
         typedef SEXP(*Ptr_dWeibullgammaCount_mat)(SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP);
         static Ptr_dWeibullgammaCount_mat p_dWeibullgammaCount_mat = NULL;
@@ -310,6 +352,48 @@ namespace Countr {
         {
             RNGScope RCPP_rngScope_gen;
             rcpp_result_gen = p_dWeibullCount_acc_vec(Shield<SEXP>(Rcpp::wrap(x)), Shield<SEXP>(Rcpp::wrap(shape)), Shield<SEXP>(Rcpp::wrap(scale)), Shield<SEXP>(Rcpp::wrap(time)), Shield<SEXP>(Rcpp::wrap(logFlag)), Shield<SEXP>(Rcpp::wrap(jmax)), Shield<SEXP>(Rcpp::wrap(nmax)), Shield<SEXP>(Rcpp::wrap(eps)), Shield<SEXP>(Rcpp::wrap(printa)));
+        }
+        if (rcpp_result_gen.inherits("interrupted-error"))
+            throw Rcpp::internal::InterruptedException();
+        if (Rcpp::internal::isLongjumpSentinel(rcpp_result_gen))
+            throw Rcpp::LongjumpException(rcpp_result_gen);
+        if (rcpp_result_gen.inherits("try-error"))
+            throw Rcpp::exception(Rcpp::as<std::string>(rcpp_result_gen).c_str());
+        return Rcpp::as<arma::vec >(rcpp_result_gen);
+    }
+
+    inline arma::vec dWeibullInterArrivalCountFrankCopula(arma::Col <unsigned> x, arma::Col <unsigned> y, arma::vec shapeX, arma::vec shapeY, arma::vec scaleX, arma::vec scaleY, double theta, double t, bool logFlag, unsigned jmax, int nmax, double eps) {
+        typedef SEXP(*Ptr_dWeibullInterArrivalCountFrankCopula)(SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP);
+        static Ptr_dWeibullInterArrivalCountFrankCopula p_dWeibullInterArrivalCountFrankCopula = NULL;
+        if (p_dWeibullInterArrivalCountFrankCopula == NULL) {
+            validateSignature("arma::vec(*dWeibullInterArrivalCountFrankCopula)(arma::Col <unsigned>,arma::Col <unsigned>,arma::vec,arma::vec,arma::vec,arma::vec,double,double,bool,unsigned,int,double)");
+            p_dWeibullInterArrivalCountFrankCopula = (Ptr_dWeibullInterArrivalCountFrankCopula)R_GetCCallable("Countr", "_Countr_dWeibullInterArrivalCountFrankCopula");
+        }
+        RObject rcpp_result_gen;
+        {
+            RNGScope RCPP_rngScope_gen;
+            rcpp_result_gen = p_dWeibullInterArrivalCountFrankCopula(Shield<SEXP>(Rcpp::wrap(x)), Shield<SEXP>(Rcpp::wrap(y)), Shield<SEXP>(Rcpp::wrap(shapeX)), Shield<SEXP>(Rcpp::wrap(shapeY)), Shield<SEXP>(Rcpp::wrap(scaleX)), Shield<SEXP>(Rcpp::wrap(scaleY)), Shield<SEXP>(Rcpp::wrap(theta)), Shield<SEXP>(Rcpp::wrap(t)), Shield<SEXP>(Rcpp::wrap(logFlag)), Shield<SEXP>(Rcpp::wrap(jmax)), Shield<SEXP>(Rcpp::wrap(nmax)), Shield<SEXP>(Rcpp::wrap(eps)));
+        }
+        if (rcpp_result_gen.inherits("interrupted-error"))
+            throw Rcpp::internal::InterruptedException();
+        if (Rcpp::internal::isLongjumpSentinel(rcpp_result_gen))
+            throw Rcpp::LongjumpException(rcpp_result_gen);
+        if (rcpp_result_gen.inherits("try-error"))
+            throw Rcpp::exception(Rcpp::as<std::string>(rcpp_result_gen).c_str());
+        return Rcpp::as<arma::vec >(rcpp_result_gen);
+    }
+
+    inline arma::vec dWeibullInterArrivalCountFrankCopula_uni(arma::Col <unsigned> x, arma::Col <unsigned> y, double shapeX, double shapeY, arma::vec scaleX, arma::vec scaleY, double theta, double t, bool logFlag, unsigned jmax, int nmax, double eps) {
+        typedef SEXP(*Ptr_dWeibullInterArrivalCountFrankCopula_uni)(SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP,SEXP);
+        static Ptr_dWeibullInterArrivalCountFrankCopula_uni p_dWeibullInterArrivalCountFrankCopula_uni = NULL;
+        if (p_dWeibullInterArrivalCountFrankCopula_uni == NULL) {
+            validateSignature("arma::vec(*dWeibullInterArrivalCountFrankCopula_uni)(arma::Col <unsigned>,arma::Col <unsigned>,double,double,arma::vec,arma::vec,double,double,bool,unsigned,int,double)");
+            p_dWeibullInterArrivalCountFrankCopula_uni = (Ptr_dWeibullInterArrivalCountFrankCopula_uni)R_GetCCallable("Countr", "_Countr_dWeibullInterArrivalCountFrankCopula_uni");
+        }
+        RObject rcpp_result_gen;
+        {
+            RNGScope RCPP_rngScope_gen;
+            rcpp_result_gen = p_dWeibullInterArrivalCountFrankCopula_uni(Shield<SEXP>(Rcpp::wrap(x)), Shield<SEXP>(Rcpp::wrap(y)), Shield<SEXP>(Rcpp::wrap(shapeX)), Shield<SEXP>(Rcpp::wrap(shapeY)), Shield<SEXP>(Rcpp::wrap(scaleX)), Shield<SEXP>(Rcpp::wrap(scaleY)), Shield<SEXP>(Rcpp::wrap(theta)), Shield<SEXP>(Rcpp::wrap(t)), Shield<SEXP>(Rcpp::wrap(logFlag)), Shield<SEXP>(Rcpp::wrap(jmax)), Shield<SEXP>(Rcpp::wrap(nmax)), Shield<SEXP>(Rcpp::wrap(eps)));
         }
         if (rcpp_result_gen.inherits("interrupted-error"))
             throw Rcpp::internal::InterruptedException();

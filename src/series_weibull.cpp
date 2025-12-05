@@ -621,3 +621,113 @@ arma::vec cdfWeibullCount(unsigned y, double shape, double scale,
 
   return(res);
 }
+
+// density of Frank Copula based 8.28 in the Regression
+// analysis of count data.
+double BivarateWeibullCountCopulaDensity(unsigned x, unsigned y,
+					 double shapeX, double shapeY,
+					 double scaleX, double scaleY,
+					 double theta,
+					 arma::mat alpha_allX,
+					 arma::mat alpha_allY,
+					 double t = 1.0, bool logFlag = false,
+					 unsigned jmax = 50, int nmax = 300,
+					 double eps = 1e-10) {
+
+  arma::vec Xres = cdfWeibullCount(x, shapeX, scaleX, alpha_allX, t, jmax, nmax, eps);
+  double F1x = Xres(1);
+  double F1x1 = Xres(0);
+
+  arma::vec Yres = cdfWeibullCount(y, shapeY, scaleY, alpha_allY, t, jmax, nmax, eps);
+  double F2y = Yres(1);
+  double F2y1 = Yres(0);
+
+  double f = BivariateFrankCopula(F1x, F2y, theta) -
+    BivariateFrankCopula(F1x1, F2y, theta) -
+    BivariateFrankCopula(F1x, F2y1, theta) +
+    BivariateFrankCopula(F1x1, F2y1,theta) ;
+
+  if (logFlag)
+    return(log(f));
+  else
+    return(f);
+}
+
+// Bivariate (Frank) Copula Dependent Weibull-count Probability
+//
+// \code{dWeibullInterArrivalCountFrankCopula}  computes the probability
+// of a Frank-copula bivariate Weibull count probability.
+//
+// The function will replicate the vectors \code{scaleX}, \code{scaleY},
+// \code{x} and \code{y} accordingly, if the lengths of the vectors are
+// different.
+//
+// @param theta double Frank-copula parameter.
+//
+//
+//' @keywords internal
+// [[Rcpp::export]]
+arma::vec dWeibullInterArrivalCountFrankCopula(arma::Col <unsigned> x, 
+					       arma::Col <unsigned> y,
+					       arma::vec shapeX, arma::vec shapeY,
+					       arma::vec scaleX, arma::vec scaleY,
+					       double theta,
+					       double t, bool logFlag,
+					       unsigned jmax, int nmax,
+					       double eps) {
+
+  double scaleXi, scaleYi;
+  unsigned n = x.n_elem;
+  arma::vec prob(n, fill::zeros);
+  unsigned x0, y0;
+
+  for (unsigned i = 0; i < n; i ++) {
+    scaleXi = scaleX(i);
+    scaleYi = scaleY(i);
+    x0 = x(i);
+    y0 = y(i);
+    arma::mat alpha_allX = alphagen(shapeX(i), jmax + max(x0) + 1, max(x0) + 1); 
+    arma::mat alpha_allY = alphagen(shapeY(i), jmax + max(y0) + 1, max(y0) + 1); 
+
+    prob(i) =  BivarateWeibullCountCopulaDensity(x0, y0, shapeX(i), shapeY(i),
+						 scaleXi, scaleYi, theta,
+						 alpha_allX, alpha_allY, t,
+						 logFlag, jmax, nmax, eps);
+  }
+
+  return(prob);
+}
+
+//' @keywords internal
+// [[Rcpp::export]]
+arma::vec dWeibullInterArrivalCountFrankCopula_uni(arma::Col <unsigned> x, 
+						   arma::Col <unsigned> y,
+						   double shapeX, double shapeY,
+						   arma::vec scaleX, arma::vec scaleY,
+						   double theta,
+						   double t, bool logFlag,
+						   unsigned jmax, int nmax,
+						   double eps) {
+  
+  arma::mat alpha_allX = alphagen(shapeX, jmax + max(x) + 1, max(x) + 1); 
+  arma::mat alpha_allY = alphagen(shapeY, jmax + max(y) + 1, max(y) + 1); 
+
+  double scaleXi, scaleYi;
+  unsigned n = x.n_elem;
+  arma::vec prob(n, fill::zeros);
+  unsigned x0, y0;
+
+  for (unsigned i = 0; i < n; i ++) {  
+    scaleXi = scaleX(i);
+    scaleYi = scaleY(i);
+    x0 = x(i);
+    y0 = y(i);
+
+    prob(i) =  BivarateWeibullCountCopulaDensity(x0, y0, shapeX, shapeY,
+						 scaleXi, scaleYi, theta,
+						 alpha_allX, alpha_allY, t,
+						 logFlag, jmax, nmax, eps);
+  }
+
+  return(prob);
+}

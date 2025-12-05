@@ -1,3 +1,17 @@
+
+# Countr 3.6
+
+- changed the names of link functions imported from package VGAM to names ending
+  with 'link', since the old names have been removed in VGAM v1.1-14.
+
+- added missing (roxygen) export directive for the `modelMat` method for
+  `predict`.
+
+- reinstated bivariate distributions. This was done on users' request but
+  without careful verification if changes in the package done since they were
+  removed cause problems.
+
+
 # Countr 3.5.8
 
 - This is an emergency release to keep the package on CRAN in case the scheduled

@@ -9,10 +9,10 @@ getParNames(dist, ...)
 \arguments{
 \item{dist}{character, name of the distribution.}
 
-\item{...}{parameters to pass when dist == "custom".}
+\item{...}{parameters to pass when \code{dist == "custom"}.}
 }
 \value{
-character vector with the names of the distribution parameters.
+character vector with the names of the distribution parameters
 }
 \description{
 Return the names of the parameters of a count distribution.

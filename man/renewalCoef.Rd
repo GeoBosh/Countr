@@ -7,7 +7,7 @@
 renewalCoef(object, ...)
 }
 \arguments{
-\item{object}{an object, there are methods for several classes, see Details.}
+\item{object}{an object, there are methods for several classes, see section \sQuote{Details}.}
 
 \item{...}{further arguments to be passed to \code{renewalNames}, usually
 something like \code{target = "weibull"}.}
@@ -29,7 +29,6 @@ need for tedius manual preparation of such vectors and in the most common
 cases allow the user to do this in a single line.
 
 The default method extracts the coefficients of \code{object} using
-
 \code{co <- coef(object)} (an error is raised if this fails). It prepares a
 named numeric vector with names requested by the arguments in \code{"..."}
 and assigns \code{co} to the first \code{length(co)} elements of the prepared

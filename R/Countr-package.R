@@ -1,4 +1,3 @@
-#' @docType package
 #' @name Countr-package
 #' @aliases  Countr-package Countr
 #'
@@ -21,21 +20,16 @@
 #' @importFrom stats dnbinom dpois lm pchisq
 #' @importFrom stats residuals update.formula  vcov
 #' @importFrom stats density predict qqline qqnorm terms.formula
+#' @importFrom stats family
 #' 
 #' @importFrom graphics par plot
 #' @importFrom utils capture.output
 #'
 #' @importFrom standardize standardize
 #' @importFrom dplyr left_join contains groups
-#' @importFrom RColorBrewer brewer.pal
 #' @importFrom Rdpack reprompt
 #'
-#' @importFrom lattice barchart
 #' @importFrom car Boot
-#' @importFrom lmtest lrtest
-#' @importFrom xtable xtable
-#'
-#' @importFrom stats family
 #' 
 #' @details
 #'
@@ -52,19 +46,21 @@
 #'
 #' @references
 #'
+#' \insertRef{CountrJssArticle}{Countr}
+#' 
 #' \insertRef{baker2017event}{Countr}
 #'
 #' \insertRef{boshnakov2017bivariate}{Countr}
 #'
 #' \insertRef{cameron2013regression}{Countr}
 #'
-#' \insertRef{CountrJssArticle}{Countr}
-#' 
+#' \insertRef{TarakEtAl2018jss}{Countr}
+#'
 #' \insertRef{mcshane2008count}{Countr}
 #'
 #' \insertRef{winkelmann1995duration}{Countr}
 #'
-NULL
+"_PACKAGE"
 
 ## To stop the respective NOTE from R CMD check
 utils::globalVariables(

@@ -97,7 +97,7 @@ rows as \code{length(x)}. If NULL, no regression will be considered.}
 \item{beta}{numeric regression coefficients. If NULL, no regression will be
 considered.}
 
-\item{method}{character one of the available methods. See details.}
+\item{method}{character one of the available methods. see section \sQuote{Details}.}
 
 \item{log}{logical, if TRUE, the log of the probability will be returned.}
 

@@ -20,7 +20,7 @@
 #' \item{\code{age_marriage}}{integer; age at marriage}
 #' }
 #'
-#' For further details, see Winlemann(1995).
+#' For further details, see \insertCite{winkelmann1995duration;textual}{Countr}.
 #' @references
 #' \insertRef{winkelmann1995duration}{Countr}
 #'

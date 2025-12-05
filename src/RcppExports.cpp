@@ -15,6 +15,96 @@ Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
 Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
 #endif
 
+// dRenewalFrankCopula_user
+arma::vec dRenewalFrankCopula_user(arma::Col <unsigned> x, arma::Col <unsigned> y, Rcpp::Function survX, Rcpp::Function survY, Rcpp::List distParsX, Rcpp::List distParsY, Rcpp::List extrapolParsX, Rcpp::List extrapolParsY, double theta, double time, bool logFlag, unsigned nsteps, bool extrap);
+static SEXP _Countr_dRenewalFrankCopula_user_try(SEXP xSEXP, SEXP ySEXP, SEXP survXSEXP, SEXP survYSEXP, SEXP distParsXSEXP, SEXP distParsYSEXP, SEXP extrapolParsXSEXP, SEXP extrapolParsYSEXP, SEXP thetaSEXP, SEXP timeSEXP, SEXP logFlagSEXP, SEXP nstepsSEXP, SEXP extrapSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::traits::input_parameter< arma::Col <unsigned> >::type x(xSEXP);
+    Rcpp::traits::input_parameter< arma::Col <unsigned> >::type y(ySEXP);
+    Rcpp::traits::input_parameter< Rcpp::Function >::type survX(survXSEXP);
+    Rcpp::traits::input_parameter< Rcpp::Function >::type survY(survYSEXP);
+    Rcpp::traits::input_parameter< Rcpp::List >::type distParsX(distParsXSEXP);
+    Rcpp::traits::input_parameter< Rcpp::List >::type distParsY(distParsYSEXP);
+    Rcpp::traits::input_parameter< Rcpp::List >::type extrapolParsX(extrapolParsXSEXP);
+    Rcpp::traits::input_parameter< Rcpp::List >::type extrapolParsY(extrapolParsYSEXP);
+    Rcpp::traits::input_parameter< double >::type theta(thetaSEXP);
+    Rcpp::traits::input_parameter< double >::type time(timeSEXP);
+    Rcpp::traits::input_parameter< bool >::type logFlag(logFlagSEXP);
+    Rcpp::traits::input_parameter< unsigned >::type nsteps(nstepsSEXP);
+    Rcpp::traits::input_parameter< bool >::type extrap(extrapSEXP);
+    rcpp_result_gen = Rcpp::wrap(dRenewalFrankCopula_user(x, y, survX, survY, distParsX, distParsY, extrapolParsX, extrapolParsY, theta, time, logFlag, nsteps, extrap));
+    return rcpp_result_gen;
+END_RCPP_RETURN_ERROR
+}
+RcppExport SEXP _Countr_dRenewalFrankCopula_user(SEXP xSEXP, SEXP ySEXP, SEXP survXSEXP, SEXP survYSEXP, SEXP distParsXSEXP, SEXP distParsYSEXP, SEXP extrapolParsXSEXP, SEXP extrapolParsYSEXP, SEXP thetaSEXP, SEXP timeSEXP, SEXP logFlagSEXP, SEXP nstepsSEXP, SEXP extrapSEXP) {
+    SEXP rcpp_result_gen;
+    {
+        Rcpp::RNGScope rcpp_rngScope_gen;
+        rcpp_result_gen = PROTECT(_Countr_dRenewalFrankCopula_user_try(xSEXP, ySEXP, survXSEXP, survYSEXP, distParsXSEXP, distParsYSEXP, extrapolParsXSEXP, extrapolParsYSEXP, thetaSEXP, timeSEXP, logFlagSEXP, nstepsSEXP, extrapSEXP));
+    }
+    Rboolean rcpp_isInterrupt_gen = Rf_inherits(rcpp_result_gen, "interrupted-error");
+    if (rcpp_isInterrupt_gen) {
+        UNPROTECT(1);
+        Rf_onintr();
+    }
+    bool rcpp_isLongjump_gen = Rcpp::internal::isLongjumpSentinel(rcpp_result_gen);
+    if (rcpp_isLongjump_gen) {
+        Rcpp::internal::resumeJump(rcpp_result_gen);
+    }
+    Rboolean rcpp_isError_gen = Rf_inherits(rcpp_result_gen, "try-error");
+    if (rcpp_isError_gen) {
+        SEXP rcpp_msgSEXP_gen = Rf_asChar(rcpp_result_gen);
+        UNPROTECT(1);
+        Rf_error("%s", CHAR(rcpp_msgSEXP_gen));
+    }
+    UNPROTECT(1);
+    return rcpp_result_gen;
+}
+// dRenewalFrankCopula_bi
+arma::vec dRenewalFrankCopula_bi(arma::Col <unsigned> x, arma::Col <unsigned> y, const std::string distX, const std::string distY, Rcpp::List distParsX, Rcpp::List distParsY, double theta, double time, bool logFlag, unsigned nsteps, bool extrap);
+static SEXP _Countr_dRenewalFrankCopula_bi_try(SEXP xSEXP, SEXP ySEXP, SEXP distXSEXP, SEXP distYSEXP, SEXP distParsXSEXP, SEXP distParsYSEXP, SEXP thetaSEXP, SEXP timeSEXP, SEXP logFlagSEXP, SEXP nstepsSEXP, SEXP extrapSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::traits::input_parameter< arma::Col <unsigned> >::type x(xSEXP);
+    Rcpp::traits::input_parameter< arma::Col <unsigned> >::type y(ySEXP);
+    Rcpp::traits::input_parameter< const std::string >::type distX(distXSEXP);
+    Rcpp::traits::input_parameter< const std::string >::type distY(distYSEXP);
+    Rcpp::traits::input_parameter< Rcpp::List >::type distParsX(distParsXSEXP);
+    Rcpp::traits::input_parameter< Rcpp::List >::type distParsY(distParsYSEXP);
+    Rcpp::traits::input_parameter< double >::type theta(thetaSEXP);
+    Rcpp::traits::input_parameter< double >::type time(timeSEXP);
+    Rcpp::traits::input_parameter< bool >::type logFlag(logFlagSEXP);
+    Rcpp::traits::input_parameter< unsigned >::type nsteps(nstepsSEXP);
+    Rcpp::traits::input_parameter< bool >::type extrap(extrapSEXP);
+    rcpp_result_gen = Rcpp::wrap(dRenewalFrankCopula_bi(x, y, distX, distY, distParsX, distParsY, theta, time, logFlag, nsteps, extrap));
+    return rcpp_result_gen;
+END_RCPP_RETURN_ERROR
+}
+RcppExport SEXP _Countr_dRenewalFrankCopula_bi(SEXP xSEXP, SEXP ySEXP, SEXP distXSEXP, SEXP distYSEXP, SEXP distParsXSEXP, SEXP distParsYSEXP, SEXP thetaSEXP, SEXP timeSEXP, SEXP logFlagSEXP, SEXP nstepsSEXP, SEXP extrapSEXP) {
+    SEXP rcpp_result_gen;
+    {
+        Rcpp::RNGScope rcpp_rngScope_gen;
+        rcpp_result_gen = PROTECT(_Countr_dRenewalFrankCopula_bi_try(xSEXP, ySEXP, distXSEXP, distYSEXP, distParsXSEXP, distParsYSEXP, thetaSEXP, timeSEXP, logFlagSEXP, nstepsSEXP, extrapSEXP));
+    }
+    Rboolean rcpp_isInterrupt_gen = Rf_inherits(rcpp_result_gen, "interrupted-error");
+    if (rcpp_isInterrupt_gen) {
+        UNPROTECT(1);
+        Rf_onintr();
+    }
+    bool rcpp_isLongjump_gen = Rcpp::internal::isLongjumpSentinel(rcpp_result_gen);
+    if (rcpp_isLongjump_gen) {
+        Rcpp::internal::resumeJump(rcpp_result_gen);
+    }
+    Rboolean rcpp_isError_gen = Rf_inherits(rcpp_result_gen, "try-error");
+    if (rcpp_isError_gen) {
+        SEXP rcpp_msgSEXP_gen = Rf_asChar(rcpp_result_gen);
+        UNPROTECT(1);
+        Rf_error("%s", CHAR(rcpp_msgSEXP_gen));
+    }
+    UNPROTECT(1);
+    return rcpp_result_gen;
+}
 // sWeibull
 double sWeibull(double t, const Rcpp::List distPars);
 RcppExport SEXP _Countr_sWeibull(SEXP tSEXP, SEXP distParsSEXP) {
@@ -1072,11 +1162,103 @@ RcppExport SEXP _Countr_dWeibullCount_acc_vec(SEXP xSEXP, SEXP shapeSEXP, SEXP s
     UNPROTECT(1);
     return rcpp_result_gen;
 }
+// dWeibullInterArrivalCountFrankCopula
+arma::vec dWeibullInterArrivalCountFrankCopula(arma::Col <unsigned> x, arma::Col <unsigned> y, arma::vec shapeX, arma::vec shapeY, arma::vec scaleX, arma::vec scaleY, double theta, double t, bool logFlag, unsigned jmax, int nmax, double eps);
+static SEXP _Countr_dWeibullInterArrivalCountFrankCopula_try(SEXP xSEXP, SEXP ySEXP, SEXP shapeXSEXP, SEXP shapeYSEXP, SEXP scaleXSEXP, SEXP scaleYSEXP, SEXP thetaSEXP, SEXP tSEXP, SEXP logFlagSEXP, SEXP jmaxSEXP, SEXP nmaxSEXP, SEXP epsSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::traits::input_parameter< arma::Col <unsigned> >::type x(xSEXP);
+    Rcpp::traits::input_parameter< arma::Col <unsigned> >::type y(ySEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type shapeX(shapeXSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type shapeY(shapeYSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type scaleX(scaleXSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type scaleY(scaleYSEXP);
+    Rcpp::traits::input_parameter< double >::type theta(thetaSEXP);
+    Rcpp::traits::input_parameter< double >::type t(tSEXP);
+    Rcpp::traits::input_parameter< bool >::type logFlag(logFlagSEXP);
+    Rcpp::traits::input_parameter< unsigned >::type jmax(jmaxSEXP);
+    Rcpp::traits::input_parameter< int >::type nmax(nmaxSEXP);
+    Rcpp::traits::input_parameter< double >::type eps(epsSEXP);
+    rcpp_result_gen = Rcpp::wrap(dWeibullInterArrivalCountFrankCopula(x, y, shapeX, shapeY, scaleX, scaleY, theta, t, logFlag, jmax, nmax, eps));
+    return rcpp_result_gen;
+END_RCPP_RETURN_ERROR
+}
+RcppExport SEXP _Countr_dWeibullInterArrivalCountFrankCopula(SEXP xSEXP, SEXP ySEXP, SEXP shapeXSEXP, SEXP shapeYSEXP, SEXP scaleXSEXP, SEXP scaleYSEXP, SEXP thetaSEXP, SEXP tSEXP, SEXP logFlagSEXP, SEXP jmaxSEXP, SEXP nmaxSEXP, SEXP epsSEXP) {
+    SEXP rcpp_result_gen;
+    {
+        Rcpp::RNGScope rcpp_rngScope_gen;
+        rcpp_result_gen = PROTECT(_Countr_dWeibullInterArrivalCountFrankCopula_try(xSEXP, ySEXP, shapeXSEXP, shapeYSEXP, scaleXSEXP, scaleYSEXP, thetaSEXP, tSEXP, logFlagSEXP, jmaxSEXP, nmaxSEXP, epsSEXP));
+    }
+    Rboolean rcpp_isInterrupt_gen = Rf_inherits(rcpp_result_gen, "interrupted-error");
+    if (rcpp_isInterrupt_gen) {
+        UNPROTECT(1);
+        Rf_onintr();
+    }
+    bool rcpp_isLongjump_gen = Rcpp::internal::isLongjumpSentinel(rcpp_result_gen);
+    if (rcpp_isLongjump_gen) {
+        Rcpp::internal::resumeJump(rcpp_result_gen);
+    }
+    Rboolean rcpp_isError_gen = Rf_inherits(rcpp_result_gen, "try-error");
+    if (rcpp_isError_gen) {
+        SEXP rcpp_msgSEXP_gen = Rf_asChar(rcpp_result_gen);
+        UNPROTECT(1);
+        Rf_error("%s", CHAR(rcpp_msgSEXP_gen));
+    }
+    UNPROTECT(1);
+    return rcpp_result_gen;
+}
+// dWeibullInterArrivalCountFrankCopula_uni
+arma::vec dWeibullInterArrivalCountFrankCopula_uni(arma::Col <unsigned> x, arma::Col <unsigned> y, double shapeX, double shapeY, arma::vec scaleX, arma::vec scaleY, double theta, double t, bool logFlag, unsigned jmax, int nmax, double eps);
+static SEXP _Countr_dWeibullInterArrivalCountFrankCopula_uni_try(SEXP xSEXP, SEXP ySEXP, SEXP shapeXSEXP, SEXP shapeYSEXP, SEXP scaleXSEXP, SEXP scaleYSEXP, SEXP thetaSEXP, SEXP tSEXP, SEXP logFlagSEXP, SEXP jmaxSEXP, SEXP nmaxSEXP, SEXP epsSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::traits::input_parameter< arma::Col <unsigned> >::type x(xSEXP);
+    Rcpp::traits::input_parameter< arma::Col <unsigned> >::type y(ySEXP);
+    Rcpp::traits::input_parameter< double >::type shapeX(shapeXSEXP);
+    Rcpp::traits::input_parameter< double >::type shapeY(shapeYSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type scaleX(scaleXSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type scaleY(scaleYSEXP);
+    Rcpp::traits::input_parameter< double >::type theta(thetaSEXP);
+    Rcpp::traits::input_parameter< double >::type t(tSEXP);
+    Rcpp::traits::input_parameter< bool >::type logFlag(logFlagSEXP);
+    Rcpp::traits::input_parameter< unsigned >::type jmax(jmaxSEXP);
+    Rcpp::traits::input_parameter< int >::type nmax(nmaxSEXP);
+    Rcpp::traits::input_parameter< double >::type eps(epsSEXP);
+    rcpp_result_gen = Rcpp::wrap(dWeibullInterArrivalCountFrankCopula_uni(x, y, shapeX, shapeY, scaleX, scaleY, theta, t, logFlag, jmax, nmax, eps));
+    return rcpp_result_gen;
+END_RCPP_RETURN_ERROR
+}
+RcppExport SEXP _Countr_dWeibullInterArrivalCountFrankCopula_uni(SEXP xSEXP, SEXP ySEXP, SEXP shapeXSEXP, SEXP shapeYSEXP, SEXP scaleXSEXP, SEXP scaleYSEXP, SEXP thetaSEXP, SEXP tSEXP, SEXP logFlagSEXP, SEXP jmaxSEXP, SEXP nmaxSEXP, SEXP epsSEXP) {
+    SEXP rcpp_result_gen;
+    {
+        Rcpp::RNGScope rcpp_rngScope_gen;
+        rcpp_result_gen = PROTECT(_Countr_dWeibullInterArrivalCountFrankCopula_uni_try(xSEXP, ySEXP, shapeXSEXP, shapeYSEXP, scaleXSEXP, scaleYSEXP, thetaSEXP, tSEXP, logFlagSEXP, jmaxSEXP, nmaxSEXP, epsSEXP));
+    }
+    Rboolean rcpp_isInterrupt_gen = Rf_inherits(rcpp_result_gen, "interrupted-error");
+    if (rcpp_isInterrupt_gen) {
+        UNPROTECT(1);
+        Rf_onintr();
+    }
+    bool rcpp_isLongjump_gen = Rcpp::internal::isLongjumpSentinel(rcpp_result_gen);
+    if (rcpp_isLongjump_gen) {
+        Rcpp::internal::resumeJump(rcpp_result_gen);
+    }
+    Rboolean rcpp_isError_gen = Rf_inherits(rcpp_result_gen, "try-error");
+    if (rcpp_isError_gen) {
+        SEXP rcpp_msgSEXP_gen = Rf_asChar(rcpp_result_gen);
+        UNPROTECT(1);
+        Rf_error("%s", CHAR(rcpp_msgSEXP_gen));
+    }
+    UNPROTECT(1);
+    return rcpp_result_gen;
+}
 
 // validate (ensure exported C++ functions exist before calling them)
 static int _Countr_RcppExport_validate(const char* sig) { 
     static std::set<std::string> signatures;
     if (signatures.empty()) {
+        signatures.insert("arma::vec(*dRenewalFrankCopula_user)(arma::Col <unsigned>,arma::Col <unsigned>,Rcpp::Function,Rcpp::Function,Rcpp::List,Rcpp::List,Rcpp::List,Rcpp::List,double,double,bool,unsigned,bool)");
+        signatures.insert("arma::vec(*dRenewalFrankCopula_bi)(arma::Col <unsigned>,arma::Col <unsigned>,const std::string,const std::string,Rcpp::List,Rcpp::List,double,double,bool,unsigned,bool)");
         signatures.insert("arma::vec(*dWeibullgammaCount_mat)(arma::Col<unsigned>,double,double,double,double,bool,unsigned)");
         signatures.insert("arma::vec(*dWeibullgammaCount_mat_vec)(arma::Col<unsigned>,arma::vec,double,double,double,bool,unsigned)");
         signatures.insert("arma::vec(*dWeibullgammaCount_mat_Covariates)(arma::Col<unsigned>,double,double,double,arma::mat,arma::vec,double,bool,unsigned)");
@@ -1091,12 +1273,16 @@ static int _Countr_RcppExport_validate(const char* sig) {
         signatures.insert("arma::vec(*dWeibullCount_mat_vec)(arma::Col<unsigned>,arma::vec,arma::vec,double,bool,unsigned)");
         signatures.insert("arma::vec(*dWeibullCount_acc)(arma::Col<unsigned>,double,double,double,bool,unsigned,int,double,bool)");
         signatures.insert("arma::vec(*dWeibullCount_acc_vec)(arma::Col<unsigned>,arma::vec,arma::vec,double,bool,unsigned,int,double,bool)");
+        signatures.insert("arma::vec(*dWeibullInterArrivalCountFrankCopula)(arma::Col <unsigned>,arma::Col <unsigned>,arma::vec,arma::vec,arma::vec,arma::vec,double,double,bool,unsigned,int,double)");
+        signatures.insert("arma::vec(*dWeibullInterArrivalCountFrankCopula_uni)(arma::Col <unsigned>,arma::Col <unsigned>,double,double,arma::vec,arma::vec,double,double,bool,unsigned,int,double)");
     }
     return signatures.find(sig) != signatures.end();
 }
 
 // registerCCallable (register entry points for exported C++ functions)
 RcppExport SEXP _Countr_RcppExport_registerCCallable() { 
+    R_RegisterCCallable("Countr", "_Countr_dRenewalFrankCopula_user", (DL_FUNC)_Countr_dRenewalFrankCopula_user_try);
+    R_RegisterCCallable("Countr", "_Countr_dRenewalFrankCopula_bi", (DL_FUNC)_Countr_dRenewalFrankCopula_bi_try);
     R_RegisterCCallable("Countr", "_Countr_dWeibullgammaCount_mat", (DL_FUNC)_Countr_dWeibullgammaCount_mat_try);
     R_RegisterCCallable("Countr", "_Countr_dWeibullgammaCount_mat_vec", (DL_FUNC)_Countr_dWeibullgammaCount_mat_vec_try);
     R_RegisterCCallable("Countr", "_Countr_dWeibullgammaCount_mat_Covariates", (DL_FUNC)_Countr_dWeibullgammaCount_mat_Covariates_try);
@@ -1111,11 +1297,15 @@ RcppExport SEXP _Countr_RcppExport_registerCCallable() {
     R_RegisterCCallable("Countr", "_Countr_dWeibullCount_mat_vec", (DL_FUNC)_Countr_dWeibullCount_mat_vec_try);
     R_RegisterCCallable("Countr", "_Countr_dWeibullCount_acc", (DL_FUNC)_Countr_dWeibullCount_acc_try);
     R_RegisterCCallable("Countr", "_Countr_dWeibullCount_acc_vec", (DL_FUNC)_Countr_dWeibullCount_acc_vec_try);
+    R_RegisterCCallable("Countr", "_Countr_dWeibullInterArrivalCountFrankCopula", (DL_FUNC)_Countr_dWeibullInterArrivalCountFrankCopula_try);
+    R_RegisterCCallable("Countr", "_Countr_dWeibullInterArrivalCountFrankCopula_uni", (DL_FUNC)_Countr_dWeibullInterArrivalCountFrankCopula_uni_try);
     R_RegisterCCallable("Countr", "_Countr_RcppExport_validate", (DL_FUNC)_Countr_RcppExport_validate);
     return R_NilValue;
 }
 
 static const R_CallMethodDef CallEntries[] = {
+    {"_Countr_dRenewalFrankCopula_user", (DL_FUNC) &_Countr_dRenewalFrankCopula_user, 13},
+    {"_Countr_dRenewalFrankCopula_bi", (DL_FUNC) &_Countr_dRenewalFrankCopula_bi, 11},
     {"_Countr_sWeibull", (DL_FUNC) &_Countr_sWeibull, 2},
     {"_Countr_sBurr", (DL_FUNC) &_Countr_sBurr, 2},
     {"_Countr_sgamma", (DL_FUNC) &_Countr_sgamma, 2},
@@ -1158,6 +1348,8 @@ static const R_CallMethodDef CallEntries[] = {
     {"_Countr_dWeibullCount_mat_vec", (DL_FUNC) &_Countr_dWeibullCount_mat_vec, 6},
     {"_Countr_dWeibullCount_acc", (DL_FUNC) &_Countr_dWeibullCount_acc, 9},
     {"_Countr_dWeibullCount_acc_vec", (DL_FUNC) &_Countr_dWeibullCount_acc_vec, 9},
+    {"_Countr_dWeibullInterArrivalCountFrankCopula", (DL_FUNC) &_Countr_dWeibullInterArrivalCountFrankCopula, 12},
+    {"_Countr_dWeibullInterArrivalCountFrankCopula_uni", (DL_FUNC) &_Countr_dWeibullInterArrivalCountFrankCopula_uni, 12},
     {"_Countr_RcppExport_registerCCallable", (DL_FUNC) &_Countr_RcppExport_registerCCallable, 0},
     {NULL, NULL, 0}
 };

@@ -22,7 +22,7 @@
 #' @param extrap logical, if \code{TRUE}, Richardson extrapolation will be
 #'     applied to improve accuracy.
 #' @param log logical, if \code{TRUE} the log-probability will be returned.
-#' @param method character string, the method to use, see Details.
+#' @param method character string, the method to use, see section \sQuote{Details}.
 #' @return vector of probabilities \eqn{P(x(i),\ i = 1, ..., n)} where \eqn{n}
 #'     is the length of \code{x}.
 #' @examples

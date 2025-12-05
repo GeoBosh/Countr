@@ -19,7 +19,7 @@
 #' @param x integer (vector), the desired count values.
 #' @param time double, length of the observation window (defaults to 1).
 #' @param log logical, if TRUE, the log of the probability will be returned.
-#' @param method character, one of the available methods, see details.
+#' @param method character, one of the available methods, see section \sQuote{Details}.
 #' @param conv_steps numeric, number of steps used for the extrapolation.
 #' @param conv_extrap logical, should Richardson extrappolation be applied ?
 #' @param series_terms numeric, number of terms in the series expansion.

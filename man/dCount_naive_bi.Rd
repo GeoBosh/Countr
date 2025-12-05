@@ -29,27 +29,8 @@ dCount_naive_user(
 )
 }
 \arguments{
-\item{x}{integer (vector), the desired count values.}
-
-\item{distPars}{\code{Rcpp::List} with distribution specific slots,
-see details.}
-
-\item{dist}{character name of the built-in distribution, see details.}
-
-\item{nsteps}{unsiged integer number of steps used to compute the integral.}
-
-\item{time}{double time at wich to compute the probabilities. Set to 1 by
-default.}
-
-\item{extrap}{logical if \code{TRUE}, Richardson extrapolation will be
-applied to improve accuracy.}
-
 \item{cdfout}{logical if \code{TRUE}, the cdf will be returned instead of
 the count probability.}
-
-\item{logFlag}{logical if \code{TRUE} the log-probability will be returned.}
-
-\item{extrapolPars}{ma::vec of length 2. The extrapolation values.}
 
 \item{survR}{Rcpp::Function user passed survival function; should have the
 signature \code{function(t, distPars)} where \code{t} is a real number (>0)

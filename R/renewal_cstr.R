@@ -139,7 +139,7 @@ renewal <- function(...) {
 #'     hand side specifies the response variable and the right hand sides
 #'     specifies the regression equation for the first parameter of the
 #'     conditional distribution. \code{formula} can also be used to specify the
-#'     ancilliary regressions, using the operator `|`, see Details.
+#'     ancilliary regressions, using the operator `|`, see section \sQuote{Details}.
 #'
 #' @param data,subset,na.action, arguments controlling formula processing via
 #'     \code{model.frame}.
@@ -148,7 +148,7 @@ renewal <- function(...) {
 #'     included in the linear predictor of the count model. Currently not used.
 #' @param dist character, built-in distribution to be used as the inter-arrival
 #'     time distribution or \code{"custom"} for a user defined distribution, see
-#'     Details. Currently the built-in distributions are \code{"weibull"},
+#'     section \sQuote{Details}. Currently the built-in distributions are \code{"weibull"},
 #'     \code{"weibullgam"}, \code{"gamma"}, \code{"gengamma"}
 #'     (generalized-gamma) and \code{"burr"}.
 #' @param anc a named list of formulas for ancillary regressions, if any,
@@ -166,7 +166,7 @@ renewal <- function(...) {
 #'     \code{dCount_conv_bi}. If NULL, default parameters will be applied.
 #' @param control a list of control arguments specified via
 #'     \code{renewal.control}.
-#' @param customPars list, user inputs if \code{dist = "custom"}, see details.
+#' @param customPars list, user inputs if \code{dist = "custom"}, see section \sQuote{Details}.
 #' @param seriesPars list, series expansion input parameters with slots
 #'     \code{terms} (number of terms in the series expansion), \code{iter}
 #'     (number of iteration in the accelerated series expansion algorithm) and
@@ -178,22 +178,21 @@ renewal <- function(...) {
 #'     \code{dWeibullgammaCount}.
 #' @param computeHessian logical, should the hessian (and hence the covariance
 #'     matrix) be computed numerically at the fitted values.
-#' @param standardise logical should the covariates be standardised using
+#' @param standardise logical, should the covariates be standardised using
 #'     \code{standardize::standardize()} function.
 #' @param standardise_scale numeric the desired scale for the covariates;
-#'     default to 1
+#'     defaults to 1.
 #' @param model,y,x logicals. If \code{TRUE} the corresponding components of the
 #'     fit (model frame, response, model matrix) are returned.
 #' @param ... arguments passed to \code{renewal.control} in the default setup.
 #'
-#' @return An \code{S3} object of class "renewal", which is a list with
+#' @return An \code{S3} object of class \code{"renewal"}, which is a list with
 #'     components including:
 #'     \describe{
 #'
 #'     \item{coefficients}{values of the fitted coefficients.}
 #'
-#'     \item{residuals}{vector of weighted residuals \eqn{\omega * (observed -
-#'     fitted)}.}
+#'     \item{residuals}{vector of weighted residuals \eqn{\omega * (observed - fitted)}.}
 #'
 #'     \item{fitted.values}{vector of fitted means.}
 #'
@@ -238,12 +237,12 @@ renewal <- function(...) {
 #'     parameters.}
 #'
 #'     \item{score_fct}{function to compute the vector of scores defined in
-#'     Cameron(2013) equation 2.94.}
+#'       \insertCite{cameron2013regression;textual}{Countr}, equation 2.94.}
 #'
 #'     \item{convPars}{convolution inputs used.}
 #'
 #'     \item{customPars}{named list, user passed distribution inputs, see
-#'     Details.}
+#'     section \sQuote{Details}.}
 #'
 #'     \item{time}{observed window used, default is 1.0 (see inputs).}
 #'

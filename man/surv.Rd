@@ -10,13 +10,13 @@ surv(t, distPars, dist)
 \item{t}{double, time point where the survival is to be evaluated at.}
 
 \item{distPars}{\code{Rcpp::List} with distribution specific slots,
-see details.}
+see section \sQuote{Details}.}
 
-\item{dist}{character name of the built-in distribution, see details.}
+\item{dist}{character name of the built-in distribution, see section \sQuote{Details}.}
 }
 \value{
 a double, giving the value of the survival function at time point
-    \code{t} at the parameters' values.
+\code{t} at the parameters' values.
 }
 \description{
 Wrapper to built-in survival functions

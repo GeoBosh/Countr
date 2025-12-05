@@ -37,7 +37,7 @@ dCount_conv_loglik_user(
 named list containing the distribution parameters corresponding to
 \code{x[i]}.}
 
-\item{dist}{character name of the built-in distribution, see details.}
+\item{dist}{character name of the built-in distribution, see section \sQuote{Details}.}
 
 \item{method}{character, convolution method to be used; choices are
 \code{"dePril"} (section 3.2), \code{"direct"} (section 2) or

@@ -1,4 +1,4 @@
-#' Expected value and variance of renewal count process
+#' Expected value and variance of a renewal count process
 #'
 #' Compute numerically expected values and variances of renewal count processes.
 #'
@@ -11,7 +11,7 @@
 #' @param distPars TODO
 #' @inheritParams dCount_conv_bi
 #' @return
-#'     a named list with components \code{"ExpectedValue"} and \code{"Variance"}.
+#'     a named list with components \code{ExpectedValue} and \code{Variance}
 #' @examples
 #' pwei_user <- function(tt, distP) {
 #'     alpha <- exp(-log(distP[["scale"]]) / distP[["shape"]])
@@ -87,7 +87,7 @@ evCount_conv_bi <- function(xmax, distPars,
 #' % Expected value and variance of the renewal count process computed numerically
 #'
 #' \code{evCount_conv_user} computes the expected value and variance for a user
-#' specified distirbution of the inter-arrival times.
+#' specified distribution of the inter-arrival times.
 #' 
 #' @param extrapolPars ma::vec of length 2. The extrapolation values.
 #' @param survR function, user supplied survival function; should have signature
@@ -95,7 +95,7 @@ evCount_conv_bi <- function(xmax, distPars,
 #'     (the time where the survival function is evaluated) and \code{distPars}
 #'     is a list of distribution parameters. It should return a double value.
 #' @inheritParams evCount_conv_bi
-#' @return % List named vector with ExpectedValue and Variance
+#' @return % a named list with components \code{ExpectedValue} and \code{Variance}
 #' @rdname evCount_conv_bi
 #' @export
 evCount_conv_user <- function(xmax, distPars, extrapolPars, survR,

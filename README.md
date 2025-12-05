@@ -13,15 +13,14 @@ CRAN.
 You can install the [development version](https://github.com/GeoBosh/Countr) of
 `Countr` from Github:
 
-    library(devtools)
-    install_github("GeoBosh/Countr")
+    remotes::install_github("GeoBosh/Countr")
 
 
 # Overview
 
 Flexible univariate count models based on renewal processes. The models may
 include covariates and can be specified with familiar formula syntax as in `glm()`
-and package 'flexsurv'.  The methodology is described in a forthcoming paper in
+and package 'flexsurv'.  The methodology is described in a paper in
 the Journal of Statistical Software. The paper is included as vignette
 `vignette("Countr_guide")` along wth several additional vignettes containing
 worked examples and additional details, see

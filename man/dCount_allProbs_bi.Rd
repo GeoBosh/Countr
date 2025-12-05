@@ -30,9 +30,9 @@ dCount_allProbs_user(
 \item{x}{integer (vector), the desired count values.}
 
 \item{distPars}{\code{Rcpp::List} with distribution specific slots,
-see details.}
+see section \sQuote{Details}.}
 
-\item{dist}{character name of the built-in distribution, see details.}
+\item{dist}{character name of the built-in distribution, see section \sQuote{Details}.}
 
 \item{nsteps}{unsiged integer number of steps used to compute the integral.}
 

@@ -1,3 +1,10 @@
+url: https://geobosh.github.io/Countr
+
+template:
+  bootstrap: 5
+  
+search:
+  exclude: ['news/index.html']
 
 reference:
   - title: "Countr overview"
@@ -34,6 +41,8 @@ reference:
       - dWeibullCount
       - dWeibullgammaCount_mat_Covariates
       - evCount_conv_bi
+      - dBivariateWeibullCountFrankCopula
+      - dRenewalFrankCopula_user
   - title: "Other"
     contents: 
       - addBootSampleObject

@@ -418,7 +418,6 @@ arma::vec getProbs(unsigned xnum, const Rcpp::List distPars,
 //'
 //' @param cdfout logical if \code{TRUE}, the cdf will be returned instead of
 //' the count probability.
-//' @inheritParams dCount_allProbs_bi
 //' @return vector of probabilities P(x(i)) for i = 1, ..., n where n is
 //' \code{length} of \code{x}.
 //'
