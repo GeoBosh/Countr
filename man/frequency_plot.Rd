@@ -4,7 +4,7 @@
 \alias{frequency_plot}
 \title{Plot a frequency chart}
 \usage{
-frequency_plot(count_labels, actual, pred, colours)
+frequency_plot(count_labels, actual, pred, colours = character(0))
 }
 \arguments{
 \item{count_labels}{character, labels to be used.}
@@ -17,7 +17,12 @@ rows as actual and one column per model. The columns' names will be used
 as labels for the different models.}
 
 \item{colours}{character vector of colour codes with \code{length}
-\code{ncol(pred)} + 2.}
+\code{ncol(pred)} + 2. If \code{colours} is missing or
+\code{length(colours) < ncol(pred) + 2}, the remaining colours are generated
+using \code{RColorBrewer::brewer.pal}.}
+}
+\value{
+an object from class \code{"trellis"}
 }
 \description{
 Plot a frequency chart to compare actual and predicted values.
@@ -26,4 +31,12 @@ Plot a frequency chart to compare actual and predicted values.
 In order to compare actual and fitted values, a barchart plot is created.  It
 is the user's responsibility to provide the count, observed and fitted
 values.
+
+If argument \code{colour} is missing or not of sufficient length, the colours
+are set automatically using a function from package \pkg{RColorBrewer}.
+
+The bar chart is created with \code{lattice::barchart}. If
+\code{frequency_plot} is called from the command line, the returned value is
+automatically \sQuote{printed} (i.e., the plot is produced). Otherwise, for
+example in scripts, you may need to use \code{print()} on the returned value.
 }

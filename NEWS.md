@@ -1,8 +1,17 @@
+# Countr 3.6.0.9000
+
+- moved lattice and RColorBrewer to Suggests.
+
+- declared that `update.renewal` is an S3 method (the roxygen `@export`
+  directive was missing).
+
 
 # Countr 3.6
 
 - changed the names of link functions imported from package VGAM to names ending
-  with 'link', since the old names have been removed in VGAM v1.1-14.
+  with 'link', since the old names have been removed in VGAM v1.1-14. This is an
+  *internal change* in the code of the package, the link functions providd by
+  package Countr remain the same.
 
 - added missing (roxygen) export directive for the `modelMat` method for
   `predict`.

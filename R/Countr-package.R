@@ -11,11 +11,11 @@
 #'
 #' @useDynLib Countr
 #'
-#' @import Matrix Rcpp Formula flexsurv
+#' @import Rcpp Formula flexsurv
 #' 
 #' @importFrom stats nobs AIC  coef  confint  confint.default
 #' @importFrom stats formula as.formula getCall  glm.fit  logLik  model.frame
-#' @importFrom stats model.matrix  model.response  model.weights
+#' @importFrom stats update model.matrix  model.response  model.weights
 #' @importFrom stats na.pass  pnorm  poisson  printCoefmat  quantile
 #' @importFrom stats dnbinom dpois lm pchisq
 #' @importFrom stats residuals update.formula  vcov

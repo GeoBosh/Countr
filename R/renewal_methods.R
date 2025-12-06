@@ -688,6 +688,7 @@ df.residual.renewal <- function(object, ...) {
 }
 
 ## copied update.default and modified it.
+#' @export
 update.renewal <- function(object, formula., anc, ..., evaluate = TRUE) {
     if (is.null(call <- getCall(object)))
         stop("need an object with call component")

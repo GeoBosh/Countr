@@ -6,6 +6,14 @@
 #' is the user's responsibility to provide the count, observed and fitted
 #' values.
 #'
+#' If argument \code{colour} is missing or not of sufficient length, the colours
+#' are set automatically using a function from package \pkg{RColorBrewer}.
+#'
+#' The bar chart is created with \code{lattice::barchart}. If
+#' \code{frequency_plot} is called from the command line, the returned value is
+#' automatically \sQuote{printed} (i.e., the plot is produced). Otherwise, for
+#' example in scripts, you may need to use \code{print()} on the returned value.
+#'
 #' @param count_labels character, labels to be used.
 #' @param actual numeric, the observed probabilities for the different count
 #'     specified in \code{count_labels}.
@@ -13,24 +21,25 @@
 #'     rows as actual and one column per model. The columns' names will be used
 #'     as labels for the different models.
 #' @param colours character vector of colour codes with \code{length}
-#'     \code{ncol(pred)} + 2.
+#'     \code{ncol(pred)} + 2. If \code{colours} is missing or
+#'     \code{length(colours) < ncol(pred) + 2}, the remaining colours are generated
+#'     using \code{RColorBrewer::brewer.pal}.
+#' @return an object from class \code{"trellis"}
 #' @export
-frequency_plot <- function(count_labels, actual, pred, colours) {
+frequency_plot <- function(count_labels, actual, pred, colours = character(0)) {
     df <- data.frame(count_range = rep(count_labels, each = ncol(pred) + 1),
                      groups = rep(c("Actual", colnames(pred)),
                          length(count_labels)),
                      preds = as.numeric(t(as.matrix(cbind(actual, pred))))
                      )
-
-    ## generate colours
+    
     nc <- ncol(pred) + 2
-    if (missing(colours))
-        colours <- RColorBrewer::brewer.pal(nc, "Blues")
-    else if (length(colours) < nc) {
-        ns <- nc - length(colours)
-        colours <- c(colours, RColorBrewer::brewer.pal(ns, "Blues"))
-    } else
-        colours <- colours[1:nc]
+    colours <- if (length(colours) < nc) {
+                   ## generate the necessary number of colours
+                   ns <- nc - length(colours)
+                   c(colours, RColorBrewer::brewer.pal(ns, "Blues"))
+               } else
+                   colours[1:nc]
 
     settings <- list(
         superpose.polygon = list(col = colours[1:(nc -1)],

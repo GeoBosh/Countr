@@ -1,7 +1,7 @@
 Package: Countr
 Type: Package
 Title: Flexible Univariate Count Models Based on Renewal Processes
-Version: 3.6
+Version: 3.6.0.9000
 Authors@R: c( person(given = "Tarak", family = "Kharrat",
                      role = c("aut"), 
                      email = "tarak@realanalytics.co.uk",
@@ -35,15 +35,15 @@ Imports:
     standardize,
     pscl,
     car,
-    Matrix,
-    lattice,
-    RColorBrewer
+    Matrix
 LinkingTo: Rcpp, RcppArmadillo
 Suggests:
     testthat,
     knitr,
     xtable,
-    lmtest
+    lmtest,
+    lattice,
+    RColorBrewer
 RdMacros: Rdpack
 VignetteBuilder: knitr
 LazyData: true

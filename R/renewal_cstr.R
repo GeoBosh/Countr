@@ -446,7 +446,7 @@ renewalCount <- function(formula, data, subset, na.action, weights, offset,
             (any(diag(varCovarcount) < 0)) ) {
             varCovarcount <- Matrix::nearPD(-ginv(hess))$mat
             warning(paste("variance-covariance matrix was computed",
-                          "by smoothing the genralized inverse hessian !"))
+                          "by smoothing the generalized inverse hessian !"))
         }
 
         dimnames(varCovarcount) <- list(nmPars, nmPars)
