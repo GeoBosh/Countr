@@ -5,6 +5,9 @@
 - declared that `update.renewal` is an S3 method (the roxygen `@export`
   directive was missing).
 
+- in DESCRIPTION, corrected a URL that was accidentally pointing to another
+  package.
+
 
 # Countr 3.6
 

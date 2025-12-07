@@ -16,7 +16,7 @@ Description: Flexible univariate count models based on renewal processes. The
     Kharrat et all (2019) <doi:10.18637/jss.v090.i13> (included as vignette
     'Countr_guide' in the package).
 License: GPL (>= 2)
-URL: https://geobosh.github.io/Countr/ (doc), https://CRAN.R-project.org/package=Rdpack
+URL: https://geobosh.github.io/Countr/ (doc), https://CRAN.R-project.org/package=Countr
 BugReports: https://github.com/GeoBosh/Countr/issues
 Depends:
     R (>= 3.3.0)
