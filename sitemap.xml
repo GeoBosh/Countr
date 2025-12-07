@@ -1,135 +1,48 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>/404.html</loc>
-  </url>
-  <url>
-    <loc>/authors.html</loc>
-  </url>
-  <url>
-    <loc>/index.html</loc>
-  </url>
-  <url>
-    <loc>/news/index.html</loc>
-  </url>
-  <url>
-    <loc>/reference/Countr-package.html</loc>
-  </url>
-  <url>
-    <loc>/reference/CountrFormula.html</loc>
-  </url>
-  <url>
-    <loc>/reference/addBootSampleObject.html</loc>
-  </url>
-  <url>
-    <loc>/reference/alphagen.html</loc>
-  </url>
-  <url>
-    <loc>/reference/chiSq_gof.html</loc>
-  </url>
-  <url>
-    <loc>/reference/chiSq_pearson.html</loc>
-  </url>
-  <url>
-    <loc>/reference/compareToGLM.html</loc>
-  </url>
-  <url>
-    <loc>/reference/count_table.html</loc>
-  </url>
-  <url>
-    <loc>/reference/dCount_allProbs_bi.html</loc>
-  </url>
-  <url>
-    <loc>/reference/dCount_conv_bi.html</loc>
-  </url>
-  <url>
-    <loc>/reference/dCount_conv_loglik_bi.html</loc>
-  </url>
-  <url>
-    <loc>/reference/dCount_dePril_bi.html</loc>
-  </url>
-  <url>
-    <loc>/reference/dCount_naive_bi.html</loc>
-  </url>
-  <url>
-    <loc>/reference/dWeibullCount.html</loc>
-  </url>
-  <url>
-    <loc>/reference/dWeibullCount_mat.html</loc>
-  </url>
-  <url>
-    <loc>/reference/dWeibullgammaCount.html</loc>
-  </url>
-  <url>
-    <loc>/reference/dWeibullgammaCount_mat.html</loc>
-  </url>
-  <url>
-    <loc>/reference/dWeibullgammaCount_mat_Covariates.html</loc>
-  </url>
-  <url>
-    <loc>/reference/dmodifiedCount_bi.html</loc>
-  </url>
-  <url>
-    <loc>/reference/evCount_conv_bi.html</loc>
-  </url>
-  <url>
-    <loc>/reference/fertility.html</loc>
-  </url>
-  <url>
-    <loc>/reference/football.html</loc>
-  </url>
-  <url>
-    <loc>/reference/frequency_plot.html</loc>
-  </url>
-  <url>
-    <loc>/reference/getParNames.html</loc>
-  </url>
-  <url>
-    <loc>/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>/reference/predict.renewal.html</loc>
-  </url>
-  <url>
-    <loc>/reference/prob_predict.html</loc>
-  </url>
-  <url>
-    <loc>/reference/renewal.control.html</loc>
-  </url>
-  <url>
-    <loc>/reference/renewal.convPars.html</loc>
-  </url>
-  <url>
-    <loc>/reference/renewal.html</loc>
-  </url>
-  <url>
-    <loc>/reference/renewal.seriesPars.html</loc>
-  </url>
-  <url>
-    <loc>/reference/renewal.weiMethod.html</loc>
-  </url>
-  <url>
-    <loc>/reference/renewalCoef.html</loc>
-  </url>
-  <url>
-    <loc>/reference/renewalCoefList.html</loc>
-  </url>
-  <url>
-    <loc>/reference/renewalCount.html</loc>
-  </url>
-  <url>
-    <loc>/reference/renewalNames.html</loc>
-  </url>
-  <url>
-    <loc>/reference/renewal_methods.html</loc>
-  </url>
-  <url>
-    <loc>/reference/residuals_plot.html</loc>
-  </url>
-  <url>
-    <loc>/reference/se.coef.html</loc>
-  </url>
-  <url>
-    <loc>/reference/surv.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://geobosh.github.io/Countr/404.html</loc></url>
+<url><loc>https://geobosh.github.io/Countr/authors.html</loc></url>
+<url><loc>https://geobosh.github.io/Countr/index.html</loc></url>
+<url><loc>https://geobosh.github.io/Countr/news/index.html</loc></url>
+<url><loc>https://geobosh.github.io/Countr/reference/Countr-package.html</loc></url>
+<url><loc>https://geobosh.github.io/Countr/reference/CountrFormula.html</loc></url>
+<url><loc>https://geobosh.github.io/Countr/reference/addBootSampleObject.html</loc></url>
+<url><loc>https://geobosh.github.io/Countr/reference/alphagen.html</loc></url>
+<url><loc>https://geobosh.github.io/Countr/reference/chiSq_gof.html</loc></url>
+<url><loc>https://geobosh.github.io/Countr/reference/chiSq_pearson.html</loc></url>
+<url><loc>https://geobosh.github.io/Countr/reference/compareToGLM.html</loc></url>
+<url><loc>https://geobosh.github.io/Countr/reference/count_table.html</loc></url>
+<url><loc>https://geobosh.github.io/Countr/reference/dBivariateWeibullCountFrankCopula.html</loc></url>
+<url><loc>https://geobosh.github.io/Countr/reference/dCount_allProbs_bi.html</loc></url>
+<url><loc>https://geobosh.github.io/Countr/reference/dCount_conv_bi.html</loc></url>
+<url><loc>https://geobosh.github.io/Countr/reference/dCount_conv_loglik_bi.html</loc></url>
+<url><loc>https://geobosh.github.io/Countr/reference/dCount_dePril_bi.html</loc></url>
+<url><loc>https://geobosh.github.io/Countr/reference/dCount_naive_bi.html</loc></url>
+<url><loc>https://geobosh.github.io/Countr/reference/dRenewalFrankCopula_user.html</loc></url>
+<url><loc>https://geobosh.github.io/Countr/reference/dWeibullCount.html</loc></url>
+<url><loc>https://geobosh.github.io/Countr/reference/dWeibullCount_mat.html</loc></url>
+<url><loc>https://geobosh.github.io/Countr/reference/dWeibullgammaCount.html</loc></url>
+<url><loc>https://geobosh.github.io/Countr/reference/dWeibullgammaCount_mat.html</loc></url>
+<url><loc>https://geobosh.github.io/Countr/reference/dWeibullgammaCount_mat_Covariates.html</loc></url>
+<url><loc>https://geobosh.github.io/Countr/reference/dmodifiedCount_bi.html</loc></url>
+<url><loc>https://geobosh.github.io/Countr/reference/evCount_conv_bi.html</loc></url>
+<url><loc>https://geobosh.github.io/Countr/reference/fertility.html</loc></url>
+<url><loc>https://geobosh.github.io/Countr/reference/football.html</loc></url>
+<url><loc>https://geobosh.github.io/Countr/reference/frequency_plot.html</loc></url>
+<url><loc>https://geobosh.github.io/Countr/reference/getParNames.html</loc></url>
+<url><loc>https://geobosh.github.io/Countr/reference/index.html</loc></url>
+<url><loc>https://geobosh.github.io/Countr/reference/predict.renewal.html</loc></url>
+<url><loc>https://geobosh.github.io/Countr/reference/renewal.control.html</loc></url>
+<url><loc>https://geobosh.github.io/Countr/reference/renewal.convPars.html</loc></url>
+<url><loc>https://geobosh.github.io/Countr/reference/renewal.html</loc></url>
+<url><loc>https://geobosh.github.io/Countr/reference/renewal.seriesPars.html</loc></url>
+<url><loc>https://geobosh.github.io/Countr/reference/renewal.weiMethod.html</loc></url>
+<url><loc>https://geobosh.github.io/Countr/reference/renewalCoef.html</loc></url>
+<url><loc>https://geobosh.github.io/Countr/reference/renewalCoefList.html</loc></url>
+<url><loc>https://geobosh.github.io/Countr/reference/renewalCount.html</loc></url>
+<url><loc>https://geobosh.github.io/Countr/reference/renewalNames.html</loc></url>
+<url><loc>https://geobosh.github.io/Countr/reference/renewal_methods.html</loc></url>
+<url><loc>https://geobosh.github.io/Countr/reference/residuals_plot.html</loc></url>
+<url><loc>https://geobosh.github.io/Countr/reference/se.coef.html</loc></url>
+<url><loc>https://geobosh.github.io/Countr/reference/surv.html</loc></url>
 </urlset>
+
